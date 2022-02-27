@@ -29,6 +29,7 @@
 #define WEB_SERVER "192.168.1.102"
 #define WEB_PORT "8080"
 #define WEB_PATH "/collect.php"
+#define DEVICE_ID "14"
 
 static const dht_sensor_type_t sensor_type = DHT_TYPE_DHT11;
 static const gpio_num_t dht_gpio = 17;
@@ -36,7 +37,7 @@ static const gpio_num_t dht_gpio = 17;
 
 static const char *TAG = "temp_collector";
 
-static char *REQUEST_GET = "GET " WEB_PATH "/?t=%d&h=%d HTTP/1.0\r\n"
+static char *REQUEST_GET = "GET " WEB_PATH "/?id=" DEVICE_ID "&t=%d&h=%d HTTP/1.0\r\n"
     "Host: "WEB_SERVER":"WEB_PORT"\r\n"
     "User-Agent: esp-idf/1.0 esp32\r\n"
     "\r\n";
