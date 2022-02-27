@@ -1,0 +1,4 @@
+*/build/*
+*/*.old
+*.swp
+http_request/build/*
