@@ -26,9 +26,9 @@
 
 
 /* Constants that aren't configurable in menuconfig */
-#define WEB_SERVER "192.168.1.102"
+#define WEB_SERVER "192.168.1.108"
 #define WEB_PORT "8080"
-#define WEB_PATH "/collect.php"
+#define WEB_PATH "/measurement"
 #define DEVICE_ID "14"
 
 static const dht_sensor_type_t sensor_type = DHT_TYPE_DHT11;
@@ -37,10 +37,19 @@ static const gpio_num_t dht_gpio = 17;
 
 static const char *TAG = "temp_collector";
 
-static char *REQUEST_GET = "GET " WEB_PATH "/?id=" DEVICE_ID "&t=%d&h=%d HTTP/1.0\r\n"
+static char *REQUEST_GET = "GET " WEB_PATH " HTTP/1.0\r\n"
     "Host: "WEB_SERVER":"WEB_PORT"\r\n"
     "User-Agent: esp-idf/1.0 esp32\r\n"
     "\r\n";
+
+static char *REQUEST_POST = "POST " WEB_PATH " HTTP/1.0\r\n"
+    "Host: "WEB_SERVER":"WEB_PORT"\r\n"
+    "User-Agent: esp-idf/1.0 esp32\r\n"
+    "Content-Type: application/x-www-form-urlencoded\r\n"
+    "Content-Length: 15\r\n"
+    "\r\n"
+    "id=" DEVICE_ID "&t=%d&h=%d";
+
 
 // Ejercicio: enviar POST    
 // Ejercicio: enviar json
@@ -64,7 +73,7 @@ static void http_get_task(void *pvParameters)
     while(1) {
         if (dht_read_data(sensor_type, dht_gpio, &humidity, &temperature) == ESP_OK) {
             ESP_LOGI(TAG,"Humidity: %d%% Temp: %dC\n", humidity / 10, temperature / 10);
-            sprintf(send_buf, REQUEST_GET, temperature / 10, humidity / 10);
+            sprintf(send_buf, REQUEST_POST, temperature / 10, humidity / 10);
 	    ESP_LOGI(TAG,"sending: \n%s\n",send_buf);
         } else {
             ESP_LOGE(TAG,"Could not read data from sensor\n");
