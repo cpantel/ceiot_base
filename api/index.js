@@ -119,6 +119,11 @@ startDatabase().then(async() => {
     db.public.none("INSERT INTO devices VALUES ('3', '345678')");
     console.log("sql device database up");
 
+    db.public.none("CREATE TABLE devices (device_id VARCHAR, key VARCHAR)");
+    db.public.none("INSERT INTO devices VALUES ('1', '123456')");
+    db.public.none("INSERT INTO devices VALUES ('2', '234567')");
+    db.public.none("INSERT INTO devices VALUES ('3', '345678')");
+
     app.listen(PORT, () => {
         console.log(`Listening at ${PORT}`);
     });
