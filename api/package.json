@@ -12,6 +12,7 @@
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
     "mongodb": "^4.4.0",
-    "mongodb-memory-server": "^8.4.0"
+    "mongodb-memory-server": "^8.4.0",
+    "pg-mem": "^2.3.3"
   }
 }
