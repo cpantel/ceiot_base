@@ -34,6 +34,9 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended:false}));
 
+app.use(express.static('spa'));
+app.use('/js', express.static('spa'));
+
 const PORT = 8080;
 
 app.post('/measurement', function (req, res) {
@@ -48,14 +51,15 @@ app.post('/measurement', function (req, res) {
 app.get('/web/device', function (req, res) {
 	var devices = db.public.many("SELECT * FROM devices").map( function(device) {
 		console.log(device);
-		return '<tr><td><a href=/web/device/'+ device.device_id +'>' + device.device_id + "</a>" +"</td><td>"+ device.key+"</td></tr>";
+		return '<tr><td><a href=/web/device/'+ device.device_id +'>' + device.device_id + "</a>" +
+			       "</td><td>"+ device.name+"</td><td>"+ device.key+"</td></tr>";
 	   }
 	);
 	res.send("<html>"+
 		     "<head><title>Sensores</title></head>" +
 		     "<body>" +
 		        "<table border=\"1\">" +
-		           "<tr><th>id</th><th>key</th></tr>" +
+		           "<tr><th>id</th><th>name</th><th>key</th></tr>" +
 		           devices +
 		        "</table>" +
 		     "</body>" +
@@ -86,9 +90,10 @@ function render(template, vars) {
 
 app.get('/web/device/:id', function (req, res) {
     var template = "<html>"+
-                     "<head><title>Sensor {{id}}</title></head>" +
+                     "<head><title>Sensor {{name}}</title></head>" +
                      "<body>" +
-		        "<h1>{{ id }}</h1>"+
+		        "<h1>{{ name }}</h1>"+
+		        "id  : {{ id }}<br/>" +
 		        "Key : {{ key }}" +
                      "</body>" +
                 "</html>";
@@ -96,7 +101,7 @@ app.get('/web/device/:id', function (req, res) {
 
     var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.params.id+"'");
     console.log(device);
-    res.send(render(template,{id:device[0].device_id, key: device[0].key}));
+    res.send(render(template,{id:device[0].device_id, key: device[0].key, name:device[0].name}));
 });
 
 app.get('/measurement', async (req,res) => {
@@ -113,16 +118,11 @@ startDatabase().then(async() => {
     await insertMeasurement({id:'2', t:'17', h:'77'});
     console.log("mongo measurement database Up");
 
-    db.public.none("CREATE TABLE devices (device_id VARCHAR, key VARCHAR)");
-    db.public.none("INSERT INTO devices VALUES ('1', '123456')");
-    db.public.none("INSERT INTO devices VALUES ('2', '234567')");
-    db.public.none("INSERT INTO devices VALUES ('3', '345678')");
+    db.public.none("CREATE TABLE devices (device_id VARCHAR, name VARCHAR, key VARCHAR)");
+    db.public.none("INSERT INTO devices VALUES ('1', 'ESP32', '123456')");
+    db.public.none("INSERT INTO devices VALUES ('2', 'ESP32c3', '234567')");
+    db.public.none("INSERT INTO devices VALUES ('3', 'ESP32s2', '345678')");
     console.log("sql device database up");
-
-    db.public.none("CREATE TABLE devices (device_id VARCHAR, key VARCHAR)");
-    db.public.none("INSERT INTO devices VALUES ('1', '123456')");
-    db.public.none("INSERT INTO devices VALUES ('2', '234567')");
-    db.public.none("INSERT INTO devices VALUES ('3', '345678')");
 
     app.listen(PORT, () => {
         console.log(`Listening at ${PORT}`);
