@@ -88,7 +88,7 @@ function render(template, vars) {
    }).join('\n');	
 }
 
-app.get('/web/device/:id', function (req, res) {
+app.get('/web/device/:id', function (req,res) {
     var template = "<html>"+
                      "<head><title>Sensor {{name}}</title></head>" +
                      "<body>" +
@@ -99,6 +99,20 @@ app.get('/web/device/:id', function (req, res) {
                 "</html>";
 
 
+    var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.params.id+"'");
+    console.log(device);
+    res.send(render(template,{id:device[0].device_id, key: device[0].key, name:device[0].name}));
+});	
+
+
+app.get('/term/device/:id', function (req, res) {
+    var red = "\33[31m";
+    var green = "\33[32m";
+    var blue = "\33[33m";
+    var reset = "\33[0m";
+    var template = "Device name " + red   + "   {{name}}" + reset + "\n" +
+		   "       id   " + green + "       {{ id }} " + reset +"\n" +
+	           "       key  " + blue  + "  {{ key }}" + reset +"\n";
     var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.params.id+"'");
     console.log(device);
     res.send(render(template,{id:device[0].device_id, key: device[0].key, name:device[0].name}));
