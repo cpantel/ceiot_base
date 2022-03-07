@@ -44,9 +44,19 @@ app.post('/measurement', function (req, res) {
 	console.log("key         : " + req.body.key );
 	console.log("temperature : " + req.body.t);
 	console.log("humidity    : " + req.body.h);
-        const {insertedId} = insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h});
-	res.send("received request into " +  insertedId);
+    const {insertedId} = insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h});
+	res.send("received measurement into " +  insertedId);
 });
+
+app.post('/device', function (req, res) {
+	console.log("device i    : " + req.body.id );
+	console.log("name        : " + req.body.n);
+	console.log("key         : " + req.body.k );
+
+    db.public.none("INSERT INTO devices VALUES ('"+req.body.id+ "', '"+req.body.n+"', '"+req.body.k+"')");
+	res.send("received new device");
+});
+
 
 app.get('/web/device', function (req, res) {
 	var devices = db.public.many("SELECT * FROM devices").map( function(device) {
