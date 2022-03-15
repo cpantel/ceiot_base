@@ -15,7 +15,6 @@ float temperature = 0.0;
 #define STASSID ""
 #define STAPSK  ""
 
-
 void setup() {
   delay(10000);
 
@@ -76,7 +75,10 @@ void loop() {
     // start connection and send HTTP header and body
     String post("id=");
     post += DEVICE_ID;
-    post += "&t=28.7&h=55.6";
+    post += "&t=";
+    post += temperature;
+    post += "&h=";
+    post += humidity;
     int httpCode = http.POST(post);
 
     // httpCode will be negative on error
