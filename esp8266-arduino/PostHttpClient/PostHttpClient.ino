@@ -1,7 +1,9 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
+#include "/home/carlos/esp/ceiot/config/config.h"
 
 #include "DHTesp.h" 
+
   
 DHTesp dht;
 
@@ -9,11 +11,6 @@ float humidity = 0.0;
 float temperature = 0.0;
 
 
-#define DEVICE_ID "61"
-#define SERVER_IP "192.168.0.100:8080"
-
-#define STASSID ""
-#define STAPSK  ""
 
 void setup() {
   delay(10000);
@@ -38,11 +35,11 @@ void setup() {
   Serial.println();
   Serial.println();
 
-  WiFi.begin(STASSID, STAPSK);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.print(".");
+    Serial.println("Waiting for " WIFI_SSID);
   }
   Serial.println("");
   Serial.print("Connected! IP address: ");
@@ -68,7 +65,7 @@ void loop() {
 
     Serial.print("[HTTP] begin...\n");
     // configure traged server and url
-    http.begin(client, "http://" SERVER_IP "/measurement"); //HTTP
+    http.begin(client, "http://" API_IP_PORT "/measurement");
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
     Serial.print("[HTTP] POST...\n");
@@ -94,7 +91,7 @@ void loop() {
         Serial.println(">>");
       }
     } else {
-      Serial.printf("[HTTP] POST... failed, error: %s\n", http.errorToString(httpCode).c_str());
+      Serial.printf("[HTTP] POST... failed, error: %s when connecting to %s\n", http.errorToString(httpCode).c_str(), API_IP_PORT);
     }
 
     http.end();
