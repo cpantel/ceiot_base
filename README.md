@@ -21,7 +21,8 @@ Pasos
  - $ sudo mount /dev/cdrom /mnt
  - $ sudo /mnt/VBoxLinuxAdditions.run
  - paciencia...
- - $ sudo usermod --groups vboxsfx,dialout "$USER"
+ - $ sudo addgroup "$USER" vboxsfx
+ - $ sudo addgroup "$USER" dialout
  - $ sudo reboot
 
 ## Sistema
