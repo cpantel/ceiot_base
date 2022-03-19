@@ -21,9 +21,9 @@ Pasos
     sudo mount /dev/cdrom /mnt
     sudo /mnt/VBoxLinuxAdditions.run
     # paciencia...
-    # sudo addgroup "$USER" vboxsfx
-    # sudo addgroup "$USER" dialout
-    # sudo reboot
+    sudo addgroup "$USER" vboxsfx
+    sudo addgroup "$USER" dialout
+    sudo reboot
 
 ## API
 
@@ -72,15 +72,17 @@ Esperamos
     git checkout 0.8.2
     cd ~/esp/esp-idf
     git checkout release/v4.4
+    git submodule update --init --recursive; # puede hacer falta
     ./install.sh esp32,esp32s2,esp32c3
 
 ### Prueba
  
     cd ~/esp/ceiot_base/config
     cp config.h.tmplate config.h
-    # modificar en ../config/config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
     cd ~/esp/ceiot_base/esp32
     . ../../esp-idf/export.sh
+    ../set-wifi.sh
     idf.py set-target esp32
     idf.py build
     idf.py flash
