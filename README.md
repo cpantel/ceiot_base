@@ -94,7 +94,7 @@ En un navegador, probar las siguientes URLs:
     git submodule update --init --recursive; # puede hacer falta
     ./install.sh esp32,esp32s2,esp32c3
 
-### Prueba
+### ESP32
  
     cd ~/esp/ceiot_base/config
     cp config.h.tmplate config.h
@@ -109,7 +109,34 @@ En un navegador, probar las siguientes URLs:
     
 Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al conectar en **flash** y **monitor**.
     
+### ESP32s2
+ 
+    cd ~/esp/ceiot_base/config
+    cp config.h.tmplate config.h
+    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+    cd ~/esp/ceiot_base/esp32s2
+    . ../../esp-idf/export.sh
+    idf.py set-target esp32s2
+    ../set-wifi.sh
+    idf.py build
+    idf.py flash
+    idf.py monitor
     
+### ESP32c3 (falla dht11, probablemente no esté implementado en esp-idf-lib, probaré con BMP280)
+ 
+    cd ~/esp/ceiot_base/config
+    cp config.h.tmplate config.h
+    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+    cd ~/esp/ceiot_base/esp32c3
+    . ../../esp-idf/export.sh
+    idf.py set-target esp32c3
+    ../set-wifi.sh
+    idf.py build
+    idf.py flash
+    idf.py monitor
+    
+    
+
 
 
 [Ejemplo de ESP32 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/02/ejemplo-de-esp32-con-lectura-de-dht11.html)
