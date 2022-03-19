@@ -23,13 +23,12 @@
 #include "lwip/netdb.h"
 #include "lwip/dns.h"
 #include "dht.h"
-
+#include "/home/iot/esp/ceiot_base/config/config.h"   // esto es mejorable...
 
 /* Constants that aren't configurable in menuconfig */
-#define WEB_SERVER "192.168.1.108"
-#define WEB_PORT "8080"
+#define WEB_SERVER API_IP
+#define WEB_PORT API_PORT
 #define WEB_PATH "/measurement"
-#define DEVICE_ID "33"
 
 static const dht_sensor_type_t sensor_type = DHT_TYPE_DHT11;
 static const gpio_num_t dht_gpio = 17;
