@@ -5,10 +5,12 @@ Código para ejemplo básico de IoT
 ## VM
 
   - CPUs    : 1
-  - Memoria : 8 GB
+  - Memoria : 4 GB 
   - Disco   : 40 GB (llega a ocupar casi 20GB)
   - Network : bridge
   - Distro  : Ubuntu Server 20.04.4
+
+Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox
 
 Pasos
 
@@ -135,18 +137,31 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     idf.py flash
     idf.py monitor
     
-    
-
-
 
 [Ejemplo de ESP32 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/02/ejemplo-de-esp32-con-lectura-de-dht11.html)
 [Primer contacto con ESP32](https://seguridad-agile.blogspot.com/2022/02/primer-contacto-con-esp32.html)
 
 
-### Entorno ArduinoIDE para ESP8266
+## Entorno ArduinoIDE para ESP8266
 
+Descargar de https://www.arduino.cc/en/software
 
-### Entorno ESP8266_RTOS_SDK para ESP8266
+     cd ~/esp
+     tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
+     ./arduino-x.x.xx/arduino
+     # File -> preferences -> Additional Boars Manager URLs
+     # http://arduino.esp8266.com/stable/package_esp8266com_index.json
+     # Tools -> Board -> Board Manager -> search esp8266 -> install
+     # Tools -> Board ->ESP8266 Generic Module
+     # Tools -> Manage Libraries -> search dht sensor -> DHT sensor library for ESPx -> install
+     # Conectar device
+     # Tools -> Port -> /dev/ttyUSB0
+     # File -> Open -> ~/esp/ceiot_base/esp8266-arduino/PostHttpClient
+     # modificar en ~/esp/ceiot_base/config/config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+     # Sketch -> Upload
+     
+
+## Entorno ESP8266_RTOS_SDK para ESP8266
 
 Este entorno no me funcionó y además rompió el de ESP-IDF
 
