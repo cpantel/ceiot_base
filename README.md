@@ -25,7 +25,7 @@ Pasos
     sudo addgroup "$USER" dialout
     sudo reboot
 
-## API
+## API/SPA
 
 Instalación node + express + pg-mem + mongodb-memory-server y código referencia.
 
@@ -34,13 +34,15 @@ Instalación node + express + pg-mem + mongodb-memory-server y código referenci
     git clone git@github.com:cpantel/ceiot_base.git
     curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
     sudo apt install nodejs
+    sudo npm install typescript -g
     cd ceiot_base/api
     npm install; # express body-parser mongodb-memory-server mongodb pg-mem
 
 ### Prueba
 
-Servidor
+En una terminal servidor API
 
+    cd ~/esp/ceiot_base/api
     node index.js
     
 Esperamos
@@ -49,8 +51,19 @@ Esperamos
     sql device database up
     Listening at 8080
 
-Cliente, en otra terminal en ceiot_base/tools
+En otra terminal, servidor SPA
 
+    cd ~/esp/ceiot_base/api/spa
+    ./rebuild.sh
+    
+Esperamos 
+
+    Starting compilation in watch mode...
+    Found 0 errors. Watching for file changes.
+    
+Cliente, en otra terminal
+
+    cd ~/esp/ceiot_base/tools
     ./get_color_devices.sh 
     
 Esperamos
@@ -60,7 +73,13 @@ Esperamos
            id          1 
            key    123456
 
+En un navegador, probar las siguientes URLs:
 
+    SPA: http://localhost:8080/index.html -> lista de dispositivos con un botón de refrescar
+    
+    WEB: http://localhost:8080/web/device -> lista de dispositivos web
+    
+    API: http://localhost:8080/device -> lista dispositivos JSON
 
 ## Entorno ESP-IDF para ESP32/ESP32s2/ESPc3
 
@@ -75,7 +94,7 @@ Esperamos
     git submodule update --init --recursive; # puede hacer falta
     ./install.sh esp32,esp32s2,esp32c3
 
-### Prueba
+### ESP32
  
     cd ~/esp/ceiot_base/config
     cp config.h.tmplate config.h
@@ -90,7 +109,34 @@ Esperamos
     
 Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al conectar en **flash** y **monitor**.
     
+### ESP32s2
+ 
+    cd ~/esp/ceiot_base/config
+    cp config.h.tmplate config.h
+    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+    cd ~/esp/ceiot_base/esp32s2
+    . ../../esp-idf/export.sh
+    idf.py set-target esp32s2
+    ../set-wifi.sh
+    idf.py build
+    idf.py flash
+    idf.py monitor
     
+### ESP32c3 (falla dht11, probablemente no esté implementado en esp-idf-lib, probaré con BMP280)
+ 
+    cd ~/esp/ceiot_base/config
+    cp config.h.tmplate config.h
+    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+    cd ~/esp/ceiot_base/esp32c3
+    . ../../esp-idf/export.sh
+    idf.py set-target esp32c3
+    ../set-wifi.sh
+    idf.py build
+    idf.py flash
+    idf.py monitor
+    
+    
+
 
 
 [Ejemplo de ESP32 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/02/ejemplo-de-esp32-con-lectura-de-dht11.html)
