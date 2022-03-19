@@ -40,18 +40,13 @@ app.use('/js', express.static('spa'));
 const PORT = 8080;
 
 app.post('/measurement', function (req, res) {
-	console.log("device i    : " + req.body.id );
-	console.log("key         : " + req.body.key );
-	console.log("temperature : " + req.body.t);
-	console.log("humidity    : " + req.body.h);
+-       console.log("device id    : " + req.body.id + " key         : " + req.body.key + " temperature : " + req.body.t + " humidity    : " + req.body.h);	
     const {insertedId} = insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h});
 	res.send("received measurement into " +  insertedId);
 });
 
 app.post('/device', function (req, res) {
-	console.log("device i    : " + req.body.id );
-	console.log("name        : " + req.body.n);
-	console.log("key         : " + req.body.k );
+	console.log("device id    : " + req.body.id + " name        : " + req.body.n + " key         : " + req.body.k );
 
     db.public.none("INSERT INTO devices VALUES ('"+req.body.id+ "', '"+req.body.n+"', '"+req.body.k+"')");
 	res.send("received new device");
@@ -143,9 +138,10 @@ startDatabase().then(async() => {
     console.log("mongo measurement database Up");
 
     db.public.none("CREATE TABLE devices (device_id VARCHAR, name VARCHAR, key VARCHAR)");
-    db.public.none("INSERT INTO devices VALUES ('1', 'ESP32', '123456')");
-    db.public.none("INSERT INTO devices VALUES ('2', 'ESP32c3', '234567')");
-    db.public.none("INSERT INTO devices VALUES ('3', 'ESP32s2', '345678')");
+    db.public.none("INSERT INTO devices VALUES ('14', 'ESP32', '123456')");
+    db.public.none("INSERT INTO devices VALUES ('23', 'ESP32c3', '234567')");
+    db.public.none("INSERT INTO devices VALUES ('31', 'ESP32s2', '345678')");
+    db.public.none("INSERT INTO devices VALUES ('61', 'ESP8266', '456789')");
     console.log("sql device database up");
 
     app.listen(PORT, () => {
