@@ -25,7 +25,7 @@ Pasos
     sudo addgroup "$USER" dialout
     sudo reboot
 
-## API
+## API/SPA
 
 Instalación node + express + pg-mem + mongodb-memory-server y código referencia.
 
@@ -34,13 +34,15 @@ Instalación node + express + pg-mem + mongodb-memory-server y código referenci
     git clone git@github.com:cpantel/ceiot_base.git
     curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
     sudo apt install nodejs
+    sudo npm install typescript -g
     cd ceiot_base/api
     npm install; # express body-parser mongodb-memory-server mongodb pg-mem
 
 ### Prueba
 
-Servidor
+En una terminal servidor API
 
+    cd ~/esp/ceiot_base/api
     node index.js
     
 Esperamos
@@ -49,8 +51,19 @@ Esperamos
     sql device database up
     Listening at 8080
 
-Cliente, en otra terminal en ceiot_base/tools
+En otra terminal, servidor SPA
 
+    cd ~/esp/ceiot_base/api/spa
+    ./rebuild.sh
+    
+Esperamos 
+
+    Starting compilation in watch mode...
+    Found 0 errors. Watching for file changes.
+    
+Cliente, en otra terminal
+
+    cd ~/esp/ceiot_base/tools
     ./get_color_devices.sh 
     
 Esperamos
@@ -60,7 +73,13 @@ Esperamos
            id          1 
            key    123456
 
+En un navegador, probar las siguientes URLs:
 
+    SPA: http://localhost:8080/index.html -> lista de dispositivos con un botón de refrescar
+    
+    WEB: http://localhost:8080/web/device -> lista de dispositivos web
+    
+    API: http://localhost:8080/device -> lista dispositivos JSON
 
 ## Entorno ESP-IDF para ESP32/ESP32s2/ESPc3
 
