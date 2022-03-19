@@ -1,6 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
-#include "/home/carlos/esp/ceiot/config/config.h"
+#include "/home/iot/esp/ceiot_base/config/config.h"
 
 #include "DHTesp.h" 
 
