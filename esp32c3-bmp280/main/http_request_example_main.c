@@ -45,9 +45,9 @@ static char *REQUEST_POST = "POST " WEB_PATH " HTTP/1.0\r\n"
     "Host: "WEB_SERVER":"WEB_PORT"\r\n"
     "User-Agent: esp-idf/1.0 esp32c3 devkitC\r\n"
     "Content-Type: application/x-www-form-urlencoded\r\n"
-    "Content-Length: 15\r\n"
+    "Content-Length: 20\r\n"
     "\r\n"
-    "id=" DEVICE_ID "&t=%d&h=%d";
+    "id=" DEVICE_ID "&t=%0.2f&h=%0.2f";
 
 static void http_get_task(void *pvParameters)
 {
@@ -78,20 +78,15 @@ static void http_get_task(void *pvParameters)
 
     while(1) {
         if (bmp280_read_float(&dev, &temperature, &pressure, &humidity) != ESP_OK) {
-            printf("Temperature/pressure reading failed\n");
+            ESP_LOGI(TAG, "Temperature/pressure reading failed\n");
         } else {
-
-            /* float is used in printf(). you need non-default configuration in
-            * sdkconfig for ESP8266, which is enabled by default for this
-            * example. see sdkconfig.defaults.esp8266
-            */
             ESP_LOGI(TAG, "Pressure: %.2f Pa, Temperature: %.2f C", pressure, temperature);
-            if (bme280p) {
+//            if (bme280p) {
                 ESP_LOGI(TAG,", Humidity: %.2f\n", humidity);
-                sprintf(send_buf, REQUEST_POST, temperature / 10, humidity / 10);
-	    } else {
-                sprintf(send_buf, REQUEST_POST, temperature / 10, 0);
-            }
+                sprintf(send_buf, REQUEST_POST, temperature , humidity );
+//	    } else {
+//                sprintf(send_buf, REQUEST_POST, temperature , 0);
+//            }
 	    ESP_LOGI(TAG,"sending: \n%s\n",send_buf);
         }    
 
