@@ -124,12 +124,12 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     idf.py flash
     idf.py monitor
     
-### ESP32c3 (falla dht11, probablemente no esté implementado en esp-idf-lib, probaré con BMP280)
+### ESP32c3 con BMP280 (falla con DHT11)
  
     cd ~/esp/ceiot_base/config
     cp config.h.tmplate config.h
     # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
-    cd ~/esp/ceiot_base/esp32c3
+    cd ~/esp/ceiot_base/esp32c3-bmp280
     . ../../esp-idf/export.sh
     idf.py set-target esp32c3
     ../set-wifi.sh
