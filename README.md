@@ -29,7 +29,7 @@ Pasos
 
 ## API/SPA
 
-Instalación node + express + pg-mem + mongodb-memory-server y código referencia.
+Instalación node + express + pg-mem + mongodb-memory-server + typescript y código referencia.
 
     mkdir ~/esp
     cd ~/esp
@@ -139,6 +139,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     
 
 [Ejemplo de ESP32 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/02/ejemplo-de-esp32-con-lectura-de-dht11.html)
+
 [Primer contacto con ESP32](https://seguridad-agile.blogspot.com/2022/02/primer-contacto-con-esp32.html)
 
 
@@ -159,7 +160,9 @@ Descargar de https://www.arduino.cc/en/software
      # File -> Open -> ~/esp/ceiot_base/esp8266-arduino/PostHttpClient
      # modificar en ~/esp/ceiot_base/config/config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
      # Sketch -> Upload
-     
+
+[Más detalles en el Plan B](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11planB.html)
+
 
 ## Entorno ESP8266_RTOS_SDK para ESP8266
 
