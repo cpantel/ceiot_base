@@ -152,7 +152,7 @@ Descargar de https://www.arduino.cc/en/software
      ./arduino-x.x.xx/arduino
      # File -> preferences -> Additional Boars Manager URLs
      # http://arduino.esp8266.com/stable/package_esp8266com_index.json
-     # Tools -> Board -> Board Manager -> search esp8266 -> install
+     # Tools -> Board -> Board Manager -> search esp8266 -> esp8266 by ESP8266 Community -> install
      # Tools -> Board ->ESP8266 Generic Module
      # Tools -> Manage Libraries -> search dht sensor -> DHT sensor library for ESPx -> install
      # Conectar device
