@@ -95,47 +95,71 @@ En un navegador, probar las siguientes URLs:
     git checkout release/v4.4
     git submodule update --init --recursive; # puede hacer falta
     ./install.sh esp32,esp32s2,esp32c3
+    
+
+Las siguientes instrucciones implican que en la terminal actual se ha ejecutado:
+
+    cd ~/esp/esp-idf
+    . ./export.sh
+
 
 ### ESP32
+
+Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al conectar en **flash** y **monitor**.
+
+#### BMP280
  
     cd ~/esp/ceiot_base/config
     cp config.h.tmplate config.h
     # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
-    cd ~/esp/ceiot_base/esp32
-    . ../../esp-idf/export.sh
+    cd ~/esp/ceiot_base/esp32-bmp280
     ../set-wifi.sh
     idf.py set-target esp32
     idf.py build
     idf.py flash
     idf.py monitor
-    
-Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al conectar en **flash** y **monitor**.
+
+#### DHT11
+ 
+    cd ~/esp/ceiot_base/config
+    cp config.h.tmplate config.h
+    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+    cd ~/esp/ceiot_base/esp32
+    ../set-wifi.sh
+    idf.py set-target esp32
+    idf.py build
+    idf.py flash
+    idf.py monitor
+
+### ESP32c3
+
+#### BMP280
+ 
+    cd ~/esp/ceiot_base/config
+    cp config.h.tmplate config.h
+    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+    cd ~/esp/ceiot_base/esp32c3-bmp280
+    idf.py set-target esp32c3
+    ../set-wifi.sh
+    idf.py build
+    idf.py flash
+    idf.py monitor
+
     
 ### ESP32s2
+
+#### DHT11
  
     cd ~/esp/ceiot_base/config
     cp config.h.tmplate config.h
     # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
     cd ~/esp/ceiot_base/esp32s2
-    . ../../esp-idf/export.sh
     idf.py set-target esp32s2
     ../set-wifi.sh
     idf.py build
     idf.py flash
     idf.py monitor
     
-### ESP32c3 con BMP280 (falla con DHT11)
- 
-    cd ~/esp/ceiot_base/config
-    cp config.h.tmplate config.h
-    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
-    cd ~/esp/ceiot_base/esp32c3-bmp280
-    . ../../esp-idf/export.sh
-    idf.py set-target esp32c3
-    ../set-wifi.sh
-    idf.py build
-    idf.py flash
-    idf.py monitor
     
 
 [Ejemplo de ESP32 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/02/ejemplo-de-esp32-con-lectura-de-dht11.html)
@@ -143,10 +167,13 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 [Primer contacto con ESP32](https://seguridad-agile.blogspot.com/2022/02/primer-contacto-con-esp32.html)
 
 
-## Entorno ArduinoIDE para ESP8266
+## Entorno ArduinoIDE
 
-Descargar de https://www.arduino.cc/en/software
+### ESP8266
 
+#### DHT11
+
+     # Descargar de https://www.arduino.cc/en/software
      cd ~/esp
      tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
      ./arduino-x.x.xx/arduino
