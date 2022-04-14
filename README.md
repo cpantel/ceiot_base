@@ -27,6 +27,13 @@ Pasos
     sudo addgroup "$USER" dialout
     sudo reboot
 
+### Espacio libre
+
+Por algún motivo que ignoro, la instalación no usa todo el espacio disponible, se corrige con:
+
+      $ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+      $ sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+
 ## API/SPA
 
 Instalación node + express + pg-mem + mongodb-memory-server + typescript y código referencia.
