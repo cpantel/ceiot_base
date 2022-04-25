@@ -1,8 +1,11 @@
-# ceiot_base
+# CEIOT BASE
 
 Código para ejemplo básico de IoT
 
-## VM
+Lo siguiente se puede hacer en cualquier sistema de virtualización por comodidad y prolijidad o directamente en una máquina real.
+
+
+## VM con virtualbox
 
   - CPUs    : 1
   - Memoria : 4 GB 
@@ -18,8 +21,8 @@ Pasos
     # Crear una nueva VM
     # Parametrizar según los valores previos
     # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
-    # cuando ofrece instalar openssh server, aceptarlo
-    # si se queda para siempre en "downloading and installing security updates", cancelar
+    # Cuando ofrece instalar openssh server, aceptarlo
+    # Si se queda para siempre en "downloading and installing security updates", cancelar
     # reboot
     # En una terminal:
     sudo apt install xorg openbox firefox git gcc make perl 
