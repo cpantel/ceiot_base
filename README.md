@@ -14,15 +14,23 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
 
 Pasos
 
-    # https://ubuntu.com/download/server
+    # Bajar el instalador de https://ubuntu.com/download/server
+    # Crear una nueva VM
+    # Parametrizar según los valores previos
+    # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
     # cuando ofrece instalar openssh server, aceptarlo
     # si se queda para siempre en "downloading and installing security updates", cancelar
     # reboot
+    # En una terminal:
     sudo apt install xorg openbox firefox git gcc make perl 
+    # En el menú de VirtualBox asociado a la instancia actual
     # Devices -> Insert guest additions CD image...
     sudo mount /dev/cdrom /mnt
     sudo /mnt/VBoxLinuxAdditions.run
+    # Si dice que no existe /dev/cdrom
+    sudo /media/${USER}/VBoxLinuxAdditions.run
     # paciencia...
+    # En una terminal
     sudo addgroup "$USER" vboxsfx
     sudo addgroup "$USER" dialout
     sudo reboot
