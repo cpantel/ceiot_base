@@ -34,7 +34,7 @@ Pasos
     sudo /media/${USER}/VBoxLinuxAdditions.run
     # paciencia...
     # En una terminal
-    sudo addgroup "$USER" vboxsfx
+    sudo addgroup "$USER" vboxsf
     sudo addgroup "$USER" dialout
     sudo reboot
 
