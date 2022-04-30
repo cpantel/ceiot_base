@@ -51,7 +51,7 @@ Instalación node + express + pg-mem + mongodb-memory-server + typescript y cód
 
     mkdir ~/esp
     cd ~/esp
-    git clone git@github.com:cpantel/ceiot_base.git
+    git clone https://github.com/cpantel/ceiot_base.git
     curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
     sudo apt install nodejs
     sudo npm install typescript -g
