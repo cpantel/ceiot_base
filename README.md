@@ -1,8 +1,11 @@
-# ceiot_base
+# CEIOT BASE
 
 Código para ejemplo básico de IoT
 
-## VM
+Lo siguiente se puede hacer en cualquier sistema de virtualización por comodidad y prolijidad o directamente en una máquina real.
+
+
+## VM con virtualbox
 
   - CPUs    : 1
   - Memoria : 4 GB 
@@ -14,18 +17,33 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
 
 Pasos
 
-    # https://ubuntu.com/download/server
-    # cuando ofrece instalar openssh server, aceptarlo
-    # si se queda para siempre en "downloading and installing security updates", cancelar
+    # Bajar el instalador de https://ubuntu.com/download/server
+    # Crear una nueva VM
+    # Parametrizar según los valores previos
+    # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
+    # Cuando ofrece instalar openssh server, aceptarlo
+    # Si se queda para siempre en "downloading and installing security updates", cancelar
     # reboot
+    # En una terminal:
     sudo apt install xorg openbox firefox git gcc make perl 
+    # En el menú de VirtualBox asociado a la instancia actual
     # Devices -> Insert guest additions CD image...
     sudo mount /dev/cdrom /mnt
     sudo /mnt/VBoxLinuxAdditions.run
+    # Si dice que no existe /dev/cdrom
+    sudo /media/${USER}/VBoxLinuxAdditions.run
     # paciencia...
-    sudo addgroup "$USER" vboxsfx
+    # En una terminal
+    sudo addgroup "$USER" vboxsf
     sudo addgroup "$USER" dialout
     sudo reboot
+
+### Espacio libre
+
+Por algún motivo que ignoro, la instalación no usa todo el espacio disponible, se corrige con:
+
+      $ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+      $ sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 
 ## API/SPA
 
@@ -33,7 +51,7 @@ Instalación node + express + pg-mem + mongodb-memory-server + typescript y cód
 
     mkdir ~/esp
     cd ~/esp
-    git clone git@github.com:cpantel/ceiot_base.git
+    git clone https://github.com/cpantel/ceiot_base.git
     curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
     sudo apt install nodejs
     sudo npm install typescript -g
