@@ -5,7 +5,7 @@ Código para ejemplo básico de IoT
 Lo siguiente se puede hacer en cualquier sistema de virtualización por comodidad y prolijidad o directamente en una máquina real.
 
 
-## VM con virtualbox
+## Paso 1: VM con virtualbox
 
   - CPUs    : 1
   - Memoria : 4 GB 
@@ -45,7 +45,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
       $ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
       $ sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 
-## API/SPA
+## Paso 2: API/SPA
 
 Instalación node + express + pg-mem + mongodb-memory-server + typescript y código referencia.
 
@@ -108,7 +108,7 @@ En un navegador, probar las siguientes URLs:
 
 ![](./img/API_device.png)]
 
-## Entorno ESP-IDF para ESP32/ESP32s2/ESPc3
+## Paso 3: Entorno ESP-IDF para ESP32/ESP32s2/ESPc3
 
     sudo apt install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 
     cd ~/esp
@@ -192,7 +192,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 [Primer contacto con ESP32](https://seguridad-agile.blogspot.com/2022/02/primer-contacto-con-esp32.html)
 
 
-## Entorno ArduinoIDE
+## Paso 4: (opcional) Entorno ArduinoIDE
 
 ### ESP8266
 
