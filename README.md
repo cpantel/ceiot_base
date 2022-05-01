@@ -84,22 +84,29 @@ Esperamos
 Cliente, en otra terminal
 
     cd ~/esp/ceiot_base/tools
-    ./get_color_devices.sh 
+    ./get_color_devices.sh 14
     
 Esperamos
+    
+![](./img/API_color.png)]
 
-    RENDER
-    Device name    ESP32
-           id          1 
-           key    123456
 
 En un navegador, probar las siguientes URLs:
 
+
+
+
     SPA: http://localhost:8080/index.html -> lista de dispositivos con un botón de refrescar
+
+![](./img/SPA_devices.png)]    
     
     WEB: http://localhost:8080/web/device -> lista de dispositivos web
     
+![](./img/WEB_device.png)]    
+    
     API: http://localhost:8080/device -> lista dispositivos JSON
+
+![](./img/API_device.png)]
 
 ## Entorno ESP-IDF para ESP32/ESP32s2/ESPc3
 
