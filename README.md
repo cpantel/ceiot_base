@@ -2,6 +2,9 @@
 
 Código para ejemplo básico de IoT
 
+
+![](./img/arch.png)]
+
 Lo siguiente se puede hacer en cualquier sistema de virtualización por comodidad y prolijidad o directamente en una máquina real.
 
 
