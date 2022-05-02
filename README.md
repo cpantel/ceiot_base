@@ -57,6 +57,8 @@ Instalación node + express + pg-mem + mongodb-memory-server + typescript y cód
     git clone https://github.com/cpantel/ceiot_base.git
     curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
     sudo apt install nodejs
+    node --version
+    #Debe ser 17.x.x, en caso contrario el paso con curl falló
     sudo npm install typescript -g
     cd ceiot_base/api
     npm install; # express body-parser mongodb-memory-server mongodb pg-mem
