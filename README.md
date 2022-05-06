@@ -16,9 +16,9 @@ Lo siguiente se puede hacer en cualquier sistema de virtualización por comodida
   - Network : bridge
   - Distro  : Ubuntu Server 20.04.4
 
-Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox
+Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox.
 
-Pasos
+Pasos:
 
     # Bajar el instalador de https://ubuntu.com/download/server
     # Crear una nueva VM
@@ -65,33 +65,33 @@ Instalación node + express + pg-mem + mongodb-memory-server + typescript y cód
 
 ### Prueba
 
-En una terminal servidor API
+En una terminal servidor API:
 
     cd ~/esp/ceiot_base/api
     node index.js
     
-Esperamos
+Esperamos:
 
     mongo measurement database Up
     sql device database up
     Listening at 8080
 
-En otra terminal, servidor SPA
+En otra terminal, servidor SPA:
 
     cd ~/esp/ceiot_base/api/spa
     ./rebuild.sh
     
-Esperamos 
+Esperamos:
 
     Starting compilation in watch mode...
     Found 0 errors. Watching for file changes.
     
-Cliente, en otra terminal
+Cliente, en otra terminal:
 
     cd ~/esp/ceiot_base/tools
     ./get_color_devices.sh 14
     
-Esperamos
+Esperamos:
     
 ![](./img/API_color.png)]
 
@@ -113,7 +113,7 @@ En un navegador, probar las siguientes URLs:
 
 ![](./img/API_device.png)]
 
-## Paso 3: Entorno ESP-IDF para ESP32/ESP32s2/ESPc3
+## Paso 3: Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
 
     sudo apt install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 
     cd ~/esp
@@ -223,7 +223,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 
 ## Entorno ESP8266_RTOS_SDK para ESP8266
 
-Este entorno no me funcionó y además rompió el de ESP-IDF
+Este entorno no me funcionó y además rompió el de ESP-IDF.
 
 [Ejemplo de ESP8266 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11.html)
 
