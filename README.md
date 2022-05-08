@@ -14,20 +14,26 @@ Lo siguiente se puede hacer en cualquier sistema de virtualización por comodida
   - Memoria : 4 GB 
   - Disco   : 40 GB (llega a ocupar casi 20GB)
   - Network : bridge
-  - Distro  : Ubuntu Server 20.04.4
+  - Distro  : Ubuntu Server 20.04.4 LTS
 
 Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox.
 
-Pasos:
+### Instalación
 
-    # Bajar el instalador de https://ubuntu.com/download/server
-    # Crear una nueva VM
+    # Bajar el instalador de https://ubuntu.com/download/server.
+    # Crear una nueva VM.
     # Parametrizar según los valores previos
     # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
-    # Cuando ofrece instalar openssh server, aceptarlo
-    # Si se queda para siempre en "downloading and installing security updates", cancelar
-    # reboot
-    # En una terminal:
+    # Si ofrece "Update to the new installer", no, gracias.
+    # Varios "Done".
+    # Cuando ofrece instalar openssh server, aceptarlo.
+    # Si se queda para siempre en "downloading and installing security updates", "cancel update and reboot".
+    # "reboot now"
+    
+### Ajustes
+
+    # Apretar enter, hacer login.
+    # firefox opcional, ocupa como 300MB
     sudo apt install xorg openbox firefox git gcc make perl 
     # En el menú de VirtualBox asociado a la instancia actual
     # Devices -> Insert guest additions CD image...
@@ -43,27 +49,30 @@ Pasos:
 
 ### Espacio libre
 
-Por algún motivo que ignoro, la instalación no usa todo el espacio disponible, se corrige con:
+Por algún motivo que ignoro, la instalación no usa todo el espacio disponible, se corrige en cualquier momento con:
 
       $ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
       $ sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 
 ## Paso 2: API/SPA
 
-Instalación node + express + pg-mem + mongodb-memory-server + typescript y código referencia.
+### Instalación node + express + pg-mem + mongodb-memory-server + typescript.
 
-    mkdir ~/esp
-    cd ~/esp
-    git clone https://github.com/cpantel/ceiot_base.git
     curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
     sudo apt install nodejs
     node --version
     #Debe ser 17.x.x, en caso contrario el paso con curl falló
     sudo npm install typescript -g
+
+### Código referencia.
+
+    mkdir ~/esp
+    cd ~/esp    
+    git clone https://github.com/cpantel/ceiot_base.git
     cd ceiot_base/api
     npm install; # express body-parser mongodb-memory-server mongodb pg-mem
 
-### Prueba
+### Pruebas
 
 En una terminal servidor API:
 
