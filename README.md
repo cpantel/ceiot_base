@@ -56,7 +56,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 
 ## Paso 2: API/SPA
 
-### Instalación node + express + pg-mem + mongodb-memory-server + typescript.
+### Instalación node + typescript
 
     curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
     sudo apt install nodejs
@@ -64,7 +64,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
     #Debe ser 17.x.x, en caso contrario el paso con curl falló
     sudo npm install typescript -g
 
-### Código referencia.
+### Código referencia
 
     mkdir ~/esp
     cd ~/esp    
