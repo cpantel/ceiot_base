@@ -3,7 +3,7 @@
 Código para ejemplo básico de IoT
 
 
-![](./img/arch.png)]
+![](./img/arch.png)
 
 Lo siguiente se puede hacer en cualquier sistema de virtualización por comodidad y prolijidad o directamente en una máquina real.
 
@@ -102,7 +102,7 @@ Cliente, en otra terminal:
     
 Esperamos:
     
-![](./img/API_color.png)]
+![](./img/API_color.png)
 
 
 En un navegador, probar las siguientes URLs:
@@ -112,15 +112,15 @@ En un navegador, probar las siguientes URLs:
 
     SPA: http://localhost:8080/index.html -> lista de dispositivos con un botón de refrescar
 
-![](./img/SPA_devices.png)]    
+![](./img/SPA_devices.png)
     
     WEB: http://localhost:8080/web/device -> lista de dispositivos web
     
-![](./img/WEB_device.png)]    
+![](./img/WEB_device.png)
     
     API: http://localhost:8080/device -> lista dispositivos JSON
 
-![](./img/API_device.png)]
+![](./img/API_device.png)
 
 ## Paso 3: Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
 
