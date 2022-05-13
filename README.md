@@ -124,6 +124,8 @@ En un navegador, probar las siguientes URLs:
 
 ## Paso 3: Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
 
+En el último paso, alcanza con elegir sólo las que uno tiene.
+
     sudo apt install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 
     cd ~/esp
     git clone https://github.com/UncleRus/esp-idf-lib.git
@@ -149,7 +151,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 #### BMP280
  
     cd ~/esp/ceiot_base/config
-    cp config.h.tmplate config.h
+    cp config.h.template config.h
     # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
     cd ~/esp/ceiot_base/esp32-bmp280
     ../set-wifi.sh
@@ -161,7 +163,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 #### DHT11
  
     cd ~/esp/ceiot_base/config
-    cp config.h.tmplate config.h
+    cp config.h.template config.h
     # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
     cd ~/esp/ceiot_base/esp32
     ../set-wifi.sh
@@ -175,7 +177,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 #### BMP280
  
     cd ~/esp/ceiot_base/config
-    cp config.h.tmplate config.h
+    cp config.h.template config.h
     # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
     cd ~/esp/ceiot_base/esp32c3-bmp280
     idf.py set-target esp32c3
@@ -190,7 +192,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 #### DHT11
  
     cd ~/esp/ceiot_base/config
-    cp config.h.tmplate config.h
+    cp config.h.template config.h
     # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
     cd ~/esp/ceiot_base/esp32s2
     idf.py set-target esp32s2
