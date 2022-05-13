@@ -2,29 +2,38 @@
 
 Código para ejemplo básico de IoT
 
+
+![](./img/arch.png)
+
 Lo siguiente se puede hacer en cualquier sistema de virtualización por comodidad y prolijidad o directamente en una máquina real.
 
 
-## VM con virtualbox
+## Paso 1: VM con virtualbox
 
   - CPUs    : 1
   - Memoria : 4 GB 
   - Disco   : 40 GB (llega a ocupar casi 20GB)
   - Network : bridge
-  - Distro  : Ubuntu Server 20.04.4
+  - Distro  : Ubuntu Server 20.04.4 LTS
 
-Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox
+Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox.
 
-Pasos
+### Instalación
 
-    # Bajar el instalador de https://ubuntu.com/download/server
-    # Crear una nueva VM
+    # Bajar el instalador de https://ubuntu.com/download/server.
+    # Crear una nueva VM.
     # Parametrizar según los valores previos
     # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
-    # Cuando ofrece instalar openssh server, aceptarlo
-    # Si se queda para siempre en "downloading and installing security updates", cancelar
-    # reboot
-    # En una terminal:
+    # Si ofrece "Update to the new installer", no, gracias.
+    # Varios "Done".
+    # Cuando ofrece instalar openssh server, aceptarlo.
+    # Si se queda para siempre en "downloading and installing security updates", "cancel update and reboot".
+    # "reboot now"
+    
+### Ajustes
+
+    # Apretar enter, hacer login.
+    # firefox opcional, ocupa como 300MB
     sudo apt install xorg openbox firefox git gcc make perl 
     # En el menú de VirtualBox asociado a la instancia actual
     # Devices -> Insert guest additions CD image...
@@ -40,68 +49,80 @@ Pasos
 
 ### Espacio libre
 
-Por algún motivo que ignoro, la instalación no usa todo el espacio disponible, se corrige con:
+Por algún motivo que ignoro, la instalación no usa todo el espacio disponible, se corrige en cualquier momento con:
 
       $ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
       $ sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 
-## API/SPA
+## Paso 2: API/SPA
 
-Instalación node + express + pg-mem + mongodb-memory-server + typescript y código referencia.
+### Instalación node + typescript
 
-    mkdir ~/esp
-    cd ~/esp
-    git clone https://github.com/cpantel/ceiot_base.git
     curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
     sudo apt install nodejs
+    node --version
+    #Debe ser 17.x.x, en caso contrario el paso con curl falló
     sudo npm install typescript -g
+
+### Código referencia
+
+    mkdir ~/esp
+    cd ~/esp    
+    git clone https://github.com/cpantel/ceiot_base.git
     cd ceiot_base/api
     npm install; # express body-parser mongodb-memory-server mongodb pg-mem
 
-### Prueba
+### Pruebas
 
-En una terminal servidor API
+En una terminal servidor API:
 
     cd ~/esp/ceiot_base/api
     node index.js
     
-Esperamos
+Esperamos:
 
     mongo measurement database Up
     sql device database up
     Listening at 8080
 
-En otra terminal, servidor SPA
+En otra terminal, servidor SPA:
 
     cd ~/esp/ceiot_base/api/spa
     ./rebuild.sh
     
-Esperamos 
+Esperamos:
 
     Starting compilation in watch mode...
     Found 0 errors. Watching for file changes.
     
-Cliente, en otra terminal
+Cliente, en otra terminal:
 
     cd ~/esp/ceiot_base/tools
-    ./get_color_devices.sh 
+    ./get_color_devices.sh 14
     
-Esperamos
+Esperamos:
+    
+![](./img/API_color.png)
 
-    RENDER
-    Device name    ESP32
-           id          1 
-           key    123456
 
 En un navegador, probar las siguientes URLs:
 
+
+
+
     SPA: http://localhost:8080/index.html -> lista de dispositivos con un botón de refrescar
+
+![](./img/SPA_devices.png)
     
     WEB: http://localhost:8080/web/device -> lista de dispositivos web
     
+![](./img/WEB_device.png)
+    
     API: http://localhost:8080/device -> lista dispositivos JSON
 
-## Entorno ESP-IDF para ESP32/ESP32s2/ESPc3
+![](./img/API_device.png)
+
+## Paso 3: Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
 
     sudo apt install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 
     cd ~/esp
@@ -185,7 +206,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 [Primer contacto con ESP32](https://seguridad-agile.blogspot.com/2022/02/primer-contacto-con-esp32.html)
 
 
-## Entorno ArduinoIDE
+## Paso 4: (opcional) Entorno ArduinoIDE
 
 ### ESP8266
 
@@ -211,7 +232,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 
 ## Entorno ESP8266_RTOS_SDK para ESP8266
 
-Este entorno no me funcionó y además rompió el de ESP-IDF
+Este entorno no me funcionó y además rompió el de ESP-IDF.
 
 [Ejemplo de ESP8266 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11.html)
 
