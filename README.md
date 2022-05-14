@@ -232,9 +232,43 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 [Más detalles en el Plan B](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11planB.html)
 
 
-## Entorno ESP8266_RTOS_SDK para ESP8266
+### Entorno ESP8266_RTOS_SDK para ESP8266
 
 Este entorno no me funcionó y además rompió el de ESP-IDF.
 
 [Ejemplo de ESP8266 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11.html)
 
+## Paso 5: fork del proyecto
+
+### Generación SSH keys
+
+     # En una terminal
+     ssh-keygen -t ed25519 -C "your_email@example.com"
+     # enter, enter, enter...
+     # copiar al portapapeles el contenido de .ssh/id_ed25519.pub
+
+     # En la interfaz web de github
+     # Setting
+     # SSH and GPG keys
+     # New SSH key
+     # Definir un título y pegar el contenido del portapapeles
+     # Tomado de https://docs.github.com/articles/generating-an-ssh-key/
+   
+### Cambio url
+
+     cd ~/esp/ceiot_base
+     # en .git/config reemplazar
+     # url = https://github.com/cpantel/ceiot_base.git
+     # por
+     # url = git@github.com:XXXXX/ceiot_base.git
+     # siendo XXXXX tu usuario git
+
+### Prueba (no hacer aún)
+
+     # agregar al final de README.md "tocado por XXXXX"
+     git status ; # para ver que archivos cambiaron
+     git diff   ; # para ver los cambios
+     git add README.md
+     git commit -m "prueba"
+     git push
+     
