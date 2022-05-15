@@ -247,26 +247,22 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 
 ## Anexo 1: Conexión del sensor
 
-#### ESP32
+### ESP32 DHT11
 
-##### DHT11
-
-##### BMP280
+### ESP32 BMP280
 
 
-#### ESP32c3
-##### DHT11
+### ESP32c3 DHT11
 
-##### BMP280
+### ESP32c3 BMP280
 
-#### ESP32s2
-##### DHT11
+![](./img/esp32c3_bmp280.png)
 
-##### BMP280
+### ESP32s2 DHT11
 
-### ESP8266
+### ESP32s2 BMP280
 
-#### DHT11
+### ESP8266 DHT11
 
 
 ## Anexo 2: (opcional) Entorno ArduinoIDE
