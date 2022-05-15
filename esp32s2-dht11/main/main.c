@@ -30,9 +30,10 @@
 #define WEB_PORT API_PORT
 #define WEB_PATH "/measurement"
 
-static const dht_sensor_type_t sensor_type = DHT_TYPE_DHT11;
-static const gpio_num_t dht_gpio = 17;
+#define DEVICE_ID   "74"
+static const gpio_num_t dht_gpio = 0;
 
+static const dht_sensor_type_t sensor_type = DHT_TYPE_DHT11;
 
 static const char *TAG = "temp_collector";
 
