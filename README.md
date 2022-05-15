@@ -210,38 +210,8 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     idf.py build
     idf.py flash
     idf.py monitor
-    
-## Paso 4: (opcional) Entorno ArduinoIDE
 
-### ESP8266
-
-#### DHT11
-
-     # Descargar de https://www.arduino.cc/en/software
-     cd ~/esp
-     tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
-     ./arduino-x.x.xx/arduino
-     # File -> preferences -> Additional Boars Manager URLs
-     # http://arduino.esp8266.com/stable/package_esp8266com_index.json
-     # Tools -> Board -> Board Manager -> search esp8266 -> esp8266 by ESP8266 Community -> install
-     # Tools -> Board ->ESP8266 Generic Module
-     # Tools -> Manage Libraries -> search dht sensor -> DHT sensor library for ESPx -> install
-     # Conectar device
-     # Tools -> Port -> /dev/ttyUSB0
-     # File -> Open -> ~/esp/ceiot_base/esp8266-arduino/PostHttpClient
-     # modificar en ~/esp/ceiot_base/config/config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
-     # Sketch -> Upload
-
-[Más detalles en el Plan B](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11planB.html)
-
-
-### Entorno ESP8266_RTOS_SDK para ESP8266
-
-Este entorno no me funcionó y además rompió el de ESP-IDF.
-
-[Ejemplo de ESP8266 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11.html)
-
-## Paso 5: fork del proyecto
+## Paso 4: Fork del proyecto
 
 ### Generación SSH keys
 
@@ -274,4 +244,59 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
      git add README.md
      git commit -m "prueba"
      git push
+
+## Anexo 1: Conexión del sensor
+
+#### ESP32
+
+##### DHT11
+
+##### BMP280
+
+
+#### ESP32c3
+##### DHT11
+
+##### BMP280
+
+#### ESP32s2
+##### DHT11
+
+##### BMP280
+
+### ESP8266
+
+#### DHT11
+
+
+## Anexo 2: (opcional) Entorno ArduinoIDE
+
+### ESP8266
+
+#### DHT11
+
+     # Descargar de https://www.arduino.cc/en/software
+     cd ~/esp
+     tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
+     ./arduino-x.x.xx/arduino
+     # File -> preferences -> Additional Boars Manager URLs
+     # http://arduino.esp8266.com/stable/package_esp8266com_index.json
+     # Tools -> Board -> Board Manager -> search esp8266 -> esp8266 by ESP8266 Community -> install
+     # Tools -> Board ->ESP8266 Generic Module
+     # Tools -> Manage Libraries -> search dht sensor -> DHT sensor library for ESPx -> install
+     # Conectar device
+     # Tools -> Port -> /dev/ttyUSB0
+     # File -> Open -> ~/esp/ceiot_base/esp8266-arduino/PostHttpClient
+     # modificar en ~/esp/ceiot_base/config/config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+     # Sketch -> Upload
+
+[Más detalles en el Plan B](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11planB.html)
+
+
+### Entorno ESP8266_RTOS_SDK para ESP8266
+
+Este entorno no me funcionó y además rompió el de ESP-IDF.
+
+[Ejemplo de ESP8266 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11.html)
+
      
