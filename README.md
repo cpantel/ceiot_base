@@ -25,6 +25,7 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     # Parametrizar según los valores previos
     # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
     # Si ofrece "Update to the new installer", no, gracias.
+    # Al cargar el primer usuario, mejor ponerle nombre "iot"
     # Varios "Done".
     # Cuando ofrece instalar openssh server, aceptarlo.
     # Si se queda para siempre en "downloading and installing security updates", "cancel update and reboot".
@@ -108,8 +109,6 @@ Esperamos:
 En un navegador, probar las siguientes URLs:
 
 
-
-
     SPA: http://localhost:8080/index.html -> lista de dispositivos con un botón de refrescar
 
 ![](./img/SPA_devices.png)
@@ -139,9 +138,16 @@ En el último paso, alcanza con elegir sólo las que uno tiene.
     ./install.sh esp32
     ./install.sh esp32c3
     ./install.sh esp32s2
-    # pueden ir juntos en una sola línea, por ejemplo:
+    # pueden ir juntos en una sola línea, sin espacios, por ejemplo:
     ./install.sh esp32,esp32c3,esp32s2
-    
+
+Relato informal de la experiencia de exploración:
+
+[Ejemplo de ESP32 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/02/ejemplo-de-esp32-con-lectura-de-dht11.html)
+
+[Primer contacto con ESP32](https://seguridad-agile.blogspot.com/2022/02/primer-contacto-con-esp32.html)
+
+### Cada microcontrolador
 
 Las siguientes instrucciones implican que en la terminal actual se ha ejecutado:
 
@@ -149,11 +155,11 @@ Las siguientes instrucciones implican que en la terminal actual se ha ejecutado:
     . ./export.sh
 
 
-### ESP32
+#### ESP32
 
 Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al conectar en **flash** y **monitor**.
 
-#### BMP280
+##### BMP280
  
     cd ~/esp/ceiot_base/config
     cp config.h.template config.h
@@ -165,7 +171,7 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     idf.py flash
     idf.py monitor
 
-#### DHT11
+##### DHT11
  
     cd ~/esp/ceiot_base/config
     cp config.h.template config.h
@@ -177,9 +183,9 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     idf.py flash
     idf.py monitor
 
-### ESP32c3
+#### ESP32c3
 
-#### BMP280
+##### BMP280
  
     cd ~/esp/ceiot_base/config
     cp config.h.template config.h
@@ -190,11 +196,10 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     idf.py build
     idf.py flash
     idf.py monitor
-
     
-### ESP32s2
+#### ESP32s2
 
-#### DHT11
+##### DHT11
  
     cd ~/esp/ceiot_base/config
     cp config.h.template config.h
@@ -206,13 +211,6 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     idf.py flash
     idf.py monitor
     
-    
-
-[Ejemplo de ESP32 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/02/ejemplo-de-esp32-con-lectura-de-dht11.html)
-
-[Primer contacto con ESP32](https://seguridad-agile.blogspot.com/2022/02/primer-contacto-con-esp32.html)
-
-
 ## Paso 4: (opcional) Entorno ArduinoIDE
 
 ### ESP8266
