@@ -269,6 +269,11 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 
 ### ESP8266 DHT11
 
+## Anexo 2: (opcional) Alias útiles para git
+
+     git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
+     git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+     git config --global alias.lolg "log --graph --decorate --pretty=format:'%Cgreen %ci %Cblue %h %Cred %d %Creset %s'"
 
 ## Anexo 2: (opcional) Entorno ArduinoIDE
 
