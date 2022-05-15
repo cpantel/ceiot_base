@@ -165,8 +165,8 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     cp config.h.template config.h
     # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
     cd ~/esp/ceiot_base/esp32-bmp280
-    ../set-wifi.sh
     idf.py set-target esp32
+    ../set-wifi.sh
     idf.py build
     idf.py flash
     idf.py monitor
@@ -177,8 +177,8 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
     cp config.h.template config.h
     # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
     cd ~/esp/ceiot_base/esp32
-    ../set-wifi.sh
     idf.py set-target esp32
+    ../set-wifi.sh
     idf.py build
     idf.py flash
     idf.py monitor
