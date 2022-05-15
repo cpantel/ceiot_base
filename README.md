@@ -249,8 +249,13 @@ Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al cone
 
 ### ESP32 DHT11
 
+![](./img/esp32_dht11-r.png)
+
+![](./img/esp32_dht11.png)
+
 ### ESP32 BMP280
 
+![](./img/esp32_bmp280.png)
 
 ### ESP32c3 DHT11
 
