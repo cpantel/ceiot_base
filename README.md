@@ -157,8 +157,41 @@ Las siguientes instrucciones implican que en la terminal actual se ha ejecutado:
 
 #### ESP32
 
-Dependiendo del modelo, puede hacer falta oprimir el botón de **RESET** al conectar en **flash** y **monitor**.
+Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **flash**:
 
+##### Receta 1 (comprobada por docente)
+
+   Executing action: flash
+   Serial port /dev/ttyUSB0
+   Connecting...........**RESET**
+   Detecting chip type... Unsupported detection protocol, switching and trying again...
+   Connecting....
+   Detecting chip type... ESP32
+   ...
+   esptool.py v3.3-dev
+   Serial port /dev/ttyUSB0
+   Connecting...............**RESET**
+   Chip is ESP32-D0WDQ6 (revision 1)
+   Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+   ...
+
+##### Receta 2 (tomada de https://youtu.be/Jt6ZDct4bZk?t=912, al docente no le funcionó)
+
+   apretar y mantener **RESET** 
+   apretar y soltar **BOOT**
+   soltar **RESET**
+
+##### Monitor
+
+   Executing action: monitor
+   Serial port /dev/ttyUSB0
+   Connecting........... **RESET**
+   Detecting chip type... Unsupported detection protocol, switching and trying again...
+   Connecting....
+   ...
+   --- idf_monitor on /dev/ttyUSB0 115200 ---
+   ...
+   
 ##### BMP280
  
     cd ~/esp/ceiot_base/config
@@ -305,4 +338,22 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
 
 [Ejemplo de ESP8266 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11.html)
 
-     
+## TODO
+
+Cambios a aplicar tras terminar los alumnos con el paso 3.
+
+### Ubicación config.h
+
+En los main.c hay una referencia a un archivo que no puede alcanzar por rutas relativas.
+
+#include "/home/iot/esp/ceiot_base/config/config.h"   // esto es mejorable...
+
+Lo mejor sería cambiarle el nombre a set-wifi.sh para que además copie config/config.h a la carpeta del dispositivo.
+
+### Contenido config.h
+
+Sería conveniente quitar de main.c cualquier elemento variable para no afectar el versionado. Habría que llevar a config.h DEVICE_ID, ONE_WIRE_GPIO, SDA_GPIO, SCL_GPIO :
+
+### DHT11 explícito
+
+Renombrar esp32 a esp32-dht11 
