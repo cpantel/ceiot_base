@@ -7,7 +7,5 @@
 #define WIFI_SSID     ""
 #define WIFI_PASSWORD ""
 
-#define DEVICE_ID     "11"
-
 #define _config_
 #endif

@@ -30,8 +30,9 @@
 #define WEB_PORT API_PORT
 #define WEB_PATH "/measurement"
 
-#define SDA_GPIO 4
-#define SCL_GPIO 5
+#define DEVICE_ID  "31"
+#define SDA_GPIO    4
+#define SCL_GPIO    5
 
 
 static const char *TAG = "temp_collector";
