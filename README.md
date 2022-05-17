@@ -342,6 +342,10 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
 
 Cambios a aplicar tras terminar los alumnos con el paso 3.
 
+### Content-Length
+
+Deshardcodear
+
 ### Persistencia
 
 Que el sistema implemente un endpoint que active guardar en un archivo lo que haya en las bases y al reiniciar que restaure. O implementar en tools mecanismos explícitos.
