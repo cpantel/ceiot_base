@@ -179,9 +179,9 @@ Esperamos
     crw-rw---- 1 root dialout 188, 0 May 17 23:43 /dev/ttyUSB0
 
 
-### Pasos para cada microcontrolador 
+### Build y Flash 
 
-Dado un microcontrolador MICRO y un sensor SENSOR
+Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sensor SENSOR entre *bmp280* y *dht11*
 
     # Para habilitar la toolchain
     cd ~/esp/esp-idf
@@ -299,11 +299,11 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
 
 ![](./img/esp32c3_bmp280.png)
 
-### Microcontrolador ESP32s2 con sensor DHT11
+### Microcontrolador ESP32s2 con sensor DHT11 ⌛
 
-### Microcontrolador ESP32s2 con sensor BMP280
+### Microcontrolador ESP32s2 con sensor BMP280 ⏳
 
-### Microcontrolador ESP8266 con sensor DHT11
+### Microcontrolador ESP8266 con sensor DHT11 ⏳
 
 ## Anexo 2: (opcional) Alias útiles para git
 
@@ -358,7 +358,7 @@ Deshardcodear
 
 Que el sistema implemente un endpoint que active guardar en un archivo lo que haya en las bases y al reiniciar que restaure. O implementar en tools mecanismos explícitos.
 
-### Ubicación config.h
+### Ubicación config.h &#10004;
 
 En los main.c hay una referencia a un archivo que no puede alcanzar por rutas relativas.
 
@@ -366,7 +366,7 @@ En los main.c hay una referencia a un archivo que no puede alcanzar por rutas re
 
 Lo mejor sería cambiarle el nombre a set-wifi.sh y que además copie config/config.h a la carpeta del dispositivo.
 
-### Contenido config.h
+### Contenido config.h &#10004;
 
 Sería conveniente quitar de main.c cualquier elemento variable para no afectar el versionado. Habría que llevar a config.h DEVICE_ID, ONE_WIRE_GPIO, SDA_GPIO, SCL_GPIO :
 
