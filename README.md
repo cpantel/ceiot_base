@@ -28,7 +28,7 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     # Al cargar el primer usuario, mejor ponerle nombre "iot"
     # Varios "Done".
     # Cuando ofrece instalar openssh server, aceptarlo.
-    # Si se queda para siempre en "downloading and installing security updates", "cancel update and reboot".
+    # Si se queda para siempre en "downloading and installing security updates" optar por "cancel update and reboot".
     # "reboot now"
     
 ### Ajustes
@@ -157,9 +157,32 @@ Las siguientes instrucciones implican que en la terminal actual se ha ejecutado:
 y que se ha conectado el microcontrolador a la máquina virtual:
 
     # En el menú de VirtualBox asociado a la instancia actual
-    # Devices -> USB, aparecerá alguno similar a:
+    # Devices -> USB
+    # Elegir el similar a:
     # Silicon Labs CP2102 USB to UART Bridge Controller
+
+Para comprobar, ejecutar:
+
+    dmesg
+
+Esperamos algo parecido a:
+
+    [291935.428251] usb 2-2: new full-speed USB device number 8 using ohci-pci
+    [291935.783414] usb 2-2: New USB device found, idVendor=10c4, idProduct=ea60, bcdDevice= 1.00
+    [291935.783419] usb 2-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+    [291935.783422] usb 2-2: Product: CP2102 USB to UART Bridge Controller
+    [291935.783425] usb 2-2: Manufacturer: Silicon Labs
+    [291935.783427] usb 2-2: SerialNumber: 0001
+    [291935.797316] cp210x 2-2:1.0: cp210x converter detected
+    [291935.817665] usb 2-2: cp210x converter now attached to ttyUSB0
+
+Ejecutar:
+
+    ls -l /dev/ttyUSB*
     
+Esperamos
+
+    crw-rw---- 1 root dialout 188, 0 May 17 23:43 /dev/ttyUSB0
 
 #### Microcontrolador ESP32
 
