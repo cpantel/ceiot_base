@@ -322,17 +322,15 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
 
 ![](./img/esp32_bmp280.png)
 
-### Microcontrolador ESP32c3 con sensor DHT11
-
 ### Microcontrolador ESP32c3 con sensor BMP280
 
 ![](./img/esp32c3_bmp280.png)
 
-### Microcontrolador ESP32s2 con sensor DHT11
+### Microcontrolador ESP32s2 con sensor DHT11 ⌛
 
-### Microcontrolador ESP32s2 con sensor BMP280
+### Microcontrolador ESP32s2 con sensor BMP280 ⏳
 
-### Microcontrolador ESP8266 con sensor DHT11
+### Microcontrolador ESP8266 con sensor DHT11 ⌛
 
 ## Anexo 2: (opcional) Alias útiles para git
 
@@ -392,6 +390,6 @@ Lo mejor sería cambiarle el nombre a set-wifi.sh y que además copie config/con
 
 Sería conveniente quitar de main.c cualquier elemento variable para no afectar el versionado. Habría que llevar a config.h DEVICE_ID, ONE_WIRE_GPIO, SDA_GPIO, SCL_GPIO :
 
-### DHT11 explícito
+### DHT11 explícito &#10004;
 
 Renombrar esp32 a esp32-dht11 
