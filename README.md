@@ -147,14 +147,8 @@ Relato informal de la experiencia de exploración:
 
 [Primer contacto con ESP32](https://seguridad-agile.blogspot.com/2022/02/primer-contacto-con-esp32.html)
 
-### Cada microcontrolador
+### Conexión del microcontrolador
 
-Las siguientes instrucciones implican que en la terminal actual se ha ejecutado:
-
-    cd ~/esp/esp-idf
-    . ./export.sh
-
-y que se ha conectado el microcontrolador a la máquina virtual:
 
     # En el menú de VirtualBox asociado a la instancia actual
     # Devices -> USB
@@ -184,11 +178,42 @@ Esperamos
 
     crw-rw---- 1 root dialout 188, 0 May 17 23:43 /dev/ttyUSB0
 
-#### Microcontrolador ESP32
+
+### Pasos para cada microcontrolador 
+
+Dado un microcontrolador MICRO y un sensor SENSOR
+
+    # Para habilitar la toolchain
+    cd ~/esp/esp-idf
+    . ./export.sh
+    # Ir a la carpeta del objetivo deseado
+    cd ~/esp/ceiot_base/${MICRO}-${SENSOR}
+    cp ../config/config.h.template config.h
+    # modificar en config.h 
+    #  dirección del servidor
+    #    API_IP
+    #    API_PORT
+    #  credenciales de WiFi
+    #    CONFIG_EXAMPLE_WIFI_SSID
+    #    CONFIG_EXAMPLE_WIFI_PASSWORD
+    #  identificador del dispositivo
+    #    DEVICE_ID
+    #  si SENSOR es dht11
+    #    ONE_WIRE_GPIO
+    #  si SENSOR es bmp280
+    #    SDA_GPIO
+    #    SCL_GPIO
+    idf.py set-target ${MICRO}
+    ../set-wifi.sh
+    idf.py build
+    idf.py flash
+    idf.py monitor
+
+### Microcontrolador ESP32
 
 Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **flash**:
 
-##### Receta 1 (comprobada por docente)
+#### Receta 1 (comprobada por docente)
 
     $ idf.py flash
     Executing action: flash
@@ -205,14 +230,14 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
     Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
     ...
 
-##### Receta 2 (tomada de https://youtu.be/Jt6ZDct4bZk?t=912, al docente no le funcionó)
+#### Receta 2 (tomada de https://youtu.be/Jt6ZDct4bZk?t=912, al docente no le funcionó)
 
     apretar y mantener **RESET** 
     apretar y soltar **BOOT**
     soltar **RESET**
     $ idf.py flash
 
-##### Monitor
+#### Monitor
 
     $ idf.py monitor
     Executing action: monitor
@@ -224,58 +249,6 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
     --- idf_monitor on /dev/ttyUSB0 115200 ---
     ...
    
-##### Sensor BMP280
- 
-    cd ~/esp/ceiot_base/config
-    cp config.h.template config.h
-    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
-    cd ~/esp/ceiot_base/esp32-bmp280
-    idf.py set-target esp32
-    ../set-wifi.sh
-    idf.py build
-    idf.py flash
-    idf.py monitor
-
-##### Sensor DHT11
- 
-    cd ~/esp/ceiot_base/config
-    cp config.h.template config.h
-    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
-    cd ~/esp/ceiot_base/esp32
-    idf.py set-target esp32
-    ../set-wifi.sh
-    idf.py build
-    idf.py flash
-    idf.py monitor
-
-#### Microcontrolador ESP32c3
-
-##### Sensor BMP280
- 
-    cd ~/esp/ceiot_base/config
-    cp config.h.template config.h
-    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
-    cd ~/esp/ceiot_base/esp32c3-bmp280
-    idf.py set-target esp32c3
-    ../set-wifi.sh
-    idf.py build
-    idf.py flash
-    idf.py monitor
-    
-#### Microcontrolador ESP32s2
-
-##### Sensor DHT11
- 
-    cd ~/esp/ceiot_base/config
-    cp config.h.template config.h
-    # modificar en config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
-    cd ~/esp/ceiot_base/esp32s2
-    idf.py set-target esp32s2
-    ../set-wifi.sh
-    idf.py build
-    idf.py flash
-    idf.py monitor
-
 ## Paso 4: Fork del proyecto
 
 ### Generación SSH keys
@@ -326,11 +299,11 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
 
 ![](./img/esp32c3_bmp280.png)
 
-### Microcontrolador ESP32s2 con sensor DHT11 ⌛
+### Microcontrolador ESP32s2 con sensor DHT11
 
-### Microcontrolador ESP32s2 con sensor BMP280 ⏳
+### Microcontrolador ESP32s2 con sensor BMP280
 
-### Microcontrolador ESP8266 con sensor DHT11 ⌛
+### Microcontrolador ESP8266 con sensor DHT11
 
 ## Anexo 2: (opcional) Alias útiles para git
 
@@ -342,6 +315,8 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
 
 ### Microcontrolador ESP8266 con sensor DHT11
 
+Instalación y configuración Arduino IDE
+
      # Descargar de https://www.arduino.cc/en/software
      cd ~/esp
      tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
@@ -351,10 +326,15 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
      # Tools -> Board -> Board Manager -> search esp8266 -> esp8266 by ESP8266 Community -> install
      # Tools -> Board ->ESP8266 Generic Module
      # Tools -> Manage Libraries -> search dht sensor -> DHT sensor library for ESPx -> install
+
+Build y flash del proyecto
+
+     # cd ~/esp/ceiot_base
+     # cp config/config.h.template esp8266-dht11-arduino/config.h
      # Conectar device
+     # Abrir arduinoIDE
      # Tools -> Port -> /dev/ttyUSB0
-     # File -> Open -> ~/esp/ceiot_base/esp8266-arduino/PostHttpClient
-     # modificar en ~/esp/ceiot_base/config/config.h la IP del servidor, las credenciales de WiFi y DEVICE_ID.
+     # File -> Open -> ~/esp/ceiot_base/esp8266-dht11-arduino/esp8266-dht11-arduino.ino
      # Sketch -> Upload
 
 [Más detalles en el Plan B](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11planB.html)
