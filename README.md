@@ -155,44 +155,47 @@ Las siguientes instrucciones implican que en la terminal actual se ha ejecutado:
     . ./export.sh
 
 
-#### ESP32
+#### Microcontrolador ESP32
 
 Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **flash**:
 
 ##### Receta 1 (comprobada por docente)
 
-   Executing action: flash
-   Serial port /dev/ttyUSB0
-   Connecting...........**RESET**
-   Detecting chip type... Unsupported detection protocol, switching and trying again...
-   Connecting....
-   Detecting chip type... ESP32
-   ...
-   esptool.py v3.3-dev
-   Serial port /dev/ttyUSB0
-   Connecting...............**RESET**
-   Chip is ESP32-D0WDQ6 (revision 1)
-   Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
-   ...
+    $ idf.py flash
+    Executing action: flash
+    Serial port /dev/ttyUSB0
+    Connecting...........**RESET**
+    Detecting chip type... Unsupported detection protocol, switching and trying again...
+    Connecting....
+    Detecting chip type... ESP32
+    ...
+    esptool.py v3.3-dev
+    Serial port /dev/ttyUSB0
+    Connecting...............**RESET**
+    Chip is ESP32-D0WDQ6 (revision 1)
+    Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+    ...
 
 ##### Receta 2 (tomada de https://youtu.be/Jt6ZDct4bZk?t=912, al docente no le funcionó)
 
-   apretar y mantener **RESET** 
-   apretar y soltar **BOOT**
-   soltar **RESET**
+    apretar y mantener **RESET** 
+    apretar y soltar **BOOT**
+    soltar **RESET**
+    $ idf.py flash
 
 ##### Monitor
 
-   Executing action: monitor
-   Serial port /dev/ttyUSB0
-   Connecting........... **RESET**
-   Detecting chip type... Unsupported detection protocol, switching and trying again...
-   Connecting....
-   ...
-   --- idf_monitor on /dev/ttyUSB0 115200 ---
-   ...
+    $ idf.py monitor
+    Executing action: monitor
+    Serial port /dev/ttyUSB0
+    Connecting........... **RESET**
+    Detecting chip type... Unsupported detection protocol, switching and trying again...
+    Connecting....
+    ...
+    --- idf_monitor on /dev/ttyUSB0 115200 ---
+    ...
    
-##### BMP280
+##### Sensor BMP280
  
     cd ~/esp/ceiot_base/config
     cp config.h.template config.h
@@ -204,7 +207,7 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
     idf.py flash
     idf.py monitor
 
-##### DHT11
+##### Sensor DHT11
  
     cd ~/esp/ceiot_base/config
     cp config.h.template config.h
@@ -216,9 +219,9 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
     idf.py flash
     idf.py monitor
 
-#### ESP32c3
+#### Microcontrolador ESP32c3
 
-##### BMP280
+##### Sensor BMP280
  
     cd ~/esp/ceiot_base/config
     cp config.h.template config.h
@@ -230,9 +233,9 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
     idf.py flash
     idf.py monitor
     
-#### ESP32s2
+#### Microcontrolador ESP32s2
 
-##### DHT11
+##### Sensor DHT11
  
     cd ~/esp/ceiot_base/config
     cp config.h.template config.h
@@ -280,27 +283,27 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
 
 ## Anexo 1: Conexión del sensor
 
-### ESP32 DHT11
+### Microcontrolador ESP32 con sensor DHT11
 
 ![](./img/esp32_dht11-r.png)
 
 ![](./img/esp32_dht11.png)
 
-### ESP32 BMP280
+### Microcontrolador ESP32 con sensor BMP280
 
 ![](./img/esp32_bmp280.png)
 
-### ESP32c3 DHT11
+### Microcontrolador ESP32c3 con sensor DHT11
 
-### ESP32c3 BMP280
+### Microcontrolador ESP32c3 con sensor BMP280
 
 ![](./img/esp32c3_bmp280.png)
 
-### ESP32s2 DHT11
+### Microcontrolador ESP32s2 con sensor DHT11
 
-### ESP32s2 BMP280
+### Microcontrolador ESP32s2 con sensor BMP280
 
-### ESP8266 DHT11
+### Microcontrolador ESP8266 con sensor DHT11
 
 ## Anexo 2: (opcional) Alias útiles para git
 
@@ -308,11 +311,9 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
      git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
      git config --global alias.lolg "log --graph --decorate --pretty=format:'%Cgreen %ci %Cblue %h %Cred %d %Creset %s'"
 
-## Anexo 2: (opcional) Entorno ArduinoIDE
+## Anexo 3: (opcional) Entorno ArduinoIDE
 
-### ESP8266
-
-#### DHT11
+### Microcontrolador ESP8266 con sensor DHT11
 
      # Descargar de https://www.arduino.cc/en/software
      cd ~/esp
@@ -356,7 +357,7 @@ En los main.c hay una referencia a un archivo que no puede alcanzar por rutas re
 
 #include "/home/iot/esp/ceiot_base/config/config.h"   // esto es mejorable...
 
-Lo mejor sería cambiarle el nombre a set-wifi.sh para que además copie config/config.h a la carpeta del dispositivo.
+Lo mejor sería cambiarle el nombre a set-wifi.sh y que además copie config/config.h a la carpeta del dispositivo.
 
 ### Contenido config.h
 
