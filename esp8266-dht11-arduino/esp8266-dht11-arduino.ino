@@ -1,9 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
-#include "/home/iot/esp/ceiot_base/config/config.h"
-
 #include "DHTesp.h" 
 
+#include "config.h"
   
 DHTesp dht;
 
@@ -19,7 +18,7 @@ void setup() {
 
   Serial.println("ESP8266 DHT HTTP POST");
   
-  dht.setup(2, DHTesp::DHT11);
+  dht.setup(ONE_WIRE_GPIO, DHTesp::DHT11);
   delay(dht.getMinimumSamplingPeriod());
 
   Serial.println(dht.getStatusString());

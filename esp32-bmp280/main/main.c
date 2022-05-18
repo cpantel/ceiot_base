@@ -23,17 +23,12 @@
 #include "lwip/netdb.h"
 #include "lwip/dns.h"
 #include <bmp280.h>
-#include "/home/iot/esp/ceiot_base/config/config.h"   // esto es mejorable...
+#include "../config.h"
 
-/* Constants that aren't configurable in menuconfig */
+/* HTTP Constants that aren't configurable in menuconfig */
 #define WEB_SERVER API_IP
 #define WEB_PORT API_PORT
 #define WEB_PATH "/measurement"
-
-#define DEVICE_ID  "12"
-#define SDA_GPIO    21
-#define SCL_GPIO    22
-
 
 static const char *TAG = "temp_collector";
 
