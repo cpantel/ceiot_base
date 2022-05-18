@@ -154,6 +154,12 @@ Las siguientes instrucciones implican que en la terminal actual se ha ejecutado:
     cd ~/esp/esp-idf
     . ./export.sh
 
+y que se ha conectado el microcontrolador a la máquina virtual:
+
+    # En el menú de VirtualBox asociado a la instancia actual
+    # Devices -> USB, aparecerá alguno similar a:
+    # Silicon Labs CP2102 USB to UART Bridge Controller
+    
 
 #### Microcontrolador ESP32
 
