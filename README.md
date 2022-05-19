@@ -157,10 +157,11 @@ Relato informal de la experiencia de exploración:
 
 Para comprobar, ejecutar:
 
-    dmesg
+    dmesg | tail -20
 
 Esperamos algo parecido a:
 
+    ....
     [291935.428251] usb 2-2: new full-speed USB device number 8 using ohci-pci
     [291935.783414] usb 2-2: New USB device found, idVendor=10c4, idProduct=ea60, bcdDevice= 1.00
     [291935.783419] usb 2-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
@@ -174,7 +175,7 @@ Ejecutar:
 
     ls -l /dev/ttyUSB*
     
-Esperamos
+Esperamos algo parecido a:
 
     crw-rw---- 1 root dialout 188, 0 May 17 23:43 /dev/ttyUSB0
 
