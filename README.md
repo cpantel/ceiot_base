@@ -182,7 +182,9 @@ Esperamos algo parecido a:
 
 ### Build y Flash 
 
-Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sensor SENSOR entre *bmp280* y *dht11*
+Es conveniente comenzar con ESP32c3. 
+
+Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sensor SENSOR entre *bmp280* y *dht11*:
 
     # Para habilitar la toolchain
     cd ~/esp/esp-idf
@@ -199,6 +201,8 @@ Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sen
     #    CONFIG_EXAMPLE_WIFI_PASSWORD
     #  identificador del dispositivo
     #    DEVICE_ID
+    #  user agent del dispositivo
+    #    USER_AGENT
     #  si SENSOR es dht11
     #    ONE_WIRE_GPIO
     #  si SENSOR es bmp280
