@@ -26,8 +26,6 @@
 #include "../config.h" 
 
 /* HTTP Constants that aren't configurable in menuconfig */
-#define WEB_SERVER API_IP
-#define WEB_PORT API_PORT
 #define WEB_PATH "/measurement"
 
 static const gpio_num_t dht_gpio = ONE_WIRE_GPIO;
@@ -36,22 +34,15 @@ static const dht_sensor_type_t sensor_type = DHT_TYPE_DHT11;
 
 static const char *TAG = "temp_collector";
 
-static char *REQUEST_GET = "GET " WEB_PATH " HTTP/1.0\r\n"
-    "Host: "WEB_SERVER":"WEB_PORT"\r\n"
-    "User-Agent: esp-idf/1.0 esp32\r\n"
-    "\r\n";
+static char *BODY = "id="DEVICE_ID"&t=%0.2f&h=%0.2f";
 
-static char *REQUEST_POST = "POST " WEB_PATH " HTTP/1.0\r\n"
-    "Host: "WEB_SERVER":"WEB_PORT"\r\n"
-    "User-Agent: esp-idf/1.0 esp32s3 saola\r\n"
+static char *REQUEST_POST = "POST "WEB_PATH" HTTP/1.0\r\n"
+    "Host: "API_IP_PORT"\r\n"
+    "User-Agent: "USER_AGENT"\r\n"
     "Content-Type: application/x-www-form-urlencoded\r\n"
-    "Content-Length: 15\r\n"
+    "Content-Length: %d\r\n"
     "\r\n"
-    "id=" DEVICE_ID "&t=%d&h=%d";
-
-
-// Ejercicio: enviar POST    
-// Ejercicio: enviar json
+    "%s";
 
 static void http_get_task(void *pvParameters)
 {
@@ -62,6 +53,7 @@ static void http_get_task(void *pvParameters)
     struct addrinfo *res;
     struct in_addr *addr;
     int s, r;
+    char body[64];
     char recv_buf[64];
 
     char send_buf[256];
@@ -72,14 +64,16 @@ static void http_get_task(void *pvParameters)
     while(1) {
         if (dht_read_data(sensor_type, dht_gpio, &humidity, &temperature) == ESP_OK) {
             ESP_LOGI(TAG,"Humidity: %d%% Temp: %dC\n", humidity / 10, temperature / 10);
-            sprintf(send_buf, REQUEST_POST, temperature / 10, humidity / 10);
+            sprintf(body, BODY, (float) temperature/10  , (float) humidity/10);
+            sprintf(send_buf, REQUEST_POST, (int)strlen(body),body );
+
 	    ESP_LOGI(TAG,"sending: \n%s\n",send_buf);
         } else {
             ESP_LOGE(TAG,"Could not read data from sensor\n");
 	    // Ejercicio: enviar mensaje
         }
 
-        int err = getaddrinfo(WEB_SERVER, WEB_PORT, &hints, &res);
+        int err = getaddrinfo(API_IP, API_PORT, &hints, &res);
 
         if(err != 0 || res == NULL) {
             ESP_LOGE(TAG, "DNS lookup failed err=%d res=%p", err, res);

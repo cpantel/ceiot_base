@@ -26,24 +26,19 @@
 #include "../config.h"
 
 /* HTTP constants that aren't configurable in menuconfig */
-#define WEB_SERVER API_IP
-#define WEB_PORT API_PORT
 #define WEB_PATH "/measurement"
 
 static const char *TAG = "temp_collector";
 
-static char *REQUEST_GET = "GET " WEB_PATH " HTTP/1.0\r\n"
-    "Host: "WEB_SERVER":"WEB_PORT"\r\n"
-    "User-Agent: esp-idf/1.0 esp32c3\r\n"
-    "\r\n";
+static char *BODY = "id="DEVICE_ID"&t=%0.2f&h=%0.2f";
 
-static char *REQUEST_POST = "POST " WEB_PATH " HTTP/1.0\r\n"
-    "Host: "WEB_SERVER":"WEB_PORT"\r\n"
-    "User-Agent: esp-idf/1.0 esp32c3 devkitC\r\n"
+static char *REQUEST_POST = "POST "WEB_PATH" HTTP/1.0\r\n"
+    "Host: "API_IP_PORT"\r\n"
+    "User-Agent: "USER_AGENT"\r\n"
     "Content-Type: application/x-www-form-urlencoded\r\n"
-    "Content-Length: 20\r\n"
+    "Content-Length: %d\r\n"
     "\r\n"
-    "id=" DEVICE_ID "&t=%0.2f&h=%0.2f";
+    "%s";
 
 static void http_get_task(void *pvParameters)
 {
@@ -54,6 +49,7 @@ static void http_get_task(void *pvParameters)
     struct addrinfo *res;
     struct in_addr *addr;
     int s, r;
+    char body[64];
     char recv_buf[64];
 
     char send_buf[256];
@@ -72,6 +68,7 @@ static void http_get_task(void *pvParameters)
     float pressure, temperature, humidity;
 
 
+
     while(1) {
         if (bmp280_read_float(&dev, &temperature, &pressure, &humidity) != ESP_OK) {
             ESP_LOGI(TAG, "Temperature/pressure reading failed\n");
@@ -79,14 +76,15 @@ static void http_get_task(void *pvParameters)
             ESP_LOGI(TAG, "Pressure: %.2f Pa, Temperature: %.2f C", pressure, temperature);
 //            if (bme280p) {
                 ESP_LOGI(TAG,", Humidity: %.2f\n", humidity);
-                sprintf(send_buf, REQUEST_POST, temperature , humidity );
+		sprintf(body, BODY, temperature , humidity );
+                sprintf(send_buf, REQUEST_POST, (int)strlen(body),body );
 //	    } else {
 //                sprintf(send_buf, REQUEST_POST, temperature , 0);
 //            }
 	    ESP_LOGI(TAG,"sending: \n%s\n",send_buf);
         }    
 
-        int err = getaddrinfo(WEB_SERVER, WEB_PORT, &hints, &res);
+        int err = getaddrinfo(API_IP, API_PORT, &hints, &res);
 
         if(err != 0 || res == NULL) {
             ESP_LOGE(TAG, "DNS lookup failed err=%d res=%p", err, res);
