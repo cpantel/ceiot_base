@@ -182,7 +182,9 @@ Esperamos algo parecido a:
 
 ### Build y Flash 
 
-Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sensor SENSOR entre *bmp280* y *dht11*
+Es conveniente comenzar con ESP32c3. 
+
+Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sensor SENSOR entre *bmp280* y *dht11*:
 
     # Para habilitar la toolchain
     cd ~/esp/esp-idf
@@ -199,6 +201,8 @@ Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sen
     #    CONFIG_EXAMPLE_WIFI_PASSWORD
     #  identificador del dispositivo
     #    DEVICE_ID
+    #  user agent del dispositivo
+    #    USER_AGENT
     #  si SENSOR es dht11
     #    ONE_WIRE_GPIO
     #  si SENSOR es bmp280
@@ -351,6 +355,17 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
 
 Cambios a aplicar tras terminar los alumnos con el paso 3.
 
+### Nombre proyecto
+
+Camibar CMakeLists.txt:project(http_request) -> (algo mejor)
+
+### Copias locales
+
+Para evitar dependencia con conexión a Internet
+
+En index.js: https://github.com/obadakhalili/Sprightly/blob/main/index.js
+En spa/index.html:      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 ### Content-Length
 
 Deshardcodear
@@ -375,6 +390,3 @@ Sería conveniente quitar de main.c cualquier elemento variable para no afectar 
 
 Renombrar esp32 a esp32-dht11 
 
-### Nombre proyecto
-
-Camibar CMakeLists.txt:project(http_request) -> (algo mejor)
