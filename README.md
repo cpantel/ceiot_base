@@ -351,6 +351,17 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
 
 Cambios a aplicar tras terminar los alumnos con el paso 3.
 
+### Nombre proyecto
+
+Camibar CMakeLists.txt:project(http_request) -> (algo mejor)
+
+### Copias locales
+
+Para evitar dependencia con conexión a Internet
+
+En index.js: https://github.com/obadakhalili/Sprightly/blob/main/index.js
+En spa/index.html:      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 ### Content-Length
 
 Deshardcodear
@@ -375,6 +386,3 @@ Sería conveniente quitar de main.c cualquier elemento variable para no afectar 
 
 Renombrar esp32 a esp32-dht11 
 
-### Nombre proyecto
-
-Camibar CMakeLists.txt:project(http_request) -> (algo mejor)
