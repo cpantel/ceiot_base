@@ -355,9 +355,10 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
 
 Cambios a aplicar tras terminar los alumnos con el paso 3.
 
-### Nombre proyecto
+### Persistencia
 
-Camibar CMakeLists.txt:project(http_request) -> (algo mejor)
+Que el sistema implemente un endpoint que active guardar en un archivo lo que haya en las bases y al reiniciar que restaure. O implementar en tools mecanismos explícitos.
+
 
 ### Copias locales
 
@@ -366,13 +367,14 @@ Para evitar dependencia con conexión a Internet
 En index.js: https://github.com/obadakhalili/Sprightly/blob/main/index.js
 En spa/index.html:      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-### Content-Length
+### Content-Length &#10004;
 
 Deshardcodear
 
-### Persistencia
 
-Que el sistema implemente un endpoint que active guardar en un archivo lo que haya en las bases y al reiniciar que restaure. O implementar en tools mecanismos explícitos.
+### Nombre proyecto &#10004;
+
+Camibar CMakeLists.txt:project(http_request) -> (algo mejor)
 
 ### Ubicación config.h &#10004;
 
