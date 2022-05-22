@@ -6,6 +6,8 @@ const PgMem = require("pg-mem");
 
 const db = PgMem.newDb();
 
+const fs = require('fs');
+
 let database = null;
 const collectionName = "measurements";
 
@@ -131,17 +133,63 @@ app.get('/device', function(req,res) {
     res.send( db.public.many("SELECT * FROM devices") );
 });
 
+app.get('/admin/:command', function(req,res) {
+    var msg="done";
+    switch (req.params.command) {
+       case "clear":
+         if (req.query.db == "mongo") {
+           msg = "clearing mongo";
+           /* UNIMPLEMENTED */
+	 } else if (req.query.db == "psql") {
+           msg = "clearing psql";
+           /* UNIMPLEMENTED */
+	 } else {
+           msg = "unknown db " + req.query.db;
+         }
+       break;
+       case "save":
+         if (req.query.db == "mongo") {
+           msg = "saving mongo to " + req.query.file;
+           /* UNIMPLEMENTED */
+	 } else if (req.query.db == "psql") {
+           msg = "saving psql " + req.query.file;
+           /* UNIMPLEMENTED */
+	 } else {
+           msg = "unknown db " + req.query.db;
+         }
+       break;
+       case "show":
+         msg = fs.readFileSync("../fixtures/" + req.query.file);
+       break;
+ 
+       break;
+       default:
+         msg="Command: " + req.params.command + " not implemented"
+    }
+    var template = "<html>"+
+                     "<head><title>Admin</title></head>" +
+                     "<body>" +
+                        "{{ msg }}"+
+                     "</body>" +
+                "</html>";
+    res.send(render(template,{msg:msg}));
+});	
+
+
 startDatabase().then(async() => {
-    await insertMeasurement({id:'1', t:'18', h:'78'});
-    await insertMeasurement({id:'1', t:'19', h:'77'});
-    await insertMeasurement({id:'2', t:'17', h:'77'});
+    await insertMeasurement({id:'00', t:'18', h:'78'});
+    await insertMeasurement({id:'00', t:'19', h:'77'});
+    await insertMeasurement({id:'00', t:'17', h:'77'});
+    await insertMeasurement({id:'01', t:'17', h:'77'});
     console.log("mongo measurement database Up");
 
     db.public.none("CREATE TABLE devices (device_id VARCHAR, name VARCHAR, key VARCHAR)");
-    db.public.none("INSERT INTO devices VALUES ('14', 'ESP32', '123456')");
-    db.public.none("INSERT INTO devices VALUES ('23', 'ESP32c3', '234567')");
-    db.public.none("INSERT INTO devices VALUES ('31', 'ESP32s2', '345678')");
-    db.public.none("INSERT INTO devices VALUES ('61', 'ESP8266', '456789')");
+    db.public.none("INSERT INTO devices VALUES ('00', 'Fake Device 00', '123456')");
+    db.public.none("INSERT INTO devices VALUES ('01', 'Fake Device 01', '234567')");
+    db.public.none("CREATE TABLE users (user_id VARCHAR, name VARCHAR, key VARCHAR)");
+    db.public.none("INSERT INTO users VALUES ('1','Ana','admin123')");
+    db.public.none("INSERT INTO users VALUES ('2','Beto','user123')");
+
     console.log("sql device database up");
 
     app.listen(PORT, () => {
