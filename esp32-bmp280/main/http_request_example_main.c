@@ -23,6 +23,7 @@
 #include "lwip/netdb.h"
 #include "lwip/dns.h"
 #include <bmp280.h>
+#include <hmc5883l.h>
 #include "/home/marcelo/esp/ceiot_base/config/config.h"   // esto es mejorable...
 
 /* Constants that aren't configurable in menuconfig */
@@ -83,7 +84,8 @@ static void http_get_task(void *pvParameters)
             ESP_LOGI(TAG, "Pressure: %.2f Pa, Temperature: %.2f C", pressure, temperature);
 //            if (bme280p) {
                 ESP_LOGI(TAG,", Humidity: %.2f\n", humidity);
-                sprintf(send_buf, REQUEST_POST, temperature , humidity );
+//                sprintf(send_buf, REQUEST_POST, temperature , humidity );
+	          sprintf(send_buf, REQUEST_POST, temperature , pressure );
 //	    } else {
 //                sprintf(send_buf, REQUEST_POST, temperature , 0);
 //            }
