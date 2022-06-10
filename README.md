@@ -55,7 +55,41 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
       $ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
       $ sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 
-## Paso 2: API/SPA
+## Paso 2: Fork del proyecto
+
+### Generación SSH keys
+
+     # En una terminal
+     ssh-keygen -t ed25519 -C "your_email@example.com"
+     # enter, enter, enter...
+     # copiar al portapapeles el contenido de .ssh/id_ed25519.pub
+
+     # En la interfaz web de github
+     # Setting
+     # SSH and GPG keys
+     # New SSH key
+     # Definir un título y pegar el contenido del portapapeles
+     # Tomado de https://docs.github.com/articles/generating-an-ssh-key/
+   
+### Cambio url
+
+     cd ~/esp/ceiot_base
+     # en .git/config reemplazar
+     # url = https://github.com/cpantel/ceiot_base.git
+     # por
+     # url = git@github.com:XXXXX/ceiot_base.git
+     # siendo XXXXX tu usuario git
+
+### Prueba (no hacer aún)
+
+     # agregar al final de README.md "tocado por XXXXX"
+     git status ; # para ver que archivos cambiaron
+     git diff   ; # para ver los cambios
+     git add README.md
+     git commit -m "prueba"
+     git push
+
+## Paso 3: API/SPA
 
 ### Instalación node + typescript
 
@@ -121,7 +155,7 @@ En un navegador, probar las siguientes URLs:
 
 ![](./img/API_device.png)
 
-## Paso 3: Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
+## Paso 4: Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
 
 En el último paso, alcanza con elegir sólo las que uno tiene.
 
@@ -254,39 +288,6 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
     --- idf_monitor on /dev/ttyUSB0 115200 ---
     ...
    
-## Paso 4: Fork del proyecto
-
-### Generación SSH keys
-
-     # En una terminal
-     ssh-keygen -t ed25519 -C "your_email@example.com"
-     # enter, enter, enter...
-     # copiar al portapapeles el contenido de .ssh/id_ed25519.pub
-
-     # En la interfaz web de github
-     # Setting
-     # SSH and GPG keys
-     # New SSH key
-     # Definir un título y pegar el contenido del portapapeles
-     # Tomado de https://docs.github.com/articles/generating-an-ssh-key/
-   
-### Cambio url
-
-     cd ~/esp/ceiot_base
-     # en .git/config reemplazar
-     # url = https://github.com/cpantel/ceiot_base.git
-     # por
-     # url = git@github.com:XXXXX/ceiot_base.git
-     # siendo XXXXX tu usuario git
-
-### Prueba (no hacer aún)
-
-     # agregar al final de README.md "tocado por XXXXX"
-     git status ; # para ver que archivos cambiaron
-     git diff   ; # para ver los cambios
-     git add README.md
-     git commit -m "prueba"
-     git push
 
 ## Anexo 1: Conexión del sensor
 
