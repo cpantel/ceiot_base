@@ -71,6 +71,12 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
      # Definir un título y pegar el contenido del portapapeles
      # Tomado de https://docs.github.com/articles/generating-an-ssh-key/
    
+### Código referencia
+
+     mkdir ~/esp
+     cd ~/esp    
+     git clone https://github.com/cpantel/ceiot_base.git
+
 ### Cambio url
 
      cd ~/esp/ceiot_base
@@ -80,8 +86,9 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
      # url = git@github.com:XXXXX/ceiot_base.git
      # siendo XXXXX tu usuario git
 
-### Prueba (no hacer aún)
+### Prueba
 
+     git checkout (preguntar al docente)
      # agregar al final de README.md "tocado por XXXXX"
      git status ; # para ver que archivos cambiaron
      git diff   ; # para ver los cambios
@@ -99,12 +106,9 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
     #Debe ser 17.x.x, en caso contrario el paso con curl falló
     sudo npm install typescript -g
 
-### Código referencia
+### Instalación dependencias del proyecto
 
-    mkdir ~/esp
-    cd ~/esp    
-    git clone https://github.com/cpantel/ceiot_base.git
-    cd ceiot_base/api
+    cd ~/esp/ceiot_base/api
     npm install; # express body-parser mongodb-memory-server mongodb pg-mem
 
 ### Pruebas
