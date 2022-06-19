@@ -73,18 +73,10 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
    
 ### Código referencia
 
+     # hacer fork del proyecto https://github.com/cpantel/ceiot_base.git a tu repo
      mkdir ~/esp
      cd ~/esp    
-     git clone https://github.com/cpantel/ceiot_base.git
-
-### Cambio url
-
-     cd ~/esp/ceiot_base
-     # en .git/config reemplazar
-     # url = https://github.com/cpantel/ceiot_base.git
-     # por
-     # url = git@github.com:XXXXX/ceiot_base.git
-     # siendo XXXXX tu usuario git
+     git clone https://github.com/xxxxx/ceiot_base.git
 
 ### Prueba
 
