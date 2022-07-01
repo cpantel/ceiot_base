@@ -76,7 +76,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
      # hacer fork del proyecto https://github.com/cpantel/ceiot_base.git a tu repo
      mkdir ~/esp
      cd ~/esp    
-     git clone https://github.com/xxxxx/ceiot_base.git
+     git clone git@github.com:xxxx/ceiot_base.git
 
 ### Prueba
 
