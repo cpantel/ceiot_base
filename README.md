@@ -129,9 +129,9 @@ Esperamos:
 Cliente, en otra terminal:
 
     cd ~/esp/ceiot_base/tools
-    ./get_color_devices.sh 14
+    ./get_color_device.sh 00
     
-Esperamos:
+Esperamos (observar que la invocación no es exactamente la misma, lo que importa es el resultado):
     
 ![](./img/API_color.png)
 
