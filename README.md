@@ -18,6 +18,13 @@ Lo siguiente se puede hacer en cualquier sistema de virtualización por comodida
 
 Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox.
 
+### En el anfitrión
+
+    # En una terminal
+    sudo addgroup "$USER" vboxuser
+    sudo addgroup "$USER" dialout
+    # logout/login
+
 ### Instalación
 
     # Bajar el instalador de https://ubuntu.com/download/server.
@@ -44,7 +51,6 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     sudo /media/${USER}/VBoxLinuxAdditions.run
     # paciencia...
     # En una terminal
-    sudo addgroup "$USER" vboxsf
     sudo addgroup "$USER" dialout
     sudo reboot
 
