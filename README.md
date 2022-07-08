@@ -15,6 +15,7 @@ Lo siguiente se puede hacer en cualquier sistema de virtualización por comodida
   - Disco   : 40 GB (llega a ocupar casi 20GB)
   - Network : bridge
   - Distro  : Ubuntu Server 20.04.4 LTS
+  - System -> processor -> enable pae/nx
 
 Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox.
 
@@ -28,27 +29,44 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
 ### Instalación
 
     # Bajar el instalador de https://ubuntu.com/download/server.
+    # option 2: manual server installation
+    # alternative downloads
+    # get Ubuntu Server 20.04 LTS
     # Crear una nueva VM.
     # Parametrizar según los valores previos
     # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
-    # Si ofrece "Update to the new installer", no, gracias.
-    # Al cargar el primer usuario, mejor ponerle nombre "iot"
-    # Varios "Done".
-    # Cuando ofrece instalar openssh server, aceptarlo.
-    # Si se queda para siempre en "downloading and installing security updates" optar por "cancel update and reboot".
-    # "reboot now"
+    # language -> english -> done
+    # installer update available -> update to the new installer
+    # keyboard configuration -> el que te guste -> done
+    # network connections -> (debe conectarse a algo) -> done
+    # Configure proxy -> solo si corresponde -> done
+    # Configure Ubguntu archive mirror -> done
+    # guided storage configuration -> use entire disk -> done
+    # storage configuration -> done
+    # confirm destructive action -> continue
+    # your name: iot
+    # your server's name: iot
+    # pick a username : iot
+    # choose a password: el que te guste
+    # confirm your password: 
+    # done
+    # ssh setup -> install openssh server -> done
+    # featured server snaps -> ninguno -> done
+    # downloading and installing security updates -> paciencia
+    # install complete -> reboot now
+ 
+    
     
 ### Ajustes
 
-    # Apretar enter, hacer login.
-    # firefox opcional, ocupa como 300MB
+    # Apretar enter, debe aparecer
+    # iot@iot:~$
+    # hacer login
     sudo apt install xorg openbox firefox git gcc make perl 
     # En el menú de VirtualBox asociado a la instancia actual
     # Devices -> Insert guest additions CD image...
     sudo mount /dev/cdrom /mnt
     sudo /mnt/VBoxLinuxAdditions.run
-    # Si dice que no existe /dev/cdrom
-    sudo /media/${USER}/VBoxLinuxAdditions.run
     # paciencia...
     # En una terminal
     sudo addgroup "$USER" dialout
@@ -99,6 +117,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 ### Instalación node + typescript
 
     curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+    # va a tirar un warning por deprecated, no importa, esperar 20 segundos
     sudo apt install nodejs
     node --version
     #Debe ser 17.x.x, en caso contrario el paso con curl falló
