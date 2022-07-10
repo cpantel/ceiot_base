@@ -72,6 +72,16 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     # paciencia...
     sudo addgroup "$USER" dialout
     sudo reboot
+    
+### Opcional: eliminar cloud-init
+
+    # Si te molestan los mensajes de cloud init y querés arrancar un poquito más rápido:
+    sudo touch /etc/cloud/cloud-init.disabled
+    sudo dpkg-reconfigure cloud-init
+    # Deshabilitar todos menos "None" -> Ok
+    sudo apt purge cloud-init
+    sudo rm -rf /etc/cloud /var/lib/cloud
+
 
 ### Espacio libre
 
