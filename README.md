@@ -40,7 +40,7 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     # keyboard configuration -> el que te guste -> done
     # network connections -> (debe conectarse a algo) -> done
     # Configure proxy -> solo si corresponde -> done
-    # Configure Ubguntu archive mirror -> done
+    # Configure Ubuntu archive mirror -> done
     # guided storage configuration -> use entire disk -> done
     # storage configuration -> done
     # confirm destructive action -> continue
@@ -52,6 +52,7 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     # done
     # ssh setup -> install openssh server -> done
     # featured server snaps -> ninguno -> done
+    # Install complete! -> paciencia, no apretar "Cancel update and reboot"
     # downloading and installing security updates -> paciencia
     # install complete -> reboot now
  
