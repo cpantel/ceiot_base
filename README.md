@@ -55,6 +55,7 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     # Install complete! -> paciencia, no apretar "Cancel update and reboot"
     # downloading and installing security updates -> paciencia
     # install complete -> reboot now
+    # Please remove the intallation medium, then press ENTER -> enter
  
     
     
@@ -240,7 +241,7 @@ Esperamos algo parecido a:
 
 Es conveniente comenzar con ESP32c3. 
 
-Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sensor SENSOR entre *bmp280* y *dht11*:
+Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sensor **SENSOR** entre *bmp280* y *dht11*:
 
     # Para habilitar la toolchain
     cd ~/esp/esp-idf
