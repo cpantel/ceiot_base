@@ -14,7 +14,7 @@ Lo siguiente se puede hacer en cualquier sistema de virtualización por comodida
   - Memoria : 4 GB 
   - Disco   : 40 GB (llega a ocupar casi 20GB)
   - Network : bridge
-  - Distro  : Ubuntu Server 20.04.4 LTS
+  - Distro  : Ubuntu Server 22.04 LTS
   - System -> processor -> enable pae/nx
 
 Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox.
@@ -30,14 +30,14 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
 
     # Bajar el instalador de https://ubuntu.com/download/server.
     # option 2: manual server installation
-    # alternative downloads
-    # get Ubuntu Server 20.04 LTS
+    # Download Ubuntu Server 22.04 LTS
     # Crear una nueva VM.
     # Parametrizar según los valores previos
     # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
     # language -> english -> done
     # installer update available -> update to the new installer
     # keyboard configuration -> el que te guste -> done
+    # choose type of install -> ubuntu server -> done
     # network connections -> (debe conectarse a algo) -> done
     # Configure proxy -> solo si corresponde -> done
     # Configure Ubuntu archive mirror -> done
@@ -51,7 +51,8 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     # confirm your password: 
     # done
     # ssh setup -> install openssh server -> done
-    # featured server snaps -> ninguno -> done
+    # third party drivers -> paciencia  -> continue
+    # featured server snaps -> docker -> done
     # Install complete! -> paciencia, no apretar "Cancel update and reboot"
     # downloading and installing security updates -> paciencia
     # install complete -> reboot now
@@ -61,15 +62,16 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     
 ### Ajustes
 
-    # Apretar enter, debe aparecer
-    # iot@iot:~$
+    # Es conveniente esperar unos minutos a que terminen de aparecer  los mensajes restantes antes de seguir.
     # hacer login
-    sudo apt install xorg openbox firefox git gcc make perl 
+    sudo apt install xorg openbox firefox gcc make bzip2 
     # En el menú de VirtualBox asociado a la instancia actual
     # Devices -> Insert guest additions CD image...
     sudo mount /dev/cdrom /mnt
     sudo /mnt/VBoxLinuxAdditions.run
     # paciencia...
+    sudo groupadd docker
+    sudo addgroup "$USER" docker
     sudo addgroup "$USER" dialout
     sudo reboot
     
@@ -127,19 +129,25 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 
 ### Instalación node + typescript
 
-    curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
-    # va a tirar un warning por deprecated, no importa, esperar 20 segundos
+    curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
     sudo apt install nodejs
     node --version
-    #Debe ser 17.x.x, en caso contrario el paso con curl falló
+    #Debe ser 18.x.x, en caso contrario el paso con curl falló
     sudo npm install typescript -g
 
 ### Instalación dependencias del proyecto
 
     cd ~/esp/ceiot_base/api
-    npm install; # express body-parser mongodb-memory-server mongodb pg-mem
+    npm install; # express body-parser mongodb pg-mem
 
 ### Pruebas
+
+En una terminal mongodb:
+    # Por única vez
+    docker pull mongo:4.0.4
+    # Cada vez que haga falta
+    docker run  -p 27017:27017 mongo:4.0.4
+    # con ^C se cierra
 
 En una terminal servidor API:
 
