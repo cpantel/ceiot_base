@@ -70,7 +70,6 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     sudo mount /dev/cdrom /mnt
     sudo /mnt/VBoxLinuxAdditions.run
     # paciencia...
-    # En una terminal
     sudo addgroup "$USER" dialout
     sudo reboot
 
