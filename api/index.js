@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const {MongoMemoryServer} = require("mongodb-memory-server");
+//const {MongoMemoryServer} = require("mongodb-memory-server");
 const {MongoClient} = require("mongodb");
 const PgMem = require("pg-mem");
 
@@ -12,8 +12,8 @@ let database = null;
 const collectionName = "measurements";
 
 async function startDatabase() {
-    const mongod = await MongoMemoryServer.create();
-    const uri = mongod.getUri();	
+//    const mongod = await MongoMemoryServer.create();
+    const uri = "mongodb://localhost:27017/?maxPoolSize=20&w=majority";	
     const connection = await MongoClient.connect(uri, {useNewUrlParser: true});
     database = connection.db();
 }
