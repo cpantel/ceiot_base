@@ -143,6 +143,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 ### Pruebas
 
 En una terminal mongodb:
+
     # Por única vez
     docker pull mongo:4.0.4
     # Cada vez que haga falta
