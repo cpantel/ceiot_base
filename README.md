@@ -74,6 +74,14 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     sudo addgroup "$USER" docker
     sudo addgroup "$USER" dialout
     sudo reboot
+
+### Login, entorno gráfico y shutdown
+
+    # De este momento en más, cada vez que inicie, tras el login, para obtener el entorno gráfico:
+    startx
+    # Botón derecho sobre el fondo abre el menú
+    # Para apagar, si se está en el entorno gráfico, cerrarlo con botón derecho, "Exit"
+    shutdown -h now
     
 ### Opcional: eliminar cloud-init
 
@@ -85,7 +93,7 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
     sudo rm -rf /etc/cloud /var/lib/cloud
 
 
-### Espacio libre
+### Opcional: Espacio libre
 
 Por algún motivo que ignoro, la instalación no usa todo el espacio disponible, se corrige en cualquier momento con:
 
