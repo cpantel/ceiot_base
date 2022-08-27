@@ -10,6 +10,31 @@ Lo siguiente se puede hacer en cualquier sistema de virtualización por comodida
 
 ## Paso 1: VM con virtualbox
 
+### En el anfitrión
+
+Instalar virtualbox y extension pack
+
+https://www.virtualbox.org/wiki/Downloads
+
+https://www.virtualbox.org/manual/ch01.html#intro-installing
+
+Si es linux, mejor usar el paquete de la distribución y:
+
+    # En una terminal
+    sudo addgroup "$USER" vboxusers
+    sudo addgroup "$USER" dialout
+    # logout/login
+
+### Imagen del instalador
+
+    # Bajar el instalador de https://ubuntu.com/download/server
+    # option 2: manual server installation
+    # Download Ubuntu Server 22.04 LTS
+
+### La VM concreta
+
+Debe cumplir con estas definiciones:
+
   - CPUs    : 1
   - Memoria : 4 GB 
   - Disco   : 40 GB (llega a ocupar casi 20GB)
@@ -19,18 +44,10 @@ Lo siguiente se puede hacer en cualquier sistema de virtualización por comodida
 
 Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox.
 
-### En el anfitrión
-
-    # En una terminal
-    sudo addgroup "$USER" vboxusers
-    sudo addgroup "$USER" dialout
-    # logout/login
-
 ### Instalación
 
-    # Bajar el instalador de https://ubuntu.com/download/server.
-    # option 2: manual server installation
-    # Download Ubuntu Server 22.04 LTS
+Para la creación y parametrización sirve como guía [https://www.virtualbox.org/manual/ch02.html](https://docs.oracle.com/cd/E26217_01/E26796/html/qs-create-vm.html)
+
     # Crear una nueva VM.
     # Parametrizar según los valores previos
     # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
