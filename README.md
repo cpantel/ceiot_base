@@ -22,7 +22,7 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
 ### En el anfitrión
 
     # En una terminal
-    sudo addgroup "$USER" vboxuser
+    sudo addgroup "$USER" vboxusers
     sudo addgroup "$USER" dialout
     # logout/login
 
