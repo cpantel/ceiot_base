@@ -46,7 +46,9 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
 
 ### Instalación
 
-Para la creación y parametrización sirve como guía [https://www.virtualbox.org/manual/ch02.html](https://docs.oracle.com/cd/E26217_01/E26796/html/qs-create-vm.html)
+Para la creación y parametrización de la VM sirve como guía [https://www.virtualbox.org/manual/ch02.html](https://docs.oracle.com/cd/E26217_01/E26796/html/qs-create-vm.html)
+
+Si en lugar de Ubuntu 22.04 se está instalando Ubuntu 22.04.x, pueden haber leves diferencias.
 
     # Crear una nueva VM.
     # Parametrizar según los valores previos
