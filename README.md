@@ -144,7 +144,8 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 
 ### Prueba
 
-     git checkout (preguntar al docente)
+     cd ceiot_base
+     # git checkout (preguntar al docente)
      # agregar al final de README.md "tocado por XXXXX"
      git status ; # para ver que archivos cambiaron
      git diff   ; # para ver los cambios
