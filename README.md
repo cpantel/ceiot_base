@@ -204,7 +204,7 @@ Cliente, en otra terminal:
     cd ~/esp/ceiot_base/tools
     ./get_color_device.sh 00
     
-Esperamos (observar que la invocación no es exactamente la misma, lo que importa es el resultado):
+Esperamos (observar que la invocación no es exactamente la misma y los valores del resultado pueden variar, lo que importa es la forma):
     
 ![](./img/API_color.png)
 
