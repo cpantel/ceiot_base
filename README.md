@@ -138,6 +138,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 ### Código referencia
 
      # hacer fork del proyecto https://github.com/cpantel/ceiot_base.git a tu repo
+     # Es el botón de arriba a la derecha, "Fork", dejar mismo nombre y opciones, "Create Fork"
      mkdir ~/esp
      cd ~/esp    
      git clone git@github.com:xxxx/ceiot_base.git
