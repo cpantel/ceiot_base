@@ -261,7 +261,7 @@ Relato informal de la experiencia de exploración:
 
 Para comprobar, ejecutar:
 
-    dmesg | tail -20
+    sudo dmesg | tail -20
 
 Esperamos algo parecido a:
 
