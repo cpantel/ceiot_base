@@ -221,9 +221,13 @@ En un navegador, probar las siguientes URLs:
     
 ![](./img/WEB_device.png)
     
-    API: http://localhost:8080/device -> lista dispositivos JSON
+    API devices: http://localhost:8080/device -> lista dispositivos JSON
 
 ![](./img/API_device.png)
+
+    API measurement: http://localhost:8080/measurement -> lista mediciones JSON
+
+![](./img/API_measurement.png)
 
 ## Paso 4: Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
 
@@ -261,7 +265,7 @@ Relato informal de la experiencia de exploración:
 
 Para comprobar, ejecutar:
 
-    sudo dmesg | tail -20
+    dmesg | tail -20
 
 Esperamos algo parecido a:
 
