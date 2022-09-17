@@ -168,21 +168,24 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 
     cd ~/esp/ceiot_base/api
     npm install; # express body-parser mongodb pg-mem
+    
+### Imagen docker de mongo    
+
+    docker pull mongo:4.0.4
 
 ### Pruebas
 
 En una terminal mongodb:
 
-    # Por única vez
-    docker pull mongo:4.0.4
-    # Cada vez que haga falta
+    cd ~/esp/ceiot_base
     docker run  -p 27017:27017 mongo:4.0.4
-    # con ^C se cierra
+    # con ^C se puede cerrar al terminar
 
 En una terminal servidor API:
 
     cd ~/esp/ceiot_base/api
     node index.js
+    # con ^C se puede cerrar al terminar
     
 Esperamos:
 
@@ -194,6 +197,7 @@ En otra terminal, servidor SPA:
 
     cd ~/esp/ceiot_base/api/spa
     ./rebuild.sh
+    # con ^C se puede cerrar al terminar
     
 Esperamos:
 
@@ -211,7 +215,6 @@ Esperamos (observar que la invocación no es exactamente la misma y los valores 
 
 
 En un navegador, probar las siguientes URLs:
-
 
     SPA: http://localhost:8080/index.html -> lista de dispositivos con un botón de refrescar
 
@@ -265,7 +268,7 @@ Relato informal de la experiencia de exploración:
 
 Para comprobar, ejecutar:
 
-    dmesg | tail -20
+    sudo dmesg | tail -20
 
 Esperamos algo parecido a:
 
