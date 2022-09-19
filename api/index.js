@@ -43,16 +43,49 @@ app.use('/js', express.static('spa'));
 const PORT = 8080;
 
 app.post('/measurement', function (req, res) {
--       console.log("device id    : " + req.body.id + " key         : " + req.body.key + " temperature : " + req.body.t + " humidity    : " + req.body.h);	
-    const {insertedId} = insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h});
-	res.send("received measurement into " +  insertedId);
+    console.log("device id    : " + req.body.id + " key         : " + req.body.key + " temperature : " + req.body.t + " humidity    : " + req.body.h);	
+    var msj;
+    if(!req.body.hasOwnProperty('id') || !req.body.hasOwnProperty('t') || !req.body.hasOwnProperty('h')) {
+        msj = "Error: Falta una propiedad";
+    } else if (req.body.id.length === 0) {
+        msj = "Error:  El id no puede estar vacio";
+    } else if (req.body.t.length === 0) {
+        msj = "Error:  La temperatura no puede estar vacia";
+    } else if (req.body.h.length === 0) {
+        msj = "Error:  La humedad no puede estar vacia";
+    } else {
+        var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.body.id+"'");
+        if (device.length <= 0){
+            msj = "ERROR: El id: " + req.body.id + " no existe para ningún dispositivo";
+        }else{
+            const {insertedId} = insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h});
+            msj = "received measurement into " +  insertedId;
+        }
+    }
+	res.send(msj);
 });
 
 app.post('/device', function (req, res) {
 	console.log("device id    : " + req.body.id + " name        : " + req.body.n + " key         : " + req.body.k );
-
-    db.public.none("INSERT INTO devices VALUES ('"+req.body.id+ "', '"+req.body.n+"', '"+req.body.k+"')");
-	res.send("received new device");
+    var msj;
+    if(!req.body.hasOwnProperty('id') || !req.body.hasOwnProperty('n') || !req.body.hasOwnProperty('k')) {
+        msj = "Error: Falta una propiedad";
+    } else if (req.body.id.length === 0) {
+        msj = "Error:  El id no puede estar vacio";
+    } else if (req.body.n.length === 0) {
+        msj = "Error:  El nombre no puede estar vacio";
+    } else if (req.body.k.length === 0) {
+        msj = "Error:  La key no puede estar vacia";
+    } else {
+        var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.body.id+"'");
+        if (device.length > 0){
+            msj = "ERROR: El id: " + req.body.id + " ya existe para otro dispositivo";
+        }else{
+            db.public.none("INSERT INTO devices VALUES ('"+req.body.id+ "', '"+req.body.n+"', '"+req.body.k+"')");
+            msj = "received new device";
+        }
+    }
+	res.send("msj");
 });
 
 
