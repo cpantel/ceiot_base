@@ -10,6 +10,7 @@ const fs = require('fs');
 
 let database = null;
 const collectionName = "measurements";
+const templateError = "Error: {{error_msj}} \n";
 
 async function startDatabase() {
 //    const mongod = await MongoMemoryServer.create();
@@ -96,7 +97,15 @@ function render(template, vars) {
 }
 
 app.get('/web/device/:id', function (req,res) {
-    var template = "<html>"+
+    var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.params.id+"'");
+    console.log(device);
+    var template = "";
+    var params = {};
+    if(device.length <= 0) {
+        template = templateError;
+        params = {error_msj: "The id '"+req.params.id+"' does not exists"};
+    } else {
+        template = "<html>"+
                      "<head><title>Sensor {{name}}</title></head>" +
                      "<body>" +
 		        "<h1>{{ name }}</h1>"+
@@ -104,25 +113,34 @@ app.get('/web/device/:id', function (req,res) {
 		        "Key : {{ key }}" +
                      "</body>" +
                 "</html>";
-
-
-    var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.params.id+"'");
-    console.log(device);
-    res.send(render(template,{id:device[0].device_id, key: device[0].key, name:device[0].name}));
+        params = {id:device[0].device_id, key: device[0].key, name:device[0].name};
+    }
+    res.send(render(template,params));
 });	
 
+app.get('/term/device/', function (req, res) {
+    res.send(render(templateError, {error_msj: "An ID is required to search for a device"}));
+});
 
 app.get('/term/device/:id', function (req, res) {
-    var red = "\33[31m";
-    var green = "\33[32m";
-    var blue = "\33[33m";
-    var reset = "\33[0m";
-    var template = "Device name " + red   + "   {{name}}" + reset + "\n" +
-		   "       id   " + green + "       {{ id }} " + reset +"\n" +
-	           "       key  " + blue  + "  {{ key }}" + reset +"\n";
     var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.params.id+"'");
     console.log(device);
-    res.send(render(template,{id:device[0].device_id, key: device[0].key, name:device[0].name}));
+    var template = "";
+    var params = {};
+    if(device.length <= 0) {
+        template = templateError;
+        params = {error_msj: "The id '"+req.params.id+"' does not exists"};
+    } else {
+        var red = "\33[31m";
+        var green = "\33[32m";
+        var blue = "\33[33m";
+        var reset = "\33[0m";
+        template = "Device name " + red   + "   {{name}}" + reset + "\n" +
+            "       id   " + green + "       {{ id }} " + reset +"\n" +
+                "       key  " + blue  + "  {{ key }}" + reset +"\n";
+        params = {id:device[0].device_id, key: device[0].key, name:device[0].name};
+    }
+    res.send(render(template, params));
 });
 
 app.get('/measurement', async (req,res) => {
