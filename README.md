@@ -76,7 +76,6 @@ Si en lugar de Ubuntu 22.04 se está instalando Ubuntu 22.04.x, pueden haber lev
     # downloading and installing security updates -> paciencia
     # install complete -> reboot now
     # Please remove the intallation medium, then press ENTER -> enter
- 
     
     
 ### Ajustes
