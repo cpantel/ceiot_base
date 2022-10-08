@@ -97,6 +97,7 @@ Si en lugar de Ubuntu 22.04 se está instalando Ubuntu 22.04.x, pueden haber lev
 
     # De este momento en más, cada vez que inicie, tras el login, para obtener el entorno gráfico:
     startx
+    # Si falla, puede ser por falta de espacio, ver luego lo de espacio libre
     # Botón derecho sobre el fondo abre el menú
     # Para apagar, si se está en el entorno gráfico, cerrarlo con botón derecho, "Exit"
     shutdown -h now
