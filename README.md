@@ -88,6 +88,7 @@ Si en lugar de Ubuntu 22.04.1 se está instalando Ubuntu 22.04.x, pueden haber l
     sudo mount /dev/cdrom /mnt
     sudo /mnt/VBoxLinuxAdditions.run
     # paciencia...
+    # Que termine con un "Look at /var/log/vboxadd.... to find out what went wrong" no significa que halla fallado.
     sudo groupadd docker
     sudo addgroup "$USER" docker
     sudo addgroup "$USER" dialout
@@ -97,7 +98,7 @@ Si en lugar de Ubuntu 22.04.1 se está instalando Ubuntu 22.04.x, pueden haber l
 
     # De este momento en más, cada vez que inicie, tras el login, para obtener el entorno gráfico:
     startx
-    # Si falla, puede ser por falta de espacio, ver luego lo de espacio libre
+    # Si más adelanta falla, puede ser por falta de espacio, ver luego lo del espacio libre
     # Botón derecho sobre el fondo abre el menú
     # Para apagar, si se está en el entorno gráfico, cerrarlo con botón derecho, "Exit"
     shutdown -h now
