@@ -28,8 +28,7 @@ Si es linux, mejor usar el paquete de la distribución y:
 ### Imagen del instalador
 
     # Bajar el instalador de https://ubuntu.com/download/server
-    # option 2: manual server installation
-    # Download Ubuntu Server 22.04 LTS
+    # Download Ubuntu Server 22.04.1 LTS
 
 ### La VM concreta
 
@@ -37,9 +36,9 @@ Debe cumplir con estas definiciones:
 
   - CPUs    : 1
   - Memoria : 4 GB 
-  - Disco   : 40 GB (llega a ocupar casi 20GB)
+  - Disco   : 40 GB (llega a ocupar poco más de 20GB)
   - Network : bridge
-  - Distro  : Ubuntu Server 22.04 LTS
+  - Distro  : Ubuntu Server 22.04.1 LTS
   - System -> processor -> enable pae/nx
 
 Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox.
@@ -48,7 +47,7 @@ Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM a
 
 Para la creación y parametrización de la VM sirve como guía [https://www.virtualbox.org/manual/ch02.html](https://docs.oracle.com/cd/E26217_01/E26796/html/qs-create-vm.html)
 
-Si en lugar de Ubuntu 22.04 se está instalando Ubuntu 22.04.x, pueden haber leves diferencias.
+Si en lugar de Ubuntu 22.04.1 se está instalando Ubuntu 22.04.x, pueden haber leves diferencias.
 
     # Crear una nueva VM.
     # Parametrizar según los valores previos
@@ -60,7 +59,7 @@ Si en lugar de Ubuntu 22.04 se está instalando Ubuntu 22.04.x, pueden haber lev
     # network connections -> (debe conectarse a algo) -> done
     # Configure proxy -> solo si corresponde -> done
     # Configure Ubuntu archive mirror -> done
-    # guided storage configuration -> use entire disk -> done
+    # guided storage configuration -> dejar como está (use entire disk, set up this disk as an LVM group) -> done
     # storage configuration -> done
     # confirm destructive action -> continue
     # your name: iot
@@ -72,9 +71,10 @@ Si en lugar de Ubuntu 22.04 se está instalando Ubuntu 22.04.x, pueden haber lev
     # ssh setup -> install openssh server -> done
     # third party drivers -> paciencia  -> continue
     # featured server snaps -> docker -> done
+    # Installing system -> paciencia...
     # Install complete! -> paciencia, no apretar "Cancel update and reboot"
     # downloading and installing security updates -> paciencia
-    # install complete -> reboot now
+    # Install complete -> reboot now
     # Please remove the intallation medium, then press ENTER -> enter
     
     
