@@ -168,7 +168,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 ### Instalación dependencias del proyecto
 
     cd ~/esp/ceiot_base/api
-    npm install; # express body-parser mongodb pg-mem
+    npm install; # --save express body-parser mongodb pg-mem
     
 ### Imagen docker de mongo    
 
@@ -233,7 +233,7 @@ En un navegador, probar las siguientes URLs:
 
 ![](./img/API_measurement.png)
 
-## Paso 4: Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
+## Paso 4 (Sólo IIoT): Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
 
 En el último paso, alcanza con elegir sólo las que uno tiene.
 
@@ -366,6 +366,15 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
     --- idf_monitor on /dev/ttyUSB0 115200 ---
     ...
    
+## Paso 5 (Sólo TSIoT): Herramientas de testing
+
+### Postman
+
+Pendiente...
+
+### Selenium
+
+Pendiente...
 
 ## Anexo 1: Conexión del sensor
 
