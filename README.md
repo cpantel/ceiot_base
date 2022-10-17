@@ -140,8 +140,6 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 
      # hacer fork del proyecto https://github.com/cpantel/ceiot_base.git a tu repo
      # Es el botón de arriba a la derecha, "Fork", dejar mismo nombre y opciones, "Create Fork"
-     mkdir ~/esp
-     cd ~/esp    
      git clone git@github.com:xxxx/ceiot_base.git
 
 ### Prueba
@@ -167,7 +165,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 
 ### Instalación dependencias del proyecto
 
-    cd ~/esp/ceiot_base/api
+    cd ~/ceiot_base/api
     npm install; # --save express body-parser mongodb pg-mem
     
 ### Imagen docker de mongo    
@@ -178,13 +176,13 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 
 En una terminal mongodb:
 
-    cd ~/esp/ceiot_base
+    cd ~/ceiot_base
     docker run  -p 27017:27017 mongo:4.0.4
     # con ^C se puede cerrar al terminar
 
 En una terminal servidor API:
 
-    cd ~/esp/ceiot_base/api
+    cd ~/ceiot_base/api
     node index.js
     # con ^C se puede cerrar al terminar
     
@@ -196,7 +194,7 @@ Esperamos:
 
 En otra terminal, servidor SPA:
 
-    cd ~/esp/ceiot_base/api/spa
+    cd ~/ceiot_base/api/spa
     ./rebuild.sh
     # con ^C se puede cerrar al terminar
     
@@ -207,7 +205,7 @@ Esperamos:
     
 Cliente, en otra terminal:
 
-    cd ~/esp/ceiot_base/tools
+    cd ~/ceiot_base/tools
     ./get_color_device.sh 00
     
 Esperamos (observar que la invocación no es exactamente la misma y los valores del resultado pueden variar, lo que importa es la forma):
@@ -238,6 +236,7 @@ En un navegador, probar las siguientes URLs:
 En el último paso, alcanza con elegir sólo las que uno tiene.
 
     sudo apt install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 
+    mkdir ~/esp
     cd ~/esp
     git clone https://github.com/UncleRus/esp-idf-lib.git
     git clone -b v4.4 --recursive https://github.com/espressif/esp-idf.git
@@ -302,7 +301,7 @@ Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sen
     cd ~/esp/esp-idf
     . ./export.sh
     # Ir a la carpeta del objetivo deseado
-    cd ~/esp/ceiot_base/${MICRO}-${SENSOR}
+    cd ~/ceiot_base/${MICRO}-${SENSOR}
     cp ../config/config.h.template config.h
     # modificar en config.h 
     #  dirección del servidor
@@ -422,12 +421,12 @@ Instalación y configuración Arduino IDE
 
 Build y flash del proyecto
 
-     # cd ~/esp/ceiot_base
+     # cd ~/ceiot_base
      # cp config/config.h.template esp8266-dht11-arduino/config.h
      # Conectar device
      # Abrir arduinoIDE
      # Tools -> Port -> /dev/ttyUSB0
-     # File -> Open -> ~/esp/ceiot_base/esp8266-dht11-arduino/esp8266-dht11-arduino.ino
+     # File -> Open -> ~/ceiot_base/esp8266-dht11-arduino/esp8266-dht11-arduino.ino
      # Sketch -> Upload
 
 [Más detalles en el Plan B](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11planB.html)
@@ -468,7 +467,7 @@ Camibar CMakeLists.txt:project(http_request) -> (algo mejor)
 
 En los main.c hay una referencia a un archivo que no puede alcanzar por rutas relativas.
 
-#include "/home/iot/esp/ceiot_base/config/config.h"   // esto es mejorable...
+#include "/home/iot/ceiot_base/config/config.h"   // esto es mejorable...
 
 Lo mejor sería cambiarle el nombre a set-wifi.sh y que además copie config/config.h a la carpeta del dispositivo.
 
