@@ -120,6 +120,13 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
       $ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
       $ sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 
+### Opcional: Instalación VSCode
+
+      $ sudo apt install xdg-utils
+      # bajar desde firefox con url https://code.visualstudio.com/docs/?dv=linux64_deb
+      $ sudo dpkg -i code_1.72.2-1665614327_amd64.deb
+
+
 ## Paso 2: Fork del proyecto
 
 ### Generación SSH keys
