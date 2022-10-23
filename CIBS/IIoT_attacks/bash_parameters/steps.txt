@@ -1,0 +1,13 @@
+./00_check_pass_hardcoded.sh
+
+./01_check_pass_param.sh hola
+   history
+   ps
+
+ENV_CLAVE=hola ./02_check_pass_env.sh
+
+export ENV_CLAVE=hola
+./02_check_pass_env.sh
+
+vi claves.sh
+./03_check_pass_inc.sh
