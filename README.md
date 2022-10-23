@@ -2,11 +2,7 @@
 
 Código para ejemplo básico de IoT
 
-
-![](./img/arch.png)
-
 Lo siguiente se puede hacer en cualquier sistema de virtualización por comodidad y prolijidad o directamente en una máquina real.
-
 
 ## Paso 1: VM con virtualbox
 
@@ -161,6 +157,8 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
      git push
 
 ## Paso 3: API/SPA
+
+![](./img/arch.png)
 
 ### Instalación node + typescript
 
