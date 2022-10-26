@@ -7,7 +7,7 @@ Este repositorio contiene un ejemplo paso a paso para el desarrollo de un servid
 1. Instalar el generador de proyectos de express ([referencia](https://expressjs.com/es/starter/generator.html))
 
 ```
-npm install express-generator -g
+sudo npm install express-generator -g
 ```
 
 2. Generar el proyecto express
