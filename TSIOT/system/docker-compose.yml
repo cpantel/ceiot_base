@@ -1,0 +1,62 @@
+version: "3.5"
+
+volumes:
+  postgres:
+
+services:
+
+  postgres:
+    image: "smauec/postgres:0.0.1"
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  proxy:
+    image: "smauec/proxy:0.0.1"
+    ports:
+      - "80:80"
+    volumes:
+      - type: bind
+        source: ./proxy
+        target: /etc/nginx/conf.d
+    depends_on:
+      - "api-users"
+
+  api-users:
+    image: "smauec/api-users:0.0.1"
+    ports:
+     - "8081:8081"    
+    depends_on:
+     - "postgres"
+    environment:
+     -  NODE_ENV=test
+    secrets:
+     - api_auth_secret_test
+     - db_user_secret_test
+     - user_admin_secret_test
+
+  api-rules:
+    image: "smauec/api-rules:0.0.1"
+    ports:
+     - "8082:8082"
+    depends_on:
+     - "postgres"
+    environment:
+     -  NODE_ENV=test
+    secrets:
+     - api_auth_secret_test
+     - db_rule_secret_test
+
+secrets:
+  api_auth_secret_test:
+    file: ./secrets/auth.config.test.js 
+  db_user_secret_test:
+    file: ./secrets/db.user.config.test.js
+  db_rule_secret_test:
+    file: ./secrets/db.rule.config.test.js
+  user_admin_secret_test:
+    file: ./secrets/user.admin.config.test.js
+
