@@ -6,11 +6,12 @@ sudo apt install jq
 ```
 ## Resolución de nombres
 
-Agregar a [/etc/hosts]
+Agregar a /etc/hosts
 ```
 127.0.0.1       api-users.smauec.net
 127.0.0.1       api-rules.smauec.net
 ```
+Todo lo que sigue se hace en la carpeta system.
 
 ## Secretos
 
