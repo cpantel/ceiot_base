@@ -1,0 +1,34 @@
+{
+	"id": "146e52f0-fd32-4814-8e58-8a3c0f4d5eb7",
+	"values": [
+		{
+			"key": "api_user_base_url",
+			"value": "http://api-users.smauec.net",
+			"enabled": true
+		},
+		{
+			"key": "api_rule_base_url",
+			"value": "http://api-rules.smauec.net",
+			"enabled": true
+		},
+		{
+			"key": "api_events_base_url",
+			"value": "http://api-events.smauec.net",
+			"enabled": true
+		},
+		{
+			"key": "api_odata_base_url",
+			"value": "http://127.0.0.1:8084",
+			"enabled": true
+		},
+		{
+			"key": "origin",
+			"value": "http://www.smauec.net",
+			"enabled": true
+		}
+	],
+	"name": "My Workspace Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2020-08-18T17:50:45.979Z",
+	"_postman_exported_using": "Postman/7.29.1"
+}

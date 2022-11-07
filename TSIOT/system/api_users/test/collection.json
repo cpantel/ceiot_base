@@ -1,0 +1,1257 @@
+{
+	"info": {
+		"_postman_id": "dde76bbe-ca01-4a7b-bf34-d61bc18cdd3b",
+		"name": "API Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Not Authenticated",
+			"item": [
+				{
+					"name": "Create User as nobody",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bade1126-ef84-4984-a3d0-1f84a74f9a6b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c205a986-36d2-442d-8ace-fec6838d1df0",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"user\",\n    \"password\":\"user\",\n    \"email\":\"user@example.org\"\n}"
+						},
+						"url": {
+							"raw": "{{api_user_base_url}}/api/users",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				},
+				{
+					"name": "Signin as inexistent User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "61baa46d-abb5-4efb-ad5a-9751ddc1c369",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2054feca-2c50-4449-971c-71bab4f24fb5",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"no_user\",\n    \"password\":\"no_pass\"\n}"
+						},
+						"url": {
+							"raw": "{{api_user_base_url}}/api/auth/signin",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin bad password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "96ca642c-87fa-4aac-86ca-6300d1794481",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb294ec2-d126-4bfb-912e-f15cff1cd313",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"no_user\",\n    \"password\":\"no_pass\"\n}"
+						},
+						"url": {
+							"raw": "{{api_user_base_url}}/api/auth/signin",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin as User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f3bc03e5-eaf5-4bf3-83d7-a20ad370b104",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "89d6cb52-3218-4c88-abe1-fb1c96a45b8b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"user1\",\n    \"password\":\"user1\"\n}"
+						},
+						"url": {
+							"raw": "{{api_user_base_url}}/api/auth/signin",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin as Admin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4bab980d-a7c5-4219-8c6f-717fa10a223c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9f63f4d-ce63-4d49-9ef3-727cee461b8d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{api_user_base_url}}/api/auth/signin",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authenticated as User",
+			"item": [
+				{
+					"name": "Delete User as User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "88a10623-f4b3-4a5d-992c-833f513fb38a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "45eb6715-a2d3-4b9b-904b-3a51a3b7472e",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									"",
+									" ",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "{{access_token}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_user_base_url}}/api/users/3",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User as User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "52c8ccc8-a727-43ad-b519-15516b3a39a6",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e97c20dc-3882-4388-b3cc-7d48ed2d55c0",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									"",
+									" "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "{{access_token}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"username\":\"user2\",\n   \"password\":\"user2\",\n   \"email\":\"user2rc@example.org\"\n}"
+						},
+						"url": {
+							"raw": "{{api_user_base_url}}/api/users",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8867f6ca-04c9-4f7e-981a-75abb6c3501c",
+						"type": "text/javascript",
+						"exec": [
+							"var url = pm.globals.get(\"api_user_base_url\");",
+							"var origin = pm.globals.get(\"origin\");",
+							"pm.sendRequest({",
+							"    url: url + \"/api/auth/signin\" ,",
+							"    method: 'POST',",
+							"    header: {",
+							"        \"Content-Type\":\"application/json\",",
+							"        \"Origin\":origin",
+							"        } ,",
+							"    body:{",
+							"        mode: \"raw\",",
+							"        raw: JSON.stringify({",
+							"            username:\"user1\",",
+							"            password:\"user1\"",
+							"        })",
+							"    }},",
+							"     ",
+							"    function (err, response) {",
+							"        pm.environment.set(\"access_token\",response.json()[\"result\"][\"accessToken\"] ); ",
+							"    ",
+							"    }",
+							");",
+							"",
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "14bcb343-d1fb-4650-8ed2-5feb3650194d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"access_token\",undefined ); "
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authenticated as Admin",
+			"item": [
+				{
+					"name": "Get User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "24d7be94-37f5-491d-b980-79fda251d1c2",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e10fe10-13c5-460b-9da6-572722c4cd38",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var expected = {",
+									"    \"id\": 1,",
+									"    \"username\": \"admin\",",
+									"    \"email\": \"admin@samauec.org\",",
+									"    \"roles\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"name\": \"admin\"",
+									"        },",
+									"        {",
+									"            \"id\": 2,",
+									"            \"name\": \"user\"",
+									"        }",
+									"        ]",
+									"}",
+									"",
+									"pm.test(\"Content is an user and its roles\", function () {",
+									"    pm.expect(pm.response.json().result).to.eql(expected);",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "{{access_token}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "http://www.smauec.net",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "host",
+								"value": "api-users.smauec.net",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{api_user_base_url}}/api/users/1",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ed198c8f-1f41-4916-8d34-ed7029acfb77",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "51070613-f0dd-402f-921d-8d8d6182b49c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var response = pm.response.json().result.slice(0,2);",
+									"",
+									"var expected = [",
+									"    {",
+									"        \"id\": response[0].id,",
+									"        \"username\": response[0].username,",
+									"        \"email\": response[0].email,",
+									"    },",
+									"        {",
+									"        \"id\": response[1].id,",
+									"        \"username\": response[1].username,",
+									"        \"email\": response[1].email,",
+									"    }",
+									"];",
+									"",
+									"var expectedFirstRoleFirstUser = {",
+									"    \"id\": response[0].roles[0].id,",
+									"    \"name\":response[0].roles[0].name,",
+									"    }",
+									"",
+									"var expectedFirstRoleSecondUser = {",
+									"    \"id\": response[1].roles[0].id,",
+									"    \"name\":response[1].roles[0].name,",
+									"    }",
+									"",
+									"",
+									"pm.test(\"Users have at least one role\", function () {",
+									"",
+									"    pm.expect(response[0].roles[0]).to.eql(expectedFirstRoleFirstUser);",
+									"    pm.expect(response[1].roles[0]).to.eql(expectedFirstRoleSecondUser);",
+									"});",
+									"",
+									"",
+									"delete response[0].roles;",
+									"delete response[1].roles;",
+									"",
+									"pm.test(\"Content is a list of users\", function () {",
+									"    pm.expect(response).to.eql(expected);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									" ",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "{{access_token}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_user_base_url}}/api/users/",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				},
+				{
+					"name": "Create User Admin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b821a1d4-cd81-4eac-aaeb-5558d4b13ea4",
+								"exec": [
+									"pm.variables.set(\"id\", Math.floor(Math.random() * Math.floor(10000000)));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "be92db8e-d1be-43e1-bd16-314995b19b95",
+								"exec": [
+									"//TODO: convert to create with results",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var response = pm.response.json().result;",
+									"var id = pm.variables.get(\"id\");",
+									"var expected = {",
+									"    \"id\": response.id,",
+									"    \"username\": \"user\" + id,",
+									"    \"email\": \"user\" + id+ \"@example.org\",",
+									"    \"roles\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"name\": \"admin\"",
+									"        }",
+									"    ]",
+									"}",
+									"",
+									"pm.test(\"Content is an action\", function () {",
+									"    pm.expect(response).to.eql(expected);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"user{{id}}\",\n    \"password\":\"user\",\n    \"email\":\"user{{id}}@example.org\"\n}"
+						},
+						"url": {
+							"raw": "{{api_user_base_url}}/api/users",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "01d41b6e-a06a-4090-a9d5-ea8e8b442f26",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3be686c-29a7-4460-b930-6e72e7853db9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									" ",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "{{access_token}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_user_base_url}}/api/users/3",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"3"
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				},
+				{
+					"name": "Get non existent User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bd8d808e-eaf0-48fe-9640-b1e64a64d302",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "de57072e-dc9c-45cd-bcaf-16e705a993f4",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "{{access_token}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_user_base_url}}/api/users/343434",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"343434"
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9137ed63-fccb-4b20-8f09-f02adefdd707",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c86abff8-2e92-41fb-ae3b-e33faf734633",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var response = pm.response.json().result;",
+									"var expected = {",
+									"    \"id\": response.id,",
+									"    \"name\": response.name",
+									"}",
+									"",
+									"pm.test(\"Content is an user and its roles\", function () {",
+									"    pm.expect(response).to.eql(expected);",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "{{access_token}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "http://www.smauec.net",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "host",
+								"value": "api-users.smauec.net",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{api_user_base_url}}/api/roles/1",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"1"
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				},
+				{
+					"name": "List roles",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0ee6ef7d-009e-466a-9361-84685e34a0bb",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e108a69-914b-4b31-9ef6-847cc04fa431",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var response = pm.response.json().result.slice(0,2);",
+									"",
+									"var expected = [",
+									"    {",
+									"        \"id\": response[0].id,",
+									"        \"name\": response[0].name",
+									"    },",
+									"        {",
+									"        \"id\": response[1].id,",
+									"        \"name\": response[1].name",
+									"    }",
+									"];",
+									"",
+									"",
+									"pm.test(\"Content is a list of users\", function () {",
+									"    pm.expect(response).to.eql(expected);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									" ",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "{{access_token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "{{origin}}"
+							}
+						],
+						"url": {
+							"raw": "{{api_user_base_url}}/api/roles",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				},
+				{
+					"name": "Create Role",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d490511f-0f53-49f2-980e-d11a76194206",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "79e0d072-c75b-415e-8d56-beaa342240b2",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var response = pm.response.json().result;",
+									"",
+									"var expected = {",
+									"    \"id\": response.id,",
+									"    \"name\": \"new role\"",
+									"}",
+									"",
+									"pm.test(\"Content is a rule\", function () {",
+									"    pm.expect(response).to.eql(expected);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"new role\"\n}"
+						},
+						"url": {
+							"raw": "{{api_user_base_url}}/api/roles",
+							"host": [
+								"{{api_user_base_url}}"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						},
+						"description": "signup "
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2be995c1-5c3d-4e2b-9468-4ea190c45743",
+						"type": "text/javascript",
+						"exec": [
+							"var url = pm.globals.get(\"api_user_base_url\");",
+							"var origin = pm.globals.get(\"origin\");",
+							"",
+							"pm.sendRequest({",
+							"    url: url + \"/api/auth/signin\" ,",
+							"    method: 'POST',",
+							"    header: {",
+							"        \"Content-Type\":\"application/json\",",
+							"        \"Origin\":origin",
+							"        } ,",
+							"    body:{",
+							"        mode: \"raw\",",
+							"        raw: JSON.stringify({",
+							"            username:\"admin\",",
+							"            password:\"admin\"",
+							"        })",
+							"    }},",
+							"     ",
+							"    function (err, response) {",
+							"        pm.environment.set(\"access_token\",response.json()[\"result\"][\"accessToken\"] ); ",
+							"    ",
+							"    }",
+							");",
+							"",
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0df0966e-e66b-40b8-84a2-042e28ddbfcd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "152b3d1a-63c5-4bdd-b49f-642345fb7002",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8ed7f079-93b6-4350-9bc8-de007e0ca4ef",
+				"type": "text/javascript",
+				"exec": [
+					"pm.environment.set(\"access_token\",undefined ); ",
+					"",
+					"var expected = pm.response.json();",
+					"",
+					"pm.test(\"API object\", function () {",
+					"    pm.expect(expected).to.have.property(\"status\");",
+					"    pm.expect(expected).to.have.property(\"message\");",
+					"    pm.expect(expected).to.have.property(\"result\");",
+					"});",
+					"",
+					"pm.test(\"Status code is coherent\", function () {",
+					"    pm.response.to.have.status(expected.status);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "dd67df91-a2d8-4ab2-a431-cedfea65da62",
+			"key": "base_url",
+			"value": "http://localhost:8080"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

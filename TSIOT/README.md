@@ -4,6 +4,7 @@
 ```
 sudo apt install jq
 ```
+
 ## Resolución de nombres
 
 Agregar a /etc/hosts
@@ -19,7 +20,7 @@ Crear archivos con credenciales
 ```
 cp .env.template .env
 cd secrets
-cp auth.config.js.template auth.config.test.js 
+cp auth.config.test.js.template auth.config.test.js 
 cp db.rule.config.test.js.template db.rule.config.test.js
 cp db.user.config.test.js.template db.user.config.test.js 
 cp user.admin.config.test.js.template user.admin.config.test.js 
@@ -123,4 +124,25 @@ Tiene que aparecer algo como
 ```
 {"status":200,"message":"users list","result":[{"id":1,"username":"admin","email":"admin@samauec.org","roles":[{"id":1,"name":"admin"},{"id":2,"name":"user"}]},{"id":2,"username":"user1","email":"user1@example.org","roles":[{"id":2,"name":"user"}]},{"id":3,"username":"user2","email":"user2@example.org","roles":[{"id":2,"name":"user"}]}]}
 ```
+
+## Postman y newman
+```
+sudo npm install -g newmam
+```
+
+Descargar postman de https://www.postman.com/downloads/
+
+Elegir dónde descomprimir y tomar nota de la ruta, por ejemplo ~/bin
+
+```
+tar -xzf Postman-linux-x64-x.x.x.tar.gz
+```
+
+En una terminal
+
+```
+~/bin/Postman/Postman
+
+```
+Elegir "skip and go to the app"
 
