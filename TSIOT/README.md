@@ -1,5 +1,9 @@
 # Setup para testing de API con postman y newman
 
+![](./img/system_authentication.png)
+
+![](./img/system_docker.png)
+
 ## Dependencias
 ```
 sudo apt install jq
