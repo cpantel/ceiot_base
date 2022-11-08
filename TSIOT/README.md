@@ -158,7 +158,7 @@ File -> Import -> File -> Upload Files ->
 ~/ceiot_base/TSIOT/system/api_users/test ->
 collection.json y globals.json
 
-Elegit la colección importada -> run -> Run API Users
+Elegir la colección importada -> run -> Run API Users
 
 ## Newman
 
@@ -170,6 +170,6 @@ sudo npm install -g newmam
 ### Prueba
 
 ```
-cd :~/ceiot_base/TSIOT/system/api_users
+cd ~/ceiot_base/TSIOT/system/api_users
 npm test
 ```
