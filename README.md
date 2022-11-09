@@ -32,7 +32,7 @@ Debe cumplir con estas definiciones:
 
   - CPUs    : 1
   - Memoria : 4 GB 
-  - Disco   : 40 GB (llega a ocupar poco más de 20GB)
+  - Disco   : 50 GB (llega a ocupar poco más de 20GB para IIoT, 30GB al agregar TSIoT)
   - Network : bridge
   - Distro  : Ubuntu Server 22.04.1 LTS
   - System -> processor -> enable pae/nx
