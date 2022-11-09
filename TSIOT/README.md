@@ -173,3 +173,23 @@ sudo npm install -g newmam
 cd ~/ceiot_base/TSIOT/system/api_users
 npm test
 ```
+
+# Setup para testing web con selenium
+
+## Frontend a testear
+
+```
+cd ~/ceiot_base/TSIOT/system/frontend
+npm install
+ng serve
+```
+
+Con firefox acceder a http://localhost:4200, ver que se puede hacer login, cerrar.
+
+## Selenium
+
+```
+cd ~/ceiot_base/TSIOT/system/frontend_test
+npm install
+npm test
+```
