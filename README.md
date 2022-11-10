@@ -183,6 +183,14 @@ En la interfaz web de github (tomado de https://docs.github.com/articles/generat
      git add README2.md
      git commit -m "prueba"
      git push
+     
+### Metodología propuesta de manejo de cambios
+
+Para los ejercicios hacer una copia de los archivos o carpetas a modificar, versionarlos y hacer push.
+
+Al no modificar ningún archivo de este repositorio, es muy sencillo mantener el fork en sincronía con éste.
+
+En los repositorios forkeados aparece una opción extra, "Sync Fork". Tras haber hecho la sincronización, hacer en la máquina local un pull y no deberían haber conflictos ni nada.
 
 ## Paso 3: API/SPA
 
