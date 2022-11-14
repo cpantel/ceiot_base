@@ -8,6 +8,7 @@
     "firefox-profile": "^4.2.2",
     "geckodriver": "^3.2.0",
     "mocha": "^10.1.0",
+    "ng": "^0.0.0",
     "selenium-webdriver": "^4.6.0"
   },
   "scripts": {
