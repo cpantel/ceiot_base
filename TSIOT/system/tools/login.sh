@@ -1,0 +1,1 @@
+wget -SqO ../tmp/output.json --method=POST --header='Origin: http://www.smauec.net' --header='Content-Type: application/json' --body-data='{"username":"'${1}'","password":"'${2}'"}' http://api-users.smauec.net/api/auth/signin
