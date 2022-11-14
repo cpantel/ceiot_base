@@ -165,6 +165,7 @@ Elegir la colección importada -> run -> Run API Users
 ### Instalación
 ```
 sudo npm install -g newmam
+sudo npm install -g ng
 ```
 
 ### Prueba
@@ -173,6 +174,24 @@ sudo npm install -g newmam
 cd ~/ceiot_base/TSIOT/system/api_users
 npm test
 ```
+Esperamos algo como
+
+```
+> smauec_ua_api@0.0.1 test
+> newman run test/collection.json -g test/globals.json
+...
+newman
+
+API Users
+
+❏ Not Authenticated
+↳ Create User as nobody
+  POST http://api-users.smauec.net/api/users [403 Forbidden, 440B, 184ms]
+  ✓  API object
+  ✓  Status code is coherent
+  ✓  Status code is 403
+```
+El código de test no respeta la I (Isolation), pueden luego haber errores lo que no significa que haya fallado el paso.
 
 # Setup para testing web con selenium
 
