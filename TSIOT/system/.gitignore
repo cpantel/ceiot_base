@@ -1,2 +1,4 @@
 *.swp
 .env
+tmp
+!system/tmp/.gitkeep
