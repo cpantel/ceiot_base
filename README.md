@@ -308,6 +308,12 @@ API measurement: -> lista mediciones JSON
     
 ![](./img/API_measurement.png)
 
+El panorama completo se parece a
+
+![](./img/all_console.png)
+
+
+
 ## Paso 4 (Sólo IIoT): Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
 
 En el último paso, alcanza con elegir sólo las que uno tiene.
