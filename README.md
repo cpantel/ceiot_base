@@ -96,7 +96,7 @@ En el menú de VirtualBox asociado a la instancia actual:
 
 paciencia...
 
-Que termine con un "Look at /var/log/vboxadd.... to find out what went wrong" no significa que halla fallado.
+Que termine con un "Look at /var/log/vboxadd.... to find out what went wrong" no significa que haya fallado.
 
     sudo groupadd docker
     sudo addgroup "$USER" docker
