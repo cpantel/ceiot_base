@@ -115,7 +115,21 @@ Si más adelanta falla, puede ser por falta de espacio, ver luego lo del espacio
 # Para apagar, si se está en el entorno gráfico, cerrarlo con botón derecho, "Exit"
 ```
     shutdown -h now
-    
+
+### Opcional: entorno gráfico mate, menos minimalista
+
+Si te incomoda lo parco de openbox pelado.
+
+```
+sudo apt install tasksel
+apt tasksel --list-tasks
+```
+Elegí el desktop environment de tu gusto, la cátedra ha usado mate-desktop pero no lo ha probado mucho ni medido el espacio que ocupa
+
+```
+sudo tasksel install mate-desktop
+```
+
 ### Opcional: eliminar cloud-init
 
 Si te molestan los mensajes de cloud init y querés arrancar un poquito más rápido:
