@@ -128,6 +128,7 @@ Elegí el desktop environment de tu gusto, la cátedra ha usado mate-desktop per
 
 ```
 sudo tasksel install mate-desktop
+sudo systemctl set-default graphical.target
 ```
 
 ### Opcional: eliminar cloud-init
