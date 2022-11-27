@@ -12,7 +12,7 @@
     "selenium-webdriver": "^4.6.0"
   },
   "scripts": {
-    "test": "TMPDIR=/home/iot/tmp mocha --reporter spec"
+    "test": "TMPDIR=/home/iot/ceiot_base/TSIOT/system/tmp mocha --reporter spec"
   },
   "author": "",
   "license": "ISC"
