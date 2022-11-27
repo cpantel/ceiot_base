@@ -16,44 +16,44 @@ Agregar a /etc/hosts
 127.0.0.1       api-users.smauec.net
 127.0.0.1       api-rules.smauec.net
 ```
-Todo lo que sigue se hace en la carpeta system.
+  
 
 ## Secretos
 
 Crear archivos con credenciales
-```
-cp .env.template .env
-cd secrets
-cp auth.config.test.js.template auth.config.test.js 
-cp db.rule.config.test.js.template db.rule.config.test.js
-cp db.user.config.test.js.template db.user.config.test.js 
-cp user.admin.config.test.js.template user.admin.config.test.js 
-cd ..
-```
+
+    cd ~/ceiot_base/TSIOT/system
+    cp .env.template .env
+    cd secrets
+    cp auth.config.test.js.template auth.config.test.js 
+    cp db.rule.config.test.js.template db.rule.config.test.js
+    cp db.user.config.test.js.template db.user.config.test.js 
+    cp user.admin.config.test.js.template user.admin.config.test.js 
+    cd ..
+
 ## Imágenes de docker
 
 Construir todas las imagenes 
-```
-cd ./docker/containers/postgres
-docker build -t smauec/postgres:0.0.1 .
-cd -
 
-cd ./docker/containers/proxy
-docker build -t smauec/proxy:0.0.1 .
-cd -
+    cd ./docker/containers/postgres
+    docker build -t smauec/postgres:0.0.1 .
+    cd -
 
-cd ./docker/containers/node
-docker build -t smauec/node:0.0.1 .
-cd -
+    cd ./docker/containers/proxy
+    docker build -t smauec/proxy:0.0.1 .
+    cd -
 
-cd ./api_users
-docker build -t smauec/api-users:0.0.1 .
-cd -
+    cd ./docker/containers/node
+    docker build -t smauec/node:0.0.1 .
+    cd -
 
-cd ./api_rules
-docker build -t smauec/api-rules:0.0.1 .
-cd -
-```
+    cd ./api_users
+    docker build -t smauec/api-users:0.0.1 .
+    cd -
+
+    cd ./api_rules
+    docker build -t smauec/api-rules:0.0.1 .
+    cd -
 
 ## Carga inicial de postgres
 
@@ -139,41 +139,36 @@ Descargar postman de https://www.postman.com/downloads/
 
 Elegir dónde descomprimir y tomar nota de la ruta, por ejemplo ~/bin
 
-```
-tar -xzf Postman-linux-x64-x.x.x.tar.gz
-```
+    tar -xzf /home/iot/snap/firefox/common/Downloads/postman-linux-x64.tar.gz
 
 ### Prueba
 
 En una terminal
 
-```
-~/bin/Postman/Postman
-```
+    ~/bin/Postman/Postman
 
 
 Elegir "skip and go to the app"
 
+```
 File -> Import -> File -> Upload Files ->
 ~/ceiot_base/TSIOT/system/api_users/test ->
 collection.json y globals.json
+```
 
 Elegir la colección importada -> run -> Run API Users
 
 ## Newman
 
 ### Instalación
-```
-sudo npm install -g newmam
-sudo npm install -g ng
-```
+
+    sudo npm install -g newman --registry=https://registry.npmjs.org
 
 ### Prueba
 
-```
-cd ~/ceiot_base/TSIOT/system/api_users
-npm test
-```
+    cd ~/ceiot_base/TSIOT/system/api_users
+    npm test
+
 Esperamos algo como
 
 ```
@@ -195,13 +190,12 @@ El código de test no respeta la I (Isolation), pueden luego haber errores lo qu
 
 # Setup para testing web con selenium
 
-## Frontend a testear
+## Frontend a testear (falta testear bien por problemita ng)
 
-```
-cd ~/ceiot_base/TSIOT/system/frontend
-npm install
-ng serve
-```
+    cd ~/ceiot_base/TSIOT/system/frontend
+    npm install
+    npm start
+
 
 Con firefox acceder a http://localhost:4200, ver que se puede hacer login, cerrar.
 
