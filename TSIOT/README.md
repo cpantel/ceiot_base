@@ -199,7 +199,7 @@ El código de test no respeta la I (Isolation), pueden luego haber errores lo qu
 
 Con firefox acceder a http://localhost:4200, ver que se puede hacer login, cerrar.
 
-## Selenium
+## Selenium (falta testear bien por problemita con user test mismatch)
 
 ```
 cd ~/ceiot_base/TSIOT/system/frontend_test
