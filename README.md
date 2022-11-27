@@ -328,15 +328,19 @@ En el último paso, alcanza con elegir sólo las que uno tiene.
     cd ~/esp/esp-idf
     git checkout release/v4.4
     git submodule update --init --recursive
+
 ```    
-según tengas esp32, esp32c3 o esp32s2:
+Según tengas esp32, esp32c3 o esp32s2:
 ```    
+
     ./install.sh esp32
     ./install.sh esp32c3
     ./install.sh esp32s2
+
 ```  
 pueden ir juntos en una sola línea, sin espacios, por ejemplo:
 ```
+
     ./install.sh esp32,esp32c3,esp32s2
 
 Relato informal de la experiencia de exploración:
@@ -383,21 +387,27 @@ Esperamos algo parecido a:
 
 ### Build y Flash 
 
-Es conveniente comenzar con ESP32c3. 
+Es conveniente comenzar con ESP32c3 y pinout. 
 
-Dado un microcontrolador **MICRO** entre *esp32*, *esp32c3* y *esp32s2* y un sensor **SENSOR** entre *bmp280* y *dht11*:
+Dado un microcontrolador **MICRO** entre *esp32* y *esp32c3* y un sensor **DEVICE** entre *bmp280*, *dht11* y *pinout*:
 
 Para habilitar la toolchain
-  
+
     cd ~/esp/esp-idf
     . ./export.sh
+
 ```
-# Ir a la carpeta del objetivo deseado
+Ir a la carpeta del objetivo deseado
 ```
-    cd ~/ceiot_base/${MICRO}-${SENSOR}
+
+    cd ~/ceiot_base/${MICRO}-${DEVICE}
     cp ../config/config.h.template config.h
+
 ```
-# modificar en config.h 
+modificar en config.h 
+```
+
+```
 #  dirección del servidor
 #    API_IP
 #    API_PORT
@@ -414,6 +424,7 @@ Para habilitar la toolchain
 #    SDA_GPIO
 #    SCL_GPIO
 ```
+
     idf.py set-target ${MICRO}
     ../set-wifi.sh
     idf.py build
