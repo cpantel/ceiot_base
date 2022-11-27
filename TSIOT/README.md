@@ -218,8 +218,9 @@ npm test
     sudo apt install ruby-dev ubuntu-dev-tools
     sudo gem install wpscan
 
-Obtener una API KEY en https://wpscan.com/api
+Obtener una API KEY en https://wpscan.com/api, es conveniente guardarla en un archivo, por ejemplo wpscan.key con la forma KEY=xxxxxxx
 
+    . wpscan.key
     wpscan --url $TARGET --api-token="$KEY"
     
 ## metasploit + metasploitable
@@ -245,12 +246,24 @@ Luego, para rmi (1099) igual pero con otro exploit:
 
 Más información en https://docs.rapid7.com/metasploit/msf-overview/
 
+## burpsuite
 
-    
-    
-    
+Bajar de https://portswigger.net/burp/releases el primer "Stable" habiendo elegido "Community Edition"
 
+    sh /home/iot/snap/firefox/common/Downloads/burpsuite_pro_linux_v2022_11_2.sh
+    
+Instalar en /home/iot/bin/BurpSuiteCommunity, no crear symlinks, ejecutar con:
 
+    /home/iot/bin/BurpSuiteCommunity/BurpSuiteCommunity    
+
+## zap proxy
+
+Bajar como "linux package" de https://www.zaproxy.org/download/ (el número de versión puede variar)
+
+    cd ~/bin
+    tar -xf /home/iot/snap/firefox/common/Downloads/ZAP_2.12.0_Linux.tar.gz
+    cd ZAP_2.12.0/
+    ../BurpSuiteCommunity/jre/bin/java -jar zap-2.12.0.jar
 
     
     
