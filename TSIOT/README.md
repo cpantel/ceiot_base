@@ -265,6 +265,44 @@ Bajar como "linux package" de https://www.zaproxy.org/download/ (el número de v
     cd ZAP_2.12.0/
     ../BurpSuiteCommunity/jre/bin/java -jar zap-2.12.0.jar
 
-    
-    
+## sonarqube
 
+Proyecto de referencia
+
+    cd
+    git clone https://github.com/appsecco/dvna
+
+Instalación
+    
+    docker pull sonarqube
+
+Ejecución del servidor, tomar nota del token generado
+
+    docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
+
+Interacción
+
+```
+localhost:9000, paciencia.... 
+admin admin
+Create project: manually
+Project name/key: test
+Analyze repository: locally
+Provide a token, tomar nota de lo generado (Analyze "test": sqp_9a41a579a3fdf1b80ddce02f31d5a836dbece48b)
+Run analysis on your project: Other, Linux, download and unzip, Linux 64-bit
+```
+Ejecutar el comando ejecutado ajustando lo que haga falta
+
+    cd ~/bin
+    unzip ~/Downloads/sonar-scanner-cli-4.7.0.2747-linux.zip
+    ~/bin/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
+    -Dsonar.projectKey=test \
+    -Dsonar.sources=/home/iot/dvna \
+    -Dsonar.host.url=http://localhost:9000 \
+    -Dsonar.login=sqp_9a41a579a3fdf1b80ddce02f31d5a836dbece48b
+```
+http://localhost:9000/dashboard?id=test
+```
+    
+    
+    
