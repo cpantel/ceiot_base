@@ -401,6 +401,22 @@ Ir a la carpeta del objetivo deseado
 ```
 
     cd ~/ceiot_base/${MICRO}-${DEVICE}
+    
+#### Ejemplo pinout
+
+```
+Los ejemplos provistos con sensores se conectan a la red, el de pinout no.
+Se puede en main.c cambiar asignación de pines.
+```
+
+    idf.py set-target ${MICRO}
+    idf.py build
+    idf.py flash
+    idf.py monitor
+
+
+#### Ejemplo sensores
+
     cp ../config/config.h.template config.h
 
 ```
