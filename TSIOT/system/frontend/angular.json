@@ -120,5 +120,8 @@
         }
       }
     }},
-  "defaultProject": "smauec-v10"
+  "defaultProject": "smauec-v10",
+  "cli": {
+    "analytics": false
+  }
 }

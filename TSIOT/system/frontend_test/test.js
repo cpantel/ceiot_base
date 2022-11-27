@@ -18,7 +18,7 @@ describe('web application test with selenium webdriver', function() {
     await driver.findElement(By.id('username')).then(element=> element.sendKeys('admin'));	   
     await driver.findElement(By.id('pwd')).then(element=> element.sendKeys('admin'));	   
     await driver.findElement(By.id('loginBtn')).then(element=> element.click());	   
-    let element = await driver.wait(until.elementLocated(By.xpath('/html/body/app-root/app-list-user/div/table/tbody/tr[3]/td[3]')),TIMEOUT);
+    let element = await driver.wait(until.elementLocated(By.xpath('/html/body/app-root/app-list-user/div/table/tbody/tr[1]/td[3]')),TIMEOUT);
     let value   = await element.getText();
     expect(value).to.equal('admin@samauec.org');	   
   });
