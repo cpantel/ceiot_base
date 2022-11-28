@@ -201,11 +201,10 @@ Con firefox acceder a http://localhost:4200, ver que se puede hacer login, cerra
 
 ## Selenium
 
-```
-cd ~/ceiot_base/TSIOT/system/frontend_test
-npm install
-npm test
-```
+    cd ~/ceiot_base/TSIOT/system/frontend_test
+    npm install
+    npm test
+
 
 # Setup para testing de seguridad
 
@@ -246,7 +245,14 @@ Luego, para rmi (1099) igual pero con otro exploit:
 
 Más información en https://docs.rapid7.com/metasploit/msf-overview/
 
-## burpsuite
+## Proxies interceptores
+
+Proyecto de referencia
+
+    docker run --name dvna -p 9090:9090 -d appsecco/dvna:sqlite
+
+
+### burpsuite
 
 Bajar de https://portswigger.net/burp/releases el primer "Stable" habiendo elegido "Community Edition"
 
@@ -256,7 +262,7 @@ Instalar en /home/iot/bin/BurpSuiteCommunity, no crear symlinks, ejecutar con:
 
     /home/iot/bin/BurpSuiteCommunity/BurpSuiteCommunity    
 
-## zap proxy
+### zap proxy
 
 Bajar como "linux package" de https://www.zaproxy.org/download/ (el número de versión puede variar)
 
@@ -264,6 +270,24 @@ Bajar como "linux package" de https://www.zaproxy.org/download/ (el número de v
     tar -xf /home/iot/snap/firefox/common/Downloads/ZAP_2.12.0_Linux.tar.gz
     cd ZAP_2.12.0/
     ../BurpSuiteCommunity/jre/bin/java -jar zap-2.12.0.jar
+
+
+#### Ejecución automática
+
+```
+Standard mode
+URL to attack: metasploitable IP / dvna (localhost:9090)
+Attack (paciencia, horas)
+Report: Generate report
+```
+
+
+#### Ejecución manual
+    firefox -p
+    new profile: zap
+    connection settings
+    manual proxy configuration
+    localhost:8080
 
 ## sonarqube
 
@@ -276,7 +300,7 @@ Instalación
     
     docker pull sonarqube
 
-Ejecución del servidor, tomar nota del token generado
+Ejecución del servidor
 
     docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
 
