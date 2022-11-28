@@ -2,6 +2,7 @@
 
 ## Ajustes
 
+### Nombres de servidores
 
 Agregar a /etc/hosts
 
@@ -10,13 +11,13 @@ Agregar a /etc/hosts
 127.1.0.2 evil
 ```
 
-
-Para usar urlencode:
-
+### Para usar urlencode
 
 ```
 sudo apt install gridsite-clients
 ```
+
+### Firefox obsoleto
 
 Al menos para csrf hace falta un firefox viejo, por ejemplo:
 
@@ -25,7 +26,7 @@ Al menos para csrf hace falta un firefox viejo, por ejemplo:
     ./firefox/firefox -no-remote -ProfileManager
 
 
-Ajustar actualizaciones
+#### Ajustar actualizaciones
 
 ```
 Preferences
