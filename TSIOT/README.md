@@ -283,11 +283,38 @@ Report: Generate report
 
 
 #### Ejecución manual
-    firefox -p
-    new profile: zap
-    connection settings
-    manual proxy configuration
-    localhost:8080
+   
+```
+tools
+  options
+    network
+      server certificates
+        save owasp_zap_root_ca.cer
+```
+
+    firefox -no-remote -ProfileManager
+
+La primera vez:
+
+```   
+new profile: zap
+settings
+  search: proxy
+    network settings
+      manual proxy configuration
+        localhost:8080
+        no proxy for: 
+  search: certificates
+    view certificates
+      authorities
+        import: owasp_zap_root_ca.cer
+        trust this CA to identify websites
+```
+
+```
+navegar a localhost:9090
+determinar contexto
+```
 
 ## sonarqube
 
