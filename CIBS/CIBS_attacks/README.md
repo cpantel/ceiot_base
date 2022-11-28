@@ -1,5 +1,8 @@
 # Ejemplo CSRF
 
+## Ajustes
+
+
 Agregar a /etc/hosts
 
 ```
@@ -7,23 +10,6 @@ Agregar a /etc/hosts
 127.1.0.2 evil
 ```
 
-## Para cada ejemplo
-
-En una terminal:
-
-```
-cd good
-npm install
-node index.js
-```
-
-En otra terminal:
-
-```
-cd evil
-npm install
-node index.js
-```
 
 Para usar urlencode:
 
@@ -48,3 +34,20 @@ Update
 Never check for updates
 ```
 
+## Para cada ejemplo
+
+En una terminal:
+
+```
+cd good
+npm install
+node index.js
+```
+
+En otra terminal:
+
+```
+cd evil
+npm install
+node index.js
+```
