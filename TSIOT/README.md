@@ -321,7 +321,7 @@ determinar contexto
 Proyecto de referencia
 
     cd
-    git clone https://github.com/appsecco/dvna
+    git clone https://github.com/appsecco/dvna dvna_sources
 
 Instalación
     
@@ -348,7 +348,7 @@ Ejecutar el comando ejecutado ajustando lo que haga falta
     unzip ~/Downloads/sonar-scanner-cli-4.7.0.2747-linux.zip
     ~/bin/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
     -Dsonar.projectKey=test \
-    -Dsonar.sources=/home/iot/dvna \
+    -Dsonar.sources=/home/iot/dvna_sources \
     -Dsonar.host.url=http://localhost:9000 \
     -Dsonar.login=sqp_9a41a579a3fdf1b80ddce02f31d5a836dbece48b
 ```
