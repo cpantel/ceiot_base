@@ -205,6 +205,11 @@ Con firefox acceder a http://localhost:4200, ver que se puede hacer login, cerra
     npm install
     npm test
 
+## shunit
+
+    sudo apt install shunit2
+    cd ~/ceiot_base/TSIOT/shunit
+    ./test.sh
 
 # Setup para testing de seguridad
 
