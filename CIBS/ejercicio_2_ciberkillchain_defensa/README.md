@@ -1,13 +1,16 @@
 # Ejercicio CiberKillChain - Defensa
 
-Haga una copia de este documto
+Hacer una copia de este documento para utilizar com plantilla para el ejercicio
 
 ## Alumno
 
-XXXXXXX
+(completar)
 
 ## Enunciado
 
-Desarrolla la defensa en función del ataque planteado en orden inverso
+Desarrollar la defensa en función del ataque planteado en orden inverso.
+
+Para cada etapa elegir una sola defensa, la más importante, considerar recursos limitados.
 
 ## Resolución
+
