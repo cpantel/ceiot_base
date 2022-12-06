@@ -563,3 +563,11 @@ Build y flash del proyecto
 Este entorno no me funcionó y además rompió el de ESP-IDF.
 
 [Ejemplo de ESP8266 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11.html)
+
+# TODO
+
+* [ ] Incorporar imágenes faltantes de conexionado.
+* [ ] Mover todos los dispositivos a una carpeta
+* [ ] Incorporar nuevos sensores
+  - [ ] DHT22
+  - [ ] BME280
