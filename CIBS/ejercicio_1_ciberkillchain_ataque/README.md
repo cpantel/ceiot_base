@@ -12,6 +12,8 @@ Armar una cyberkillchain usando técnicas de la matriz de Att&ck para un escenar
 
 ### Instrucciones
 
+Debe haber un objetivo para el ataque.
+
 El escenario debe ser con el sistema ya funcionando en el futuro.
 
 Debe ser en primera persona, es el punto de vista del atacante.
@@ -23,6 +25,8 @@ Para cada etapa, si hay varias medidas posibles, ordenar dejando para lo último
 
 ### Ejemplo adaptado a un juego de guerra inventado:
 
+Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a posteriormente tomarlo.
+
 * Reconnaissance
   - Imagen satelital identifica una pista de aterrizaje.
   - Espías dicen que por el puerto entra el combustible.
@@ -30,7 +34,7 @@ Para cada etapa, si hay varias medidas posibles, ordenar dejando para lo último
 
 * Weaponization
   - Puedo preparar un bombardeo.
-  - Puedo preparar un equipo de comandos de sabotage.
+  - Decido preparar un equipo de comandos de sabotage.
   
 * Delivery
   - Envío al equipo de sabotage a la playa cercana en submarino.
@@ -43,11 +47,11 @@ Para cada etapa, si hay varias medidas posibles, ordenar dejando para lo último
 
 * Command & Control
   - Podría utilizar palomas mensajeras.
-  - Podría utilizar Super High TeraHertz Radio que el adversario no puede detectar, eso haré.
+  - Decido utilizar Super High TeraHertz Radio que el adversario no puede detectar.
   
 * Actions on Objectives
   - El equipo de comandos provoca daños menores en las cañerías.
-  - El equipo de comandos coloca minas en el puerto.
+  - El equipo de comandos coloca minas en el puerto dejando un camino para el desembarco.
   
 
 ## Datos trabajo práctico
