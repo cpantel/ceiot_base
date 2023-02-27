@@ -159,6 +159,12 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
 ```
     sudo dpkg -i code_1.?.????????_amd64.deb
 
+## Opcional: Alias útiles para git
+
+     git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
+     git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+     git config --global alias.lolg "log --graph --decorate --pretty=format:'%Cgreen %ci %Cblue %h %Cred %d %Creset %s'"
+
 
 ## Paso 2: Fork del proyecto
 
@@ -232,7 +238,7 @@ Esperamos algo similar a:
 
     docker pull mongo:4.0.4
 
-### Pruebas
+### Puesta en marcha
 
 En una terminal mongodb:
 
@@ -271,7 +277,12 @@ Esperamos:
     Starting compilation in watch mode...
     Found 0 errors. Watching for file changes.
 ```    
-Cliente, en otra terminal:
+
+### Pruebas
+
+#### Cliente
+
+En otra terminal:
 
     cd ~/ceiot_base/tools
     ./get_color_device.sh 00
@@ -284,25 +295,25 @@ Esperamos (observar que la invocación no es exactamente la misma y los valores 
 
 En un navegador, probar las siguientes URLs:
 
-SPA: -> lista de dispositivos con un botón de refrescar
+##### SPA: -> lista de dispositivos con un botón de refrescar
 
     http://localhost:8080/index.html 
 
 ![](./img/SPA_devices.png)
     
-WEB: -> lista de dispositivos web
+##### WEB: -> lista de dispositivos web
 
     http://localhost:8080/web/device
     
 ![](./img/WEB_device.png)
     
-API devices: -> lista dispositivos JSON
+##### API devices: -> lista dispositivos JSON
 
     http://localhost:8080/device
     
 ![](./img/API_device.png)
 
-API measurement: -> lista mediciones JSON
+##### API measurement: -> lista mediciones JSON
 
     http://localhost:8080/measurement
     
@@ -517,15 +528,11 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
 
 ### Microcontrolador ESP8266 con sensor DHT11 ⏳
 
-## Anexo 2: (opcional) Alias útiles para git
+## Anexo 2: (opcional) Otras toolchains para dispositivos
 
-     git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
-     git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
-     git config --global alias.lolg "log --graph --decorate --pretty=format:'%Cgreen %ci %Cblue %h %Cred %d %Creset %s'"
+### Entorno ArduinoIDE
 
-## Anexo 3: (opcional) Entorno ArduinoIDE
-
-### Microcontrolador ESP8266 con sensor DHT11
+#### Microcontrolador ESP8266 con sensor DHT11
 
 Instalación y configuración Arduino IDE
 
@@ -558,7 +565,7 @@ Build y flash del proyecto
 [Más detalles en el Plan B](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11planB.html)
 
 
-### Entorno ESP8266_RTOS_SDK para ESP8266
+#### Entorno ESP8266_RTOS_SDK para ESP8266
 
 Este entorno no me funcionó y además rompió el de ESP-IDF.
 
