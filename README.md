@@ -71,7 +71,6 @@ Si en lugar de Ubuntu 22.04.2 se está instalando Ubuntu 22.04.x, puede haber le
 # done
 # Upgrade to Ubuntu Pro -> skip for now -> continue
 # SSH setup -> install openssh server -> done
-# third party drivers -> paciencia  -> continue
 # featured server snaps -> docker -> done
 # Installing system -> paciencia...
 # Install complete! -> paciencia, no apretar "Cancel update and reboot"
