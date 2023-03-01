@@ -30,27 +30,25 @@ En una terminal
 
 ```
 # Bajar el instalador de https://ubuntu.com/download/server
-# Download Ubuntu Server 22.04.1 LTS
+# Download Ubuntu Server 22.04.2 LTS (1.8 GB)
 ```
 
 ### La VM concreta
 
 Debe cumplir con estas definiciones:
 
-  - CPUs    : 1
-  - Memoria : 4 GB
-  - Disco   : 50 GB (llega a ocupar poco más de 20GB para IIoT, 30GB al agregar TSIoT)
+  - CPUs    : 1-2
+  - Memoria : 2-4 GB
+  - Disco   : 20-50 GB (llega a ocupar poco más de 20GB para IIoT, 30GB al agregar TSIoT)
   - Network : bridge
-  - Distro  : Ubuntu Server 22.04.1 LTS
+  - Distro  : Ubuntu Server 22.04.2 LTS
   - System -> processor -> enable pae/nx
-
-Finalizado el proceso de instalación, quizás con 2GB o incluso 1.5 GB de RAM alcance sin firefox.
 
 ### Instalación
 
 Para la creación y parametrización de la VM sirve como guía [https://www.virtualbox.org/manual/ch02.html](https://docs.oracle.com/cd/E26217_01/E26796/html/qs-create-vm.html)
 
-Si en lugar de Ubuntu 22.04.1 se está instalando Ubuntu 22.04.x, puede haber leves diferencias.
+Si en lugar de Ubuntu 22.04.2 se está instalando Ubuntu 22.04.x, puede haber leves diferencias.
 ```
 # Crear una nueva VM.
 # Parametrizar según los valores previos
@@ -71,12 +69,13 @@ Si en lugar de Ubuntu 22.04.1 se está instalando Ubuntu 22.04.x, puede haber le
 # choose a password: el que te guste
 # confirm your password: 
 # done
-# ssh setup -> install openssh server -> done
+# Upgrade to Ubuntu Pro -> skip for now -> continue
+# SSH setup -> install openssh server -> done
 # third party drivers -> paciencia  -> continue
 # featured server snaps -> docker -> done
 # Installing system -> paciencia...
 # Install complete! -> paciencia, no apretar "Cancel update and reboot"
-# downloading and installing security updates -> paciencia
+# Downloading and installing security updates -> paciencia
 # Install complete -> reboot now
 # Please remove the intallation medium, then press ENTER -> enter
 ```  
