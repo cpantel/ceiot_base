@@ -37,9 +37,9 @@ En una terminal
 
 Debe cumplir con estas definiciones:
 
-  - CPUs    : 1-2
+  - CPUs    : 1-max
   - Memoria : 2-4 GB
-  - Disco   : 20-50 GB (llega a ocupar poco más de 20GB para IIoT, 30GB al agregar TSIoT)
+  - Disco   : 25-50 GB (llega a ocupar poco más de 20GB para IIoT, 30GB al agregar TSIoT)
   - Network : bridge
   - Distro  : Ubuntu Server 22.04.2 LTS
   - System -> processor -> enable pae/nx
@@ -54,7 +54,7 @@ Si en lugar de Ubuntu 22.04.2 se está instalando Ubuntu 22.04.x, puede haber le
 # Parametrizar según los valores previos
 # Al arrancar, va a preguntar de dónde, darle la ruta a la ISO descargada.
 # language -> english -> done
-# installer update available -> update to the new installer
+# installer update available -> update to the new installer (este paso puede no estar)
 # keyboard configuration -> el que te guste -> done
 # choose type of install -> ubuntu server -> done
 # network connections -> (debe conectarse a algo) -> done
@@ -76,7 +76,7 @@ Si en lugar de Ubuntu 22.04.2 se está instalando Ubuntu 22.04.x, puede haber le
 # Install complete! -> paciencia, no apretar "Cancel update and reboot"
 # Downloading and installing security updates -> paciencia
 # Install complete -> reboot now
-# Please remove the intallation medium, then press ENTER -> enter
+# Please remove the installation medium, then press ENTER -> enter
 ```  
     
 ### Ajustes
@@ -84,6 +84,9 @@ Si en lugar de Ubuntu 22.04.2 se está instalando Ubuntu 22.04.x, puede haber le
 Es conveniente esperar unos minutos a que terminen de aparecer los mensajes restantes antes de seguir y hacer login:
 
     sudo apt install xorg openbox firefox gcc make bzip2 
+
+
+paciencia...
 
 En el menú de VirtualBox asociado a la instancia actual:
 ```
