@@ -412,7 +412,7 @@ Para habilitar la toolchain
 Ir a la carpeta del objetivo deseado
 ```
 
-    cd ~/ceiot_base/${MICRO}-${DEVICE}
+    cd ~/ceiot_base/perception/${MICRO}-${DEVICE}
     
 #### Ejemplo pinout
 
