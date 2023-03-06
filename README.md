@@ -108,14 +108,13 @@ Que termine con un "Look at /var/log/vboxadd.... to find out what went wrong" no
 
 De este momento en más, cada vez que inicie, tras el login, para obtener el entorno gráfico:
 
-    startx
-
-Si más adelanta falla, puede ser por falta de espacio, ver luego lo del espacio libre
 ```
+startx
 # Botón derecho sobre el fondo abre el menú
 # Para apagar, si se está en el entorno gráfico, cerrarlo con botón derecho, "Exit"
+shutdown -h now
 ```
-    shutdown -h now
+
 
 ### Opcional: entorno gráfico mate, menos minimalista
 
