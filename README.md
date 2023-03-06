@@ -110,7 +110,7 @@ De este momento en más, cada vez que inicie, tras el login, para obtener el ent
 
 ```
 startx
-# Botón derecho sobre el fondo abre el menú
+# Botón derecho sobre el fondo abre el menú para abrir aplicaciones, por ejemplo una terminal
 # Para apagar, si se está en el entorno gráfico, cerrarlo con botón derecho, "Exit"
 shutdown -h now
 ```
