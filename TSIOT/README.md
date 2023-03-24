@@ -4,11 +4,6 @@
 
 ![](./img/system_docker.png)
 
-## Dependencias
-```
-sudo apt install jq
-```
-
 ## Resolución de nombres
 
 Agregar a /etc/hosts
@@ -207,7 +202,6 @@ Con firefox acceder a http://localhost:4200, ver que se puede hacer login, cerra
 
 ## shunit
 
-    sudo apt install shunit2
     cd ~/ceiot_base/TSIOT/shunit
     ./test.sh
 
