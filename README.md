@@ -323,6 +323,26 @@ El panorama completo se parece a
 
 ![](./img/all_console.png)
 
+### testing
+
+#### Dependencias
+```
+sudo apt install jq shunit2
+```
+
+En alguna terminal libre
+
+    cd ~/ceiot_base/tools
+    ./test.sh
+
+Esperamos
+
+```
+    testPostDevice
+    Ran 1 test.
+    OK
+```
+
 
 
 ## Paso 4 (Sólo IIoT): Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
