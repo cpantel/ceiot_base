@@ -1,1 +1,1 @@
-tsc --project ts --outDir js --pretty true --watch
+tsc --project ts --outDir static/js --pretty true --watch
