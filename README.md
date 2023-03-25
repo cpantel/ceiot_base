@@ -166,7 +166,7 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
      git config --global alias.lolg "log --graph --decorate --pretty=format:'%Cgreen %ci %Cblue %h %Cred %d %Creset %s'"
 
 
-## Paso 2: Fork del proyecto
+## Paso 2: Versionamiento del proyecto
 
 ### Generación SSH keys
 
