@@ -193,6 +193,16 @@ En la interfaz web de github (tomado de https://docs.github.com/articles/generat
 # Es el botón de arriba a la derecha, "Fork", dejar mismo nombre y opciones, "Create Fork".
 ```
      git clone git@github.com:xxxx/ceiot_base.git
+     
+Si aparece algo como
+```
+The authenticity of host 'github.com (20.201.28.151)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+
+darle "yes", está ok
 
 ### Prueba
 
