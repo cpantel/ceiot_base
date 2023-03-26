@@ -63,7 +63,7 @@ app.get('/web/device', function (req, res) {
 			       "</td><td>"+ device.name+"</td><td>"+ device.key+"</td></tr>";
 	   }
 	);
-	res.send("<html>"+
+	res.send("<!DOCTYPE html><html>"+
 		     "<head><title>Sensores</title></head>" +
 		     "<body>" +
 		        "<table border=\"1\">" +
@@ -97,7 +97,7 @@ function render(template, vars) {
 }
 
 app.get('/web/device/:id', function (req,res) {
-    var template = "<html>"+
+    var template = "<!DOCTYPE html><html>"+
                      "<head><title>Sensor {{name}}</title></head>" +
                      "<body>" +
 		        "<h1>{{ name }}</h1>"+
@@ -109,7 +109,7 @@ app.get('/web/device/:id', function (req,res) {
 
     var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.params.id+"'");
     console.log(device);
-    res.send(render(template,{id:device[0].device_id, key: device[0].key, name:device[0].name}));
+    handleDeviceResponse(device, res, template, req.params.id);
 });	
 
 
@@ -123,7 +123,7 @@ app.get('/term/device/:id', function (req, res) {
 	           "       key  " + blue  + "  {{ key }}" + reset +"\n";
     var device = db.public.many("SELECT * FROM devices WHERE device_id = '"+req.params.id+"'");
     console.log(device);
-    res.send(render(template,{id:device[0].device_id, key: device[0].key, name:device[0].name}));
+    handleDeviceResponse(device, res, template , req.params.id);   
 });
 
 app.get('/measurement', async (req,res) => {
@@ -197,3 +197,19 @@ startDatabase().then(async() => {
         console.log(`Listening at ${PORT}`);
     });
 });
+
+/**
+ * Una forma de evaluar si esta el device solicitado o no e informarlo
+ * @param {*} device respuesta de la busqueda
+ * @param {*} res response
+ * @param {*} template 
+ * @param {*} id id solicitado por el usuario
+ */
+function handleDeviceResponse(device, res, template, id) {
+    if (device.length == 1) {
+        res.send(render(template, { id: device[0].device_id, key: device[0].key, name: device[0].name }));
+    } else {
+        res.send(render(template, { id: id, key: "", name: "NO DEVICE FOUND" }));
+    }
+}
+
