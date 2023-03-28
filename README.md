@@ -342,7 +342,7 @@ sudo apt install jq shunit2
 
 En alguna terminal libre
 
-    cd ~/ceiot_base/tools
+    cd ~/ceiot_base/tools/test
     ./test.sh
 
 Esperamos
