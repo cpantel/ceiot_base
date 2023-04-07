@@ -165,6 +165,17 @@ Por algún motivo que ignoro, la instalación no usa todo el espacio disponible,
      git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
      git config --global alias.lolg "log --graph --decorate --pretty=format:'%Cgreen %ci %Cblue %h %Cred %d %Creset %s'"
 
+## Opcional: Conexión a WiFi
+
+    sudo apt install network-manager
+
+```
+Conectar adaptador WiFi-USB y asociar en el menú de VBox -> Devices
+```
+
+   nmcli d wifi connect my_wifi password <password> 
+   
+https://ubuntu.com/core/docs/networkmanager/configure-wifi-connections
 
 ## Paso 2: Versionamiento del proyecto
 
