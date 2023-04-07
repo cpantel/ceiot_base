@@ -564,20 +564,31 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
 
 #### Microcontrolador ESP8266 con sensor DHT11
 
-Instalación y configuración Arduino IDE
+Instalación y configuración Arduino IDE, elegir una versión
 
 ```
-# Descargar de https://www.arduino.cc/en/software
+# Descargar la versión 1.x.x (legacy) de https://www.arduino.cc/en/software
 ```
     cd ~/esp
     tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
     ./arduino-x.x.xx/arduino
 ```
+
+
+```
+# Descargar la versión 2.x.x de https://www.arduino.cc/en/software
+```
+    sudo apt install zip
+    cd ~/esp
+    unzip ../Downloads/arduino-ide_2.x.x_Linux_64bit.zip
+    cd arduino-ide_2.x.x_Linux_64bit
+    ./arduino-ide
+```
 # File -> preferences -> Additional Boars Manager URLs
-# http://arduino.esp8266.com/stable/package_esp8266com_index.json
+# https://arduino.esp8266.com/stable/package_esp8266com_index.json
 # Tools -> Board -> Board Manager -> search esp8266 -> esp8266 by ESP8266 Community -> install
-# Tools -> Board ->ESP8266 Generic Module
-# Tools -> Manage Libraries -> search dht sensor -> DHT sensor library for ESPx -> install
+# Tools -> Board -> ESP8266 Generic Module
+# Tools -> Manage Libraries -> search dht sensor -> DHT sensor library for ESPx by beegee_tokyo -> install
 ```
 
 Build y flash del proyecto
