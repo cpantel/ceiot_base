@@ -569,9 +569,9 @@ Instalación y configuración Arduino IDE
 ```
 # Descargar de https://www.arduino.cc/en/software
 ```
-cd ~/esp
-tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
-./arduino-x.x.xx/arduino
+    cd ~/esp
+    tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
+    ./arduino-x.x.xx/arduino
 ```
 # File -> preferences -> Additional Boars Manager URLs
 # http://arduino.esp8266.com/stable/package_esp8266com_index.json
