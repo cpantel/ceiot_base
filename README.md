@@ -583,8 +583,6 @@ Instalación y configuración Arduino IDE, elegir una versión
     cd ~/esp
     tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
     ./arduino-x.x.xx/arduino
-```
-
 
 ```
 # Descargar la versión 2.x.x de https://www.arduino.cc/en/software
