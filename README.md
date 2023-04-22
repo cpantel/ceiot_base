@@ -78,13 +78,21 @@ Si en lugar de Ubuntu 22.04.2 se está instalando Ubuntu 22.04.x, puede haber le
 # Install complete -> reboot now
 # Please remove the installation medium, then press ENTER -> enter
 ```  
-    
-### Ajustes
 
-Es conveniente esperar unos minutos a que terminen de aparecer los mensajes restantes antes de seguir y hacer login:
+Es conveniente esperar unos minutos a que terminen de aparecer los mensajes restantes antes de seguir y hacer login.
+
+### Espacio y Ajustes
+
+
+La instalación no usa todo el espacio disponible, aplicar:
+
+    sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+    sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+
+
+Algunas dependencias:
 
     sudo apt install xorg openbox firefox gcc make bzip2 
-
 
 paciencia...
 
@@ -144,12 +152,7 @@ Si te molestan los mensajes de cloud init y querés arrancar un poquito más rá
     sudo rm -rf /etc/cloud /var/lib/cloud
 
 
-### Opcional: Espacio libre
 
-Por algún motivo que ignoro, la instalación no usa todo el espacio disponible, se corrige en cualquier momento con:
-
-    sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
-    sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 
 ### Opcional: Instalación VSCode
 
