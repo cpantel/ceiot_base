@@ -5,8 +5,6 @@ const PgMem = require("pg-mem");
 
 const db = PgMem.newDb();
 
-const fs = require('fs');
-
 // Measurements database setup and access
 
 let database = null;
@@ -74,28 +72,6 @@ app.get('/web/device', function (req, res) {
 		"</html>");
 });
 
-/*
- * Canibalized from
- *    https://www.npmjs.com/package/sprightly
- *    https://github.com/obadakhalili/Sprightly/blob/main/index.js
- */
-function render(template, vars) {
-   const regexp = /<<(.*?)>>|\{\{(.*?)\}\}/;
-   return template.split('\n').map( function(line) {
-       for (let match = line.match(regexp), result; match;) {
-	   if (match[0][0] === '<') {
-		   console.log("match <");
-	   } else {
-	      result = vars[match[2].trim()];
-
-	   }
-           line = line.replace(match[0], result ? result : '');
-	   match = line.match(regexp);
-       }	       
-       return line;
-   }).join('\n');	
-}
-
 app.get('/web/device/:id', function (req,res) {
     var template = "<html>"+
                      "<head><title>Sensor {{name}}</title></head>" +
@@ -134,50 +110,33 @@ app.get('/device', function(req,res) {
     res.send( db.public.many("SELECT * FROM devices") );
 });
 
-app.get('/admin/:command', function(req,res) {
-    var msg="done";
-    switch (req.params.command) {
-       case "clear":
-         if (req.query.db == "mongo") {
-           msg = "clearing mongo";
-           /* UNIMPLEMENTED */
-	 } else if (req.query.db == "psql") {
-           msg = "clearing psql";
-           /* UNIMPLEMENTED */
-	 } else {
-           msg = "unknown db " + req.query.db;
-         }
-       break;
-       case "save":
-         if (req.query.db == "mongo") {
-           msg = "saving mongo to " + req.query.file;
-           /* UNIMPLEMENTED */
-	 } else if (req.query.db == "psql") {
-           msg = "saving psql " + req.query.file;
-           /* UNIMPLEMENTED */
-	 } else {
-           msg = "unknown db " + req.query.db;
-         }
-       break;
-       case "show":
-         msg = fs.readFileSync("../fixtures/" + req.query.file);
-       break;
- 
-       break;
-       default:
-         msg="Command: " + req.params.command + " not implemented"
-    }
-    var template = "<html>"+
-                     "<head><title>Admin</title></head>" +
-                     "<body>" +
-                        "{{ msg }}"+
-                     "</body>" +
-                "</html>";
-    res.send(render(template,{msg:msg}));
-});	
+/*
+ * Canibalized from
+ *    https://www.npmjs.com/package/sprightly
+ *    https://github.com/obadakhalili/Sprightly/blob/main/index.js
+ */
+function render(template, vars) {
+   const regexp = /<<(.*?)>>|\{\{(.*?)\}\}/;
+   return template.split('\n').map( function(line) {
+       for (let match = line.match(regexp), result; match;) {
+	   if (match[0][0] === '<') {
+		   console.log("match <");
+	   } else {
+	      result = vars[match[2].trim()];
 
+	   }
+           line = line.replace(match[0], result ? result : '');
+	   match = line.match(regexp);
+       }	       
+       return line;
+   }).join('\n');	
+}
 
 startDatabase().then(async() => {
+
+    const addAdminEndpoint = require("./admin.js");
+    addAdminEndpoint(app, render);
+
     await insertMeasurement({id:'00', t:'18', h:'78'});
     await insertMeasurement({id:'00', t:'19', h:'77'});
     await insertMeasurement({id:'00', t:'17', h:'77'});
