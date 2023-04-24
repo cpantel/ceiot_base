@@ -1,14 +1,22 @@
 #ifndef _config_
 
-#define API_IP        "192.168.0.100"
-#define API_PORT      "8080"
+// Server URL
+
+// #define API_IP        "192.168.0.100"
+// #define API_PORT      "8080"
 #define API_IP_PORT   API_IP ":" API_PORT
+
+// WiFi Access
 
 #define WIFI_SSID     ""
 #define WIFI_PASSWORD ""
 
+// Device Identity
+
+
 #define DEVICE_ID     ""
 
+// Sensor configuration
 
 // esp32-dht11 
 // #define ONE_WIRE_GPIO 17
