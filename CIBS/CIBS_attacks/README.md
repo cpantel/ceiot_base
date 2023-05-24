@@ -25,6 +25,7 @@ Al menos para csrf hace falta un firefox viejo, por ejemplo:
     tar -xf firefox-52.0.1.tar.bz2
     ./firefox/firefox -no-remote -ProfileManager
 
+Crear un perfil
 
 #### Ajustar actualizaciones
 
@@ -40,7 +41,7 @@ Never check for updates
 En una terminal:
 
 ```
-cd good
+cd csrf/good
 npm install
 node index.js
 ```
@@ -48,7 +49,7 @@ node index.js
 En otra terminal:
 
 ```
-cd evil
+cd csrf/evil
 npm install
 node index.js
 ```
