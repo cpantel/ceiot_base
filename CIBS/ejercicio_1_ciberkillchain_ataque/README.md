@@ -12,15 +12,15 @@ Armar una cyberkillchain usando técnicas de la matriz de Att&ck para un escenar
 
 ### Instrucciones
 
-Debe haber un objetivo para el ataque, algunas ideas inspirardoras:
+Debe haber un objetivo para el ataque, algunas ideas inspiradoras:
 
 * Obtener información con algún tipo de valor.
 * Alguna variante extorsiva de ransomware.
 * Usar de plataforma para atacar a otros, ya sea por ancho de banda, anonimización o como desplazamiento lateral hacia un objetivo más interesante.
 * Usar la plataforma para extraerle valor como criptominado o almacenamiento de información ilegal.
-* Sabotear la plataforma a favor de la competencia.
+* Sabotear la plataforma a favor de la competencia, tipo stuxnet.
 
-El escenario debe ser con el sistema ya funcionando en el futuro.
+El escenario debe asumir el sistema ya funcionando en el futuro.
 
 Debe ser en primera persona, es el punto de vista del atacante.
 
