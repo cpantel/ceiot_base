@@ -130,7 +130,7 @@ Si te incomoda lo parco de openbox pelado.
 
 ```
 sudo apt install tasksel
-apt tasksel --list-tasks
+tasksel --list-tasks
 ```
 Elegí el desktop environment de tu gusto, la cátedra ha usado mate-desktop pero no lo ha probado mucho ni medido el espacio que ocupa
 
