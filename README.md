@@ -506,7 +506,7 @@ modificar en config.h
 
 Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **flash**:
 
-#### Receta 1 (comprobada por docente)
+#### Receta 1 (comprobada por docente) 
 
     idf.py flash
 
@@ -532,6 +532,11 @@ Dependiendo del modelo, puede hacer falta oprimir los botones para el paso **fla
 # apretar y soltar **BOOT**
 # soltar **RESET**
 ```
+    idf.py flash
+    
+#### Receta 3 (comprobada por docente)
+
+Colocar un capacitor de 1 uF entre enable y tierra
 
     idf.py flash
 
