@@ -384,17 +384,17 @@ En el último paso, alcanza con elegir sólo las que uno tiene.
     git checkout release/v4.4
     git submodule update --init --recursive
 
-```    
+
 Según tengas esp32, esp32c3 o esp32s2:
-```    
+
 
     ./install.sh esp32
     ./install.sh esp32c3
     ./install.sh esp32s2
 
-```  
+
 pueden ir juntos en una sola línea, sin espacios, por ejemplo:
-```
+
 
     ./install.sh esp32,esp32c3,esp32s2
 
