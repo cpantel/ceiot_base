@@ -29,9 +29,11 @@ async function getDatabase() {
 } 
 
 async function insertMeasurement(message) {
+    const timestamp = new Date(); // Add timestamp
+    const measures = { id: message.id, t: message.t, h: message.h, timestamp: timestamp}; // Se agregan los valores tal cual del mensaje + el timestamp
     // Function that inserts a Measurement into a specified collection
-    const { insertedId } = await database.collection(collectionName).insertOne(message);
-    console.log(`Medida ${insertedId} insertada`)
+    const { insertedId } = await database.collection(collectionName).insertOne(measures); // cambiamos message por measures para evaluar timestamp
+    console.log(`Medida perteneciente a device ${message.id} insertada`)
     return insertedId;
 }
 
@@ -63,9 +65,10 @@ app.post('/device', function (req, res) {
     // When a POST request is made to the '/device' endpoint, the function is executed. 
     // The function logs the information contained in the POST request into the console
     console.log('POST request a /device')
+    const timestamp = new Date();
     console.log("device id    : " + req.body.id + " name        : " + req.body.n + " key         : " + req.body.k);
     // Insert a new row into a table named devices
-    db.public.none("INSERT INTO devices VALUES ('" + req.body.id + "', '" + req.body.n + "', '" + req.body.k + "')");
+    db.public.none("INSERT INTO devices VALUES ('" + req.body.id + "', '" + req.body.n + "', '" + req.body.k + "','" + timestamp + "')");
     // Send a response back to the client
     res.send("received new device");
 });
@@ -77,18 +80,18 @@ app.get('/web/device', function (req, res) {
     var devices = db.public.many("SELECT * FROM devices").map(function (device) {
         console.log(device);
         return '<tr><td><a href=/web/device/' + device.device_id + '>' + device.device_id + "</a>" +
-            "</td><td>" + device.name + "</td><td>" + device.key + "</td></tr>";
+            "</td><td>" + device.name + "</td><td>" + device.key + "</td><td>" + device.timestamp + "</td></tr>"; // Se agrega el timestamp en la tabla html
     }
     );
     res.send("<html>" +
         "<head><title>Sensores</title></head>" +
         "<body>" +
         "<table border=\"1\">" +
-        "<tr><th>id</th><th>name</th><th>key</th></tr>" +
+        "<tr><th>id</th><th>name</th><th>key</th><th>timestamp</th></tr>" +
         devices +
         "</table>" +
         "</body>" +
-        "</html>");
+        "</html>"); // Se agrega el timestamp al encabezado de la tabla html
 });
 
 app.get('/web/device/:id', function (req, res) {
@@ -99,14 +102,15 @@ app.get('/web/device/:id', function (req, res) {
         "<body>" +
         "<h1>{{ name }}</h1>" +
         "id  : {{ id }}<br/>" +
-        "Key : {{ key }}" +
+        "Key : {{ key }}<br/>" +
+        "timestamp : {{ timestamp }}" + //agregamos timestamp
         "</body>" +
         "</html>";
 
 
     var device = db.public.many("SELECT * FROM devices WHERE device_id = '" + req.params.id + "'");
     console.log(device);
-    res.send(render(template, { id: device[0].device_id, key: device[0].key, name: device[0].name }));
+    res.send(render(template, { id: device[0].device_id, key: device[0].key, name: device[0].name, timestamp: device[0].timestamp }));
 });
 
 
@@ -116,13 +120,15 @@ app.get('/term/device/:id', function (req, res) {
     var red = "\33[31m";
     var green = "\33[32m";
     var blue = "\33[33m";
+    var black = "\33[34m"; // se agrega el color negro para timestamp
     var reset = "\33[0m";
     var template = "Device name " + red + "   {{name}}" + reset + "\n" +
         "       id   " + green + "       {{ id }} " + reset + "\n" +
-        "       key  " + blue + "  {{ key }}" + reset + "\n";
+        "       key  " + blue + "  {{ key }}" + reset + "\n" +
+        "       timestamp   " + black + "   {{ timestamp }}" + reset + "\n"; //agregamos timestamp al traer un id en especifico y se agrega el color negro
     var device = db.public.many("SELECT * FROM devices WHERE device_id = '" + req.params.id + "'");
     console.log(device);
-    res.send(render(template, { id: device[0].device_id, key: device[0].key, name: device[0].name }));
+    res.send(render(template, { id: device[0].device_id, key: device[0].key, name: device[0].name, timestamp: device[0].timestamp })); //agregamos timestamp al traer un id en especifico
 });
 
 app.get('/measurement', async (req, res) => {
@@ -144,9 +150,9 @@ startDatabase().then(async () => {
     await insertMeasurement({ id: '01', t: '17', h: '77' });
     console.log("Coleccion 'measurements' en MongoDB creada");
 
-    db.public.none("CREATE TABLE devices (device_id VARCHAR, name VARCHAR, key VARCHAR)");
-    db.public.none("INSERT INTO devices VALUES ('00', 'Fake Device 00', '123456')");
-    db.public.none("INSERT INTO devices VALUES ('01', 'Fake Device 01', '234567')");
+    db.public.none("CREATE TABLE devices (device_id VARCHAR, name VARCHAR, key VARCHAR, timestamp TIMESTAMP)");
+    db.public.none("INSERT INTO devices VALUES ('00', 'Fake Device 00', '123456', CURRENT_TIMESTAMP)");
+    db.public.none("INSERT INTO devices VALUES ('01', 'Fake Device 01', '234567', CURRENT_TIMESTAMP)");
     db.public.none("CREATE TABLE users (user_id VARCHAR, name VARCHAR, key VARCHAR)");
     db.public.none("INSERT INTO users VALUES ('1','Ana','admin123')");
     db.public.none("INSERT INTO users VALUES ('2','Beto','user123')");
