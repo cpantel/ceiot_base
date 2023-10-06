@@ -610,13 +610,13 @@ Instalación y configuración Arduino IDE, elegir una versión
 
 Build y flash del proyecto
 
-    cd ~/ceiot_base
+    cd ~/ceiot_base/perception
     cp config/config.h.template esp8266-dht11-arduino/config.h
 ```
 # Conectar device
 # Abrir arduinoIDE
 # Tools -> Port -> /dev/ttyUSB0
-# File -> Open -> ~/ceiot_base/esp8266-dht11-arduino/esp8266-dht11-arduino.ino
+# File -> Open -> ~/ceiot_base/perception/esp8266-dht11-arduino/esp8266-dht11-arduino.ino
 # Sketch -> Upload
 ```
 
