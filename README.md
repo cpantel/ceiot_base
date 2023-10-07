@@ -243,6 +243,8 @@ En los repositorios forkeados aparece una opción extra, "Sync Fork". Tras haber
 
 ### Instalación node + typescript
 
+Para próxima vez adaptar instrucciones de https://github.com/nodesource/distributions#ubuntu-versions
+
     curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
     sudo apt install nodejs
     node --version
