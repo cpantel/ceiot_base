@@ -448,37 +448,31 @@ Es conveniente comenzar con ESP32c3 y pinout.
 
 Dado un microcontrolador **MICRO** entre *esp32* y *esp32c3* y un sensor **DEVICE** entre *bmp280*, *dht11* y *pinout*:
 
-Para habilitar la toolchain
+#### Habilitar la toolchain
 
-    cd ~/esp/esp-idf
-    . ./export.sh
+    . ~/esp/esp-idf/export.sh
 
-```
+#### Común a ejemplos
+
 Ir a la carpeta del objetivo deseado
-```
 
     cd ~/ceiot_base/perception/${MICRO}-${DEVICE}
-    
-#### Ejemplo pinout
 
-```
-Los ejemplos provistos con sensores se conectan a la red, el de pinout no.
-Se puede en main.c cambiar asignación de pines.
-```
-
-    idf.py set-target ${MICRO}
-    idf.py build
-    idf.py flash
-    idf.py monitor
-
-
-#### Ejemplo sensores
+Obtener la configuradión
 
     cp ../config/config.h.template config.h
+    
+Los ejemplos provistos con sensores se conectan a la red, el de pinout no.
 
-```
-modificar en config.h 
-```
+    idf.py set-target ${MICRO}
+
+#### Particular ejemplo pinout
+
+En main.c se puede cambiar asignación de pines.
+
+#### Particular ejemplo sensores
+
+Modificar en config.h 
 
 ```
 #  dirección del servidor
@@ -498,8 +492,12 @@ modificar en config.h
 #    SCL_GPIO
 ```
 
-    idf.py set-target ${MICRO}
+Transferir los datos de conexión de config.h a sdkconfig
+
     ../set-wifi.sh
+
+#### Resto del procesos
+
     idf.py build
     idf.py flash
     idf.py monitor
