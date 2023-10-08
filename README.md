@@ -589,7 +589,7 @@ Instalación y configuración Arduino IDE, elegir una versión
 # Descargar la versión 1.x.x (legacy) de https://www.arduino.cc/en/software
 ```
     cd ~/esp
-    tar -xf ../Downloads/arduino-x.x.xx-linux64.tar.xz
+    tar -xf ./snap/firefox/common/Downloads/arduino-1.x.xx-linux64.tar.xz
     ./arduino-x.x.xx/arduino
 
 ```
@@ -612,12 +612,16 @@ Build y flash del proyecto
 
     cd ~/ceiot_base/perception
     cp config/config.h.template esp8266-dht11-arduino/config.h
+
+Habilitar líneas comentadas apropiadas en config.h
+
 ```
 # Conectar device
 # Abrir arduinoIDE
 # Tools -> Port -> /dev/ttyUSB0
 # File -> Open -> ~/ceiot_base/perception/esp8266-dht11-arduino/esp8266-dht11-arduino.ino
 # Sketch -> Upload
+# Serial Monitor -> 115200
 ```
 
 [Más detalles en el Plan B](https://seguridad-agile.blogspot.com/2022/03/ejemplo-de-esp8266-con-lectura-de-dht11planB.html)
