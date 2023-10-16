@@ -33,18 +33,20 @@ Para cada etapa, si hay varias medidas posibles, ordenar dejando para lo último
 
 ### Ejemplo adaptado a un juego de guerra inventado
 
-Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a posteriormente tomarlo.
+* Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a posteriormente tomarlo.
 
 * Reconnaissance
   - Imagen satelital identifica una pista de aterrizaje.
   - Espías dicen que por el puerto entra el combustible.
   - Espías locales dicen que la playa cercana no tiene buena vigilancia.
+  - Espías locales dicen que el bosque cercano no tiene buena vigilancia.
 
-* Weaponization
+* Weaponization (con alternativas de ejemplo)
   - **Decido** preparar un equipo de comandos de sabotage.
   - **Decido** preparar un equipo de comandos de sabotage con gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mejor)
-  - **Decido** preparar un equipo de comandos de sabotage con disfraces de cirqueros, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mucho mejor)
-  - **Decido** preparar un equipo de comandos de sabotage con disfraces de cirqueros, equipo de comuicaciones Super High TeraHertz Radio que el adversario no puede detectar, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (muchísimo mejor)
+  - **Decido** preparar un equipo de comandos de sabotage, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mucho mejor)
+  - **Decido** preparar un equipo de comandos de sabotage con equipo de comuicaciones Super High TeraHertz Radio que el adversario no puede detectar, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (muchísimo mejor)
+  - **Puedo** *preparar un equipo de comandos de sabotage paracaidistas*
   - **Puedo** *preparar un bombardeo al puerto.*
   - **Puedo** *preparar la invasión directamente.*
   
@@ -56,8 +58,9 @@ Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a pos
   - El equipo logra desembarcar sin incidentes en la playa.
   - El equipo logra desembarcar sin incidentes en la playa por la falta de vigilancia.
   
-* Installation  
-  - El equipo se hace pasar por una compañia de circo como camuflaje.
+* Installation (con alternativas)
+  - El equipo se hace pasar por una compañia de circo como camuflaje. (si es porque el equipo encuentra una compañía de circo no hace falta que esté en Weaponization)
+  - El equipo se esconde en un bosque cercano
 
 * Command & Control
   - **Decido** utilizar Super High TeraHertz Radio que el adversario no puede detectar.
