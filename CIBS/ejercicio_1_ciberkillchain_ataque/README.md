@@ -4,8 +4,8 @@ Crear un nuevo documento en esta carpeta con las siguientes secciones:
 
  * Alumno
  * Muy breve descripción del trabajo práctico con link si hay
+ * Objetivo
  * Resolución
-
 
 
 ## Enunciado
@@ -41,8 +41,9 @@ Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a pos
   - Espías locales dicen que la playa cercana no tiene buena vigilancia.
 
 * Weaponization
-  - **Puedo** preparar un bombardeo.
   - **Decido** preparar un equipo de comandos de sabotage.
+  - **Puedo** *preparar un bombardeo.*
+  - **Puedo** *preparar la invasión directamente.*
   
 * Delivery
   - Envío al equipo de sabotage a la playa cercana en submarino.
