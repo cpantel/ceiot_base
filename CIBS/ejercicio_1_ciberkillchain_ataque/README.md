@@ -42,21 +42,26 @@ Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a pos
 
 * Weaponization
   - **Decido** preparar un equipo de comandos de sabotage.
-  - **Puedo** *preparar un bombardeo.*
+  - **Decido** preparar un equipo de comandos de sabotage con gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mejor)
+  - **Decido** preparar un equipo de comandos de sabotage con disfraces de cirqueros, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mucho mejor)
+  - **Decido** preparar un equipo de comandos de sabotage con disfraces de cirqueros, equipo de comuicaciones Super High TeraHertz Radio que el adversario no puede detectar, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (muchísimo mejor)
+  - **Puedo** *preparar un bombardeo al puerto.*
   - **Puedo** *preparar la invasión directamente.*
   
 * Delivery
   - Envío al equipo de sabotage a la playa cercana en submarino.
+  - Envío al equipo de sabotage a la playa cercana en submarino y gomones de desembarco (mejor)
   
 * Exploit
   - El equipo logra desembarcar sin incidentes en la playa.
+  - El equipo logra desembarcar sin incidentes en la playa por la falta de vigilancia.
   
 * Installation  
   - El equipo se hace pasar por una compañia de circo como camuflaje.
 
 * Command & Control
-  - **Puedo** utilizar palomas mensajeras.
   - **Decido** utilizar Super High TeraHertz Radio que el adversario no puede detectar.
+  - **Puedo** *utilizar palomas mensajeras.*
   
 * Actions on Objectives
   - El equipo de comandos provoca daños menores en las cañerías.
