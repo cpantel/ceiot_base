@@ -162,13 +162,13 @@ Si te molestan los mensajes de cloud init y querés arrancar un poquito más rá
 ```
     sudo dpkg -i code_1.?.????????_amd64.deb
 
-## Opcional: Alias útiles para git
+### Opcional: Alias útiles para git
 
      git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
      git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
      git config --global alias.lolg "log --graph --decorate --pretty=format:'%Cgreen %ci %Cblue %h %Cred %d %Creset %s'"
 
-## Opcional: Conexión a WiFi
+### Opcional: Conexión a WiFi
 
     sudo apt install network-manager
 
@@ -179,6 +179,16 @@ Conectar adaptador WiFi-USB y asociar en el menú de VBox -> Devices
    nmcli d wifi connect my_wifi password <password> 
    
 https://ubuntu.com/core/docs/networkmanager/configure-wifi-connections
+
+### Opcional: enviar texto a la terminal sin haber habilitado el portapapeles
+
+En el anfitrión:
+
+    sudo apt install xdotools
+
+De ahí en más:
+
+    xdotool search "IIoT" windowactivate --sync type 'ese texto largo y complicado'
 
 ## Paso 2: Versionamiento del proyecto
 
