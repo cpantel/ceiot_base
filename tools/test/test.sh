@@ -1,3 +1,4 @@
+#!/bin/bash
 function testPostDevice() {
    rm -f devices.json	
    ../post_device.sh id_03 name_03 key_03  > /dev/null 2>&1
