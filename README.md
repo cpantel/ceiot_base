@@ -30,7 +30,7 @@ En una terminal
 
 ```
 # Bajar el instalador de https://ubuntu.com/download/server
-# Download Ubuntu Server 22.04.2 LTS (1.8 GB)
+# Download Ubuntu Server 24.04  (2.6 GB)
 ```
 
 ### La VM concreta
@@ -39,16 +39,16 @@ Debe cumplir con estas definiciones:
 
   - CPUs    : 1-max
   - Memoria : 2-4 GB
-  - Disco   : 25-50 GB (llega a ocupar poco más de 20GB para IIoT, 30GB al agregar TSIoT)
+  - Disco   : 60 GB (Se usa menos)
   - Network : bridge
-  - Distro  : Ubuntu Server 22.04.2 LTS
+  - Distro  : Ubuntu Server 24.04
   - System -> processor -> enable pae/nx
 
 ### Instalación
 
 Para la creación y parametrización de la VM sirve como guía [https://www.virtualbox.org/manual/ch02.html](https://docs.oracle.com/cd/E26217_01/E26796/html/qs-create-vm.html)
 
-Si en lugar de Ubuntu 22.04.2 se está instalando Ubuntu 22.04.x, puede haber leves diferencias.
+Si en lugar de Ubuntu 24.04 se está instalando Ubuntu 24.04.x, puede haber leves diferencias.
 ```
 # Crear una nueva VM.
 # Parametrizar según los valores previos
@@ -63,9 +63,9 @@ Si en lugar de Ubuntu 22.04.2 se está instalando Ubuntu 22.04.x, puede haber le
 # guided storage configuration -> dejar como está (use entire disk, set up this disk as an LVM group) -> done
 # storage configuration -> done
 # confirm destructive action -> continue
-# your name: iot
-# your server's name: iot
-# pick a username : iot
+# your name: iiot
+# your server's name: iiot
+# pick a username : iiot
 # choose a password: el que te guste
 # confirm your password: 
 # done
@@ -73,9 +73,9 @@ Si en lugar de Ubuntu 22.04.2 se está instalando Ubuntu 22.04.x, puede haber le
 # SSH setup -> install openssh server -> done
 # featured server snaps -> docker -> done
 # Installing system -> paciencia...
-# Install complete! -> paciencia, no apretar "Cancel update and reboot"
+# Installation complete! -> paciencia, no apretar "Cancel update and reboot"
 # Downloading and installing security updates -> paciencia
-# Install complete -> reboot now
+# Install comp	lete -> reboot now
 # Please remove the installation medium, then press ENTER -> enter
 ```  
 
@@ -108,8 +108,8 @@ paciencia...
 Que termine con un "Look at /var/log/vboxadd.... to find out what went wrong" no significa que haya fallado.
 
     sudo groupadd docker
-    sudo addgroup "$USER" docker
-    sudo addgroup "$USER" dialout
+    sudo usermod -a -G docker "$USER"
+    sudo usermod -a -G dialout "$USER"
     sudo reboot
 
 ### Login, entorno gráfico y shutdown
@@ -261,7 +261,7 @@ Para próxima vez adaptar instrucciones de https://github.com/nodesource/distrib
 
 Esperamos algo similar a:
 ```
-    v18.4.0
+    v18.20.3
 ```
     sudo npm install typescript -g
 
@@ -385,7 +385,7 @@ Esperamos
 
 En el último paso, alcanza con elegir sólo las que uno tiene.
 
-    sudo apt install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 
+    sudo apt install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 virtualenv
     mkdir ~/esp
     cd ~/esp
     git clone https://github.com/UncleRus/esp-idf-lib.git
