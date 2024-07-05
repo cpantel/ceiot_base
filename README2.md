@@ -651,3 +651,4 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
   - [ ] DHT22
   - [ ] BME280
 tocado por MDIAZ
+prueba 21:31, tocado por MDIAZ
