@@ -177,6 +177,7 @@ Conectar adaptador WiFi-USB y asociar en el menú de VBox -> Devices
 ```
 
    nmcli d wifi connect my_wifi password <password> 
+
    
 https://ubuntu.com/core/docs/networkmanager/configure-wifi-connections
 
