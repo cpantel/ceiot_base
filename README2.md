@@ -177,6 +177,7 @@ Conectar adaptador WiFi-USB y asociar en el menú de VBox -> Devices
 ```
 
    nmcli d wifi connect my_wifi password <password> 
+
    
 https://ubuntu.com/core/docs/networkmanager/configure-wifi-connections
 
@@ -650,5 +651,3 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
 * [ ] Incorporar nuevos sensores
   - [ ] DHT22
   - [ ] BME280
-tocado por MDIAZ
-prueba 21:31, tocado por MDIAZ
