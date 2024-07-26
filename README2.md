@@ -653,3 +653,4 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
   - [ ] BME280
 tocado por XXXX
 tocado por MDIAZ 19.39
+tocado por MDIAZ el 25072024 22:22
