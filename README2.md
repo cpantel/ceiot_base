@@ -654,3 +654,4 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
 tocado por XXXX
 tocado por MDIAZ 19.39
 tocado por MDIAZ el 25072024 22:22
+tocado por mdiaz 29072024 15:40
