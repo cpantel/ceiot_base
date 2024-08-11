@@ -1,5 +1,5 @@
 interface GETResponseListener {
-  handleGETResponse(status:number, response:string): void;
+  handleGETResponse(status:number, response:string, url:string): void;
 }
 
 class API{
@@ -9,9 +9,9 @@ class API{
     xhr.onreadystatechange = function() {
       if(xhr.readyState == 4) {
         if(xhr.status == 200) {
-          listener.handleGETResponse(xhr.status,xhr.responseText);
+          listener.handleGETResponse(xhr.status,xhr.responseText, url);
         } else {
-          listener.handleGETResponse(xhr.status,null);
+          listener.handleGETResponse(xhr.status,null,url);
         }
       }
     };
