@@ -9,9 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.1",
-    "express": "^4.18.2",
-    "mongodb": "^4.12.1",
-    "pg-mem": "^2.6.4"
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "mongodb": "^6.14.0",
+    "pg-mem": "^3.0.5"
   }
 }
