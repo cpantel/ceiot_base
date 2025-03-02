@@ -30,7 +30,8 @@ En una terminal
 
 ```
 # Bajar el instalador de https://ubuntu.com/download/server
-# Download Ubuntu Server 24.04  (2.6 GB)
+# Download Ubuntu Server 24.04.1 LTS  (2.6 GB)
+# Tiempo estimado: con una conexión hogareña normal pocos minutos
 ```
 
 ### La VM concreta
@@ -41,14 +42,17 @@ Debe cumplir con estas definiciones:
   - Memoria : 2-4 GB
   - Disco   : 60 GB (Se usa menos)
   - Network : bridge
-  - Distro  : Ubuntu Server 24.04
+  - Distro  : Ubuntu Server 24.04.1 LTS
   - System -> processor -> enable pae/nx
+
+Si ofrece "unatteded installation", no aceptar.
+
 
 ### Instalación
 
 Para la creación y parametrización de la VM sirve como guía [https://www.virtualbox.org/manual/ch02.html](https://docs.oracle.com/cd/E26217_01/E26796/html/qs-create-vm.html)
 
-Si en lugar de Ubuntu 24.04 se está instalando Ubuntu 24.04.x, puede haber leves diferencias.
+Si en lugar de la versión sugerida se está instalando alguna anterior, puede haber leves diferencias.
 ```
 # Crear una nueva VM.
 # Parametrizar según los valores previos
@@ -63,9 +67,9 @@ Si en lugar de Ubuntu 24.04 se está instalando Ubuntu 24.04.x, puede haber leve
 # guided storage configuration -> dejar como está (use entire disk, set up this disk as an LVM group) -> done
 # storage configuration -> done
 # confirm destructive action -> continue
-# your name: iiot
-# your server's name: iiot
-# pick a username : iiot
+# your name: iiot11
+# your server's name: iiot11
+# pick a username : iiot11
 # choose a password: el que te guste
 # confirm your password: 
 # done
@@ -75,7 +79,7 @@ Si en lugar de Ubuntu 24.04 se está instalando Ubuntu 24.04.x, puede haber leve
 # Installing system -> paciencia...
 # Installation complete! -> paciencia, no apretar "Cancel update and reboot"
 # Downloading and installing security updates -> paciencia
-# Install comp	lete -> reboot now
+# Install complete -> reboot now
 # Please remove the installation medium, then press ENTER -> enter
 ```  
 
@@ -256,13 +260,13 @@ En los repositorios forkeados aparece una opción extra, "Sync Fork". Tras haber
 
 Para próxima vez adaptar instrucciones de https://github.com/nodesource/distributions#ubuntu-versions
 
-    curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    curl -sL https://deb.nodesource.com/setup_23.x | sudo -E bash -
     sudo apt install nodejs
     node --version
 
 Esperamos algo similar a:
 ```
-    v18.20.3
+    v23.7.0
 ```
     sudo npm install typescript -g
 
