@@ -54,11 +54,10 @@ Las alternativas están en este ejemplo a modo ilustrativo, no deben haber alter
   - Espías locales dicen que la playa cercana no tiene buena vigilancia.
   - Espías locales dicen que el bosque cercano no tiene buena vigilancia.
 
-* Weaponization (con alternativas de ejemplo)
+* Weaponization (con alternativas de ejemplo sobre la opción elegida)
   - **Decido** preparar un equipo de comandos de sabotage.
   - **Decido** preparar un equipo de comandos de sabotage con gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mejor)
-  - **Decido** preparar un equipo de comandos de sabotage, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mucho mejor)
-  - **Decido** preparar un equipo de comandos de sabotage con equipo de comuicaciones Super High TeraHertz Radio que el adversario no puede detectar, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (muchísimo mejor)
+  - **Decido** preparar un equipo de comandos de sabotage con equipo de comuicaciones Super High TeraHertz Radio que el adversario no puede detectar, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mucho mejor)
   - **Puedo** *preparar un equipo de comandos de sabotage paracaidistas*
   - **Puedo** *preparar un bombardeo al puerto.*
   - **Puedo** *preparar la invasión directamente.*
