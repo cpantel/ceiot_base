@@ -4,3 +4,5 @@
 sdkconfig
 node_modules
 build
+.vscode/
+*.old
