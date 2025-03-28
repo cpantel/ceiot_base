@@ -386,7 +386,7 @@ Esperamos
 
 
 
-## Paso 4 (Sólo IIoT): Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3
+## Paso 4 (Sólo IIoT): Entorno ESP-IDF para ESP32/ESP32s2/ESP32c3 (toolchain)
 
 En el último paso, alcanza con elegir sólo las que uno tiene.
 
