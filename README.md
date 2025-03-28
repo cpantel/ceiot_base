@@ -176,12 +176,12 @@ Si te molestan los mensajes de cloud init y querés arrancar un poquito más rá
 
     sudo apt install network-manager
 
-```
 Conectar adaptador WiFi-USB y asociar en el menú de VBox -> Devices
+
 ```
-
-   nmcli d wifi connect my_wifi password <password> 
-
+nmcli connection modify "my_wifi" ipv4.addresses 192.168.0.100/24
+nmcli --ask device wifi connect "my_wifi" password 
+```
    
 https://ubuntu.com/core/docs/networkmanager/configure-wifi-connections
 
