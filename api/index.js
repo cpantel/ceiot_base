@@ -31,6 +31,43 @@ async function getMeasurements() {
     return await database.collection(collectionName).find({}).toArray();	
 }
 
+function validateDeviceInput(id, n, k) {
+        
+    // Validate empty message    
+    if (!id || !n || !k || id.trim() === '' || n.trim() === '' || k.trim() === '') {
+        return "Invalid input: id, name, and key are required and cannot be empty.";        
+    }
+
+    // Validate id is a number between 1 and 20
+    const idNumber = Number(id);
+    if (isNaN(idNumber) || idNumber < 1 || idNumber > 20) {
+        return "Invalid input: id must be a number between 1 and 20.";
+    }
+
+    // Validate key is a number of 6 digits
+    const keyNumber = Number(k);
+    if (isNaN(keyNumber) || idNumber < 1 || idNumber > 20) {
+        return "Invalid input: id must be a number between 1 and 20.";
+    }
+    return null;
+}
+
+function validateMeasurementInput(id, t, h) {
+        
+    // Validate empty message    
+    if (!id || !t || !h || id.trim() === '' || t.trim() === '' || h.trim() === '') {
+        return "Invalid input: id, temperature, and humidity are required and cannot be empty.";        
+    }
+
+    // Validate id is a number between 1 and 10
+    const idNumber = Number(id);
+    if (isNaN(idNumber) || idNumber < 1 || idNumber > 20) {
+        return "Invalid input: id must be a number between 1 and 20.";
+    }
+
+    return null;
+}
+
 // API Server
 
 const app = express();
@@ -42,14 +79,38 @@ app.use(express.static('spa/static'));
 const PORT = 8080;
 
 app.post('/measurement', function (req, res) {
--       console.log("device id    : " + req.body.id + " key         : " + req.body.key + " temperature : " + req.body.t + " humidity    : " + req.body.h);	
+    console.log("device id    : " + req.body.id + " temperature : " + req.body.t + " humidity    : " + req.body.h);
+
+    ////////////////////////
+    const { id, t, h} = req.body;
+    const err = validateMeasurementInput(id,t,h);
+
+    if(err) {
+        console.log(err);
+        return res.status(400).send(err);
+    }
+     //TODO Add tests
+    /////////////////////////
+
     const {insertedId} = insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h});
 	res.send("received measurement into " +  insertedId);
 });
 
-app.post('/device', function (req, res) {
-	console.log("device id    : " + req.body.id + " name        : " + req.body.n + " key         : " + req.body.k );
+app.post('/device', function (req, res) {	
+    
+    console.log("device id    : " + req.body.id + " name        : " + req.body.n + " key         : " + req.body.k );
+    //TODO Validate message?
+    const { id, n, k } = req.body;
+    const err = validateDeviceInput(id,n,k);
+    
+    if(err) {
+        console.log(err);
+        return res.status(400).send(err);
+    }
+    //TODO Add tests
+    /////////////////////////
 
+    //console.log("device id    : " + req.body.id + " name        : " + req.body.n + " key         : " + req.body.k );
     db.public.none("INSERT INTO devices VALUES ('"+req.body.id+ "', '"+req.body.n+"', '"+req.body.k+"')");
 	res.send("received new device");
 });
