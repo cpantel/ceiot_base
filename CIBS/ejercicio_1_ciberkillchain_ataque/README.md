@@ -19,13 +19,17 @@ Armar una cyberkillchain usando técnicas de la matriz de Att&ck para un escenar
 
 ## Alguna indicaciones útiles
 
-Debe haber un objetivo para el ataque, algunas ideas inspiradoras:
+Debe haber un objetivo para el ataque, algunas ideas de base inspiradoras:
 
  * Obtener información con algún tipo de valor.
  * Alguna variante extorsiva de ransomware.
  * Usar de plataforma para atacar a otros, ya sea por ancho de banda, anonimización o como desplazamiento lateral hacia un objetivo más interesante.
  * Usar la plataforma para extraerle valor como criptominado o almacenamiento de información ilegal.
  * Sabotear la plataforma a favor de la competencia, tipo stuxnet.
+
+Aunque no está escrito en las ideas, siempre debe haber un objetivo concreto de valor.
+
+Cada paso debe ser breve y si se agrega alguna explicación contextual debe estar claramente separada.
 
 El escenario debe asumir el sistema ya funcionando en el futuro.
 
@@ -44,7 +48,7 @@ PURO ATAQUE, nada de andar pensando cómo corregir nada.
 
 ### Ejemplo adaptado a un juego de guerra inventado
 
-Las alternativas están en este ejemplo a modo ilustrativo, no deben haber alternativas en la entrega.
+Los múltiples **Decido** que puedan haber en este ejemplo corresponden a mostrar grados de detalle, a modo ilustrativo, debe quedar a los un **Decido** por etapa.
 
 * Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a posteriormente tomarlo.
 
@@ -54,7 +58,7 @@ Las alternativas están en este ejemplo a modo ilustrativo, no deben haber alter
   - Espías locales dicen que la playa cercana no tiene buena vigilancia.
   - Espías locales dicen que el bosque cercano no tiene buena vigilancia.
 
-* Weaponization (con alternativas de ejemplo sobre la opción elegida)
+* Weaponization (con alternativas de ejemplo sobre la opción elegida, queda una sola, se están mostrando grados de detalle. Debe quedar un solo **Decido**).
   - **Decido** preparar un equipo de comandos de sabotage.
   - **Decido** preparar un equipo de comandos de sabotage con gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mejor)
   - **Decido** preparar un equipo de comandos de sabotage con equipo de comuicaciones Super High TeraHertz Radio que el adversario no puede detectar, gomones de desembarco y un submarino para desembarcar en la playa cercana que no tiene buena vigilancia. (mucho mejor)
@@ -62,6 +66,8 @@ Las alternativas están en este ejemplo a modo ilustrativo, no deben haber alter
   - **Puedo** *preparar un bombardeo al puerto.*
   - **Puedo** *preparar la invasión directamente.*
   
+  Información adicional: existen diversos tipos de gomones según el material, el tamaño y el tipo y cantidad de motores.
+
 * Delivery
   - Envío al equipo de sabotage a la playa cercana en submarino.
   - Envío al equipo de sabotage a la playa cercana en submarino y gomones de desembarco (mejor)
