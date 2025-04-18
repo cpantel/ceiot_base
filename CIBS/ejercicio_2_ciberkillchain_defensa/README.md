@@ -13,3 +13,9 @@ Desarrollar la defensa en función del ataque planteado en orden inverso, mencio
 
 ## Resolución
 
+* Actions on Objectives
+
+
+* Command & Control
+
+...
