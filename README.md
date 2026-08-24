@@ -30,7 +30,7 @@ En una terminal
 
 ```
 # Bajar el instalador de https://ubuntu.com/download/server
-# Download Ubuntu Server 24.04.1 LTS  (2.6 GB)
+# Download Ubuntu Server 26.04 LTS  (2.7 GB)
 # Tiempo estimado: con una conexión hogareña normal pocos minutos
 ```
 
@@ -67,15 +67,15 @@ Si en lugar de la versión sugerida se está instalando alguna anterior, puede h
 # guided storage configuration -> dejar como está (use entire disk, set up this disk as an LVM group) -> done
 # storage configuration -> done
 # confirm destructive action -> continue
-# your name: iiot11
-# your server's name: iiot11
-# pick a username : iiot11
+# your name: iiot12
+# your server's name: iiot12
+# pick a username : iiot12
 # choose a password: el que te guste
 # confirm your password: 
 # done
 # Upgrade to Ubuntu Pro -> skip for now -> continue
-# SSH setup -> install openssh server -> done
-# featured server snaps -> docker -> done
+# SSH setup -> install openssh server -> [X] -> done
+# featured server snaps -> done
 # Installing system -> paciencia...
 # Installation complete! -> paciencia, no apretar "Cancel update and reboot"
 # Downloading and installing security updates -> paciencia
@@ -260,13 +260,16 @@ En los repositorios forkeados aparece una opción extra, "Sync Fork". Tras haber
 
 Para próxima vez adaptar instrucciones de https://github.com/nodesource/distributions#ubuntu-versions
 
-    curl -sL https://deb.nodesource.com/setup_23.x | sudo -E bash -
+https://nodesource.com/products/distributions genera algo parecido a:
+
+
+    curl -sL https://deb.nodesource.com/setup_24.x | sudo -E bash -
     sudo apt install nodejs
     node --version
 
 Esperamos algo similar a:
 ```
-    v23.7.0
+    v24.19.0
 ```
     sudo npm install typescript -g
 
@@ -274,17 +277,54 @@ Esperamos algo similar a:
 
     cd ~/ceiot_base/api
     npm install; # --save express body-parser mongodb pg-mem
+
+### Instalación docker
+
+    sudo apt update
+    sudo apt install ca-certificates
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    # Add the repository to Apt sources:
+    sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+    Types: deb
+    URIs: https://download.docker.com/linux/ubuntu
+    Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+    Components: stable
+    Architectures: $(dpkg --print-architecture)
+    Signed-By: /etc/apt/keyrings/docker.asc
+    EOF
+
+    sudo apt update
+
+    sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+    # Comprobar que esté ejecutándose
+
+    sudo systemctl status docker
+
+    # Comprobar que esté todo ok:
+
+    docker run hello-world
+
+   
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository 
     
 ### Imagen docker de mongo    
 
-    docker pull mongo:4.0.4
+    docker pull mongo:7
+
+¿Por qué 7.x en lugar de 8.x?
+
+https://jira.mongodb.org/browse/SERVER-121912
 
 ### Puesta en marcha
 
 En una terminal mongodb:
 
     cd ~/ceiot_base
-    docker run  -p 27017:27017 mongo:4.0.4
+    docker run  -p 27017:27017 mongo:7
 ```
 # con ^C se puede cerrar al terminar
 ```
