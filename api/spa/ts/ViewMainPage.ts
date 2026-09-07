@@ -1,7 +1,10 @@
-class ViewMainPage {
+import type { DeviceInt } from "./DeviceInt.js";
+import type { Main } from "./Main.js";
+
+export class ViewMainPage {
     showDevices(list:DeviceInt[],element:Main):void {
 
-      let e:HTMLElement = document.getElementById("devicesList");
+      let e:HTMLElement = document.getElementById("devicesList")!;
       e.innerHTML="";
       for (let device of list) {
           let image = "temp.png";

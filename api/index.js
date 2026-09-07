@@ -13,7 +13,7 @@ const collectionName = "measurements";
 
 async function startDatabase() {
     const uri = "mongodb://localhost:27017/?maxPoolSize=20&w=majority";	
-    const connection = await MongoClient.connect(uri, {useNewUrlParser: true});
+    const connection = await MongoClient.connect(uri);
     database = connection.db();
 }
 

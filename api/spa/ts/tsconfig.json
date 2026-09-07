@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "sourceMap": false,
-        "outDir": "../js/"
+        "target": "es2020",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "sourceMap": false
     }
- }
+}

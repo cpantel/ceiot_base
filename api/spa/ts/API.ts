@@ -1,8 +1,8 @@
-interface GETResponseListener {
-  handleGETResponse(status:number, response:string): void;
+export interface GETResponseListener {
+  handleGETResponse(status:number, response:string|null): void;
 }
 
-class API{
+export class API{
 
   requestGET(url:string, listener: GETResponseListener):void {
     let xhr:XMLHttpRequest = new XMLHttpRequest();
