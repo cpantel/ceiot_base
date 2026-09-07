@@ -1,1 +1,2 @@
-js
+*.js
+!static/js/materialize.min.js
