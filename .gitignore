@@ -4,3 +4,4 @@
 sdkconfig
 node_modules
 build
+managed_components
