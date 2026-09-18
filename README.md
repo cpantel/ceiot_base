@@ -433,29 +433,38 @@ En el último paso, alcanza con elegir sólo las que uno tiene.
     sudo apt install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 virtualenv
     mkdir ~/esp
     cd ~/esp
-    git clone https://github.com/UncleRus/esp-idf-lib.git
-    git clone -b v4.4 --recursive https://github.com/espressif/esp-idf.git
-    cd ~/esp/esp-idf-lib
-    git checkout 0.8.2
-    cd ~/esp/esp-idf
-    git checkout release/v4.4
-    git submodule update --init --recursive
+    git clone -b v5.5.5 --recursive https://github.com/espressif/esp-idf.git
+    cd esp-idf
 
-
-Según tengas esp32, esp32c3 o esp32s2:
+Según tengas esp32, esp32c3, esp32s2 o esp32s3 :
 
 
     ./install.sh esp32
     ./install.sh esp32c3
     ./install.sh esp32s2
-
+    ./install.sh esp32s3
 
 pueden ir juntos en una sola línea, sin espacios, por ejemplo:
 
+    ./install.sh esp32,esp32c3,esp32s2,esp32s3
 
-    ./install.sh esp32,esp32c3,esp32s2
+Activar entorno:
 
-Relato informal de la experiencia de exploración:
+    . ~/esp/esp-idf/export.sh
+
+Comprobar versión:
+
+    idf.py --version
+
+esperamos
+
+    ESP-IDF v5.5.5
+
+Si hay más de una cpu disponible, se puede paralelizar el build con:
+
+    export IDF_PY_BUILD_JOBS=$(nproc)
+
+Relato informal de la experiencia de exploración, ya un poco obsoleto y para v4:
 
 [Ejemplo de ESP32 con lectura de DHT11](https://seguridad-agile.blogspot.com/2022/02/ejemplo-de-esp32-con-lectura-de-dht11.html)
 
@@ -499,9 +508,9 @@ Esperamos algo parecido a:
 
 ### Build y Flash 
 
-Es conveniente comenzar con ESP32c3 y pinout. 
+Es conveniente comenzar con esp32_blinky. 
 
-Dado un microcontrolador **MICRO** entre *esp32* y *esp32c3* y un sensor **DEVICE** entre *bmp280*, *dht11* y *pinout*:
+Elegir un microcontrolador **MICRO** entre *esp32*, *esp32c3* *esp32s2* y *esp32s3* y un sensor **DEVICE** entre *bmp280*, *dht11* y opcionalmente una variación como *http_client_wifi*, *bmp280* o combinación:
 
 #### Habilitar la toolchain
 
@@ -511,45 +520,10 @@ Dado un microcontrolador **MICRO** entre *esp32* y *esp32c3* y un sensor **DEVIC
 
 Ir a la carpeta del objetivo deseado
 
-    cd ~/ceiot_base/perception/${MICRO}-${DEVICE}
-
-Obtener la configuradión
-
-    cp ../config/config.h.template config.h
-    
-Los ejemplos provistos con sensores se conectan a la red, el de pinout no.
-
+    cd ~/ceiot_base/perception/${MICRO}_${VARIACION}_${DEVICE}
     idf.py set-target ${MICRO}
 
-#### Particular ejemplo pinout
-
-En main.c se puede cambiar asignación de pines.
-
-#### Particular ejemplo sensores
-
-Modificar en config.h 
-
-```
-#  dirección del servidor
-#    API_IP
-#    API_PORT
-#  credenciales de WiFi
-#    CONFIG_EXAMPLE_WIFI_SSID
-#    CONFIG_EXAMPLE_WIFI_PASSWORD
-#  identificador del dispositivo
-#    DEVICE_ID
-#  user agent del dispositivo
-#    USER_AGENT
-#  si SENSOR es dht11
-#    ONE_WIRE_GPIO
-#  si SENSOR es bmp280
-#    SDA_GPIO
-#    SCL_GPIO
-```
-
-Transferir los datos de conexión de config.h a sdkconfig
-
-    ../set-wifi.sh
+En main/main.c o similar puede hacer falta cambiar asignación de pines y/o poner credenciales del AP.
 
 #### Resto del procesos
 
@@ -608,9 +582,47 @@ Colocar un capacitor de 1 uF entre enable y tierra
     --- idf_monitor on /dev/ttyUSB0 115200 ---
     ...
 ```
-   
+## Anexo 1: creación de los proyectos
 
-## Anexo 1: Conexión del sensor
+### esp32 con bmp280
+
+    idf.py create-project esp32_bmp280
+    cd esp32_bmp280/
+    idf.py add-dependency "esp-idf-lib/bmp280"
+    idf.py set-target esp32
+    cp managed_components/esp-idf-lib__bmp280/examples/default/main/main.c main/esp32_bmp280.c
+   
+A main/esp32_bmp280.c agregar #defines y reemplazar:
+
+    #define I2C_MASTER_SDA 21
+    #define I2C_MASTER_SCL 22
+
+    ESP_ERROR_CHECK(bmp280_init_desc(&dev, BMP280_I2C_ADDRESS_0, 0, I2C_MASTER_SDA, I2C_MASTER_SCL));
+
+    idf.py build
+    idf.py flash
+    idf.py monitor
+
+### Ejemplo tipo plantilla:
+
+
+    idf.py create-project MICRO_DEVICE
+
+    idf.py add-dependency "espressif/led_strip"
+    idf.py add-dependency "esp-idf-lib/bmp280"
+    idf.py add-dependency "esp-idf-lib/dht"
+
+    idf.py set-target MICRO
+
+    cp managed_components/esp-idf-lib__DEVICE/examples/default/main/main.c main/MICRO_DEVICE.c
+
+    # ajustes por pinouts
+
+    idf.py build
+    idf.py flash
+    idf.py monitor
+
+## Anexo 2: Conexión del sensor
 
 ### Microcontrolador ESP32 con sensor DHT11
 
