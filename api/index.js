@@ -61,7 +61,7 @@ app.get('/web/device', function (req, res) {
 		return '<tr><td><a href=/web/device/'+ device.device_id +'>' + device.device_id + "</a>" +
 			       "</td><td>"+ device.name+"</td><td>"+ device.key+"</td></tr>";
 	   }
-	);
+	).join("");
 	res.send("<html>"+
 		     "<head><title>Sensores</title></head>" +
 		     "<body>" +
